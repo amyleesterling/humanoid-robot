@@ -16,18 +16,19 @@ W1014,01_energy_precharge_conversion.kicad_sch,TETH1,LOG-PANEL-N,PANEL DC RETURN
 W1015,01_energy_precharge_conversion.kicad_sch,TETH1,LOG-PANEL-PE,PANEL PE,PANEL_PE
 W1016,01_energy_precharge_conversion.kicad_sch,TETH1,LOG-ROBOT-P,ROBOT CONTROLLED MAIN,ACT_MAIN_SAFE_12V
 W1017,01_energy_precharge_conversion.kicad_sch,TETH1,LOG-ROBOT-N,ROBOT CONTROLLED RETURN,ACT_0V_CONTROLLED
-W1018,01_energy_precharge_conversion.kicad_sch,REG_TTL_L,LOG-IN,CONTROLLED 12 V INPUT,ACT_MAIN_SAFE_12V
-W1019,01_energy_precharge_conversion.kicad_sch,REG_TTL_L,LOG-RET-IN,CONTROLLED RETURN,ACT_0V_CONTROLLED
-W1020,01_energy_precharge_conversion.kicad_sch,REG_TTL_L,LOG-OUT,LEFT DISTAL 9 V,TTL_LDIST_SAFE_9V
-W1021,01_energy_precharge_conversion.kicad_sch,REG_TTL_L,LOG-RET-OUT,RETURN,ACT_0V_CONTROLLED
-W1022,01_energy_precharge_conversion.kicad_sch,REG_TTL_R,LOG-IN,CONTROLLED 12 V INPUT,ACT_MAIN_SAFE_12V
-W1023,01_energy_precharge_conversion.kicad_sch,REG_TTL_R,LOG-RET-IN,CONTROLLED RETURN,ACT_0V_CONTROLLED
-W1024,01_energy_precharge_conversion.kicad_sch,REG_TTL_R,LOG-OUT,RIGHT DISTAL 9 V,TTL_RDIST_SAFE_9V
-W1025,01_energy_precharge_conversion.kicad_sch,REG_TTL_R,LOG-RET-OUT,RETURN,ACT_0V_CONTROLLED
-W1026,01_energy_precharge_conversion.kicad_sch,REG_TTL_H,LOG-IN,CONTROLLED 12 V INPUT,ACT_MAIN_SAFE_12V
-W1027,01_energy_precharge_conversion.kicad_sch,REG_TTL_H,LOG-RET-IN,CONTROLLED RETURN,ACT_0V_CONTROLLED
-W1028,01_energy_precharge_conversion.kicad_sch,REG_TTL_H,LOG-OUT,HEAD ACTUATOR 9 V,TTL_HEAD_SAFE_9V
-W1029,01_energy_precharge_conversion.kicad_sch,REG_TTL_H,LOG-RET-OUT,RETURN,ACT_0V_CONTROLLED
+W1018,01_energy_precharge_conversion.kicad_sch,TETH1,LOG-ROBOT-PE,ROBOT FRAME / PE BOUNDARY,FRAME_PE_BOUNDARY
+W1019,01_energy_precharge_conversion.kicad_sch,REG_TTL_L,LOG-IN,CONTROLLED 12 V INPUT,ACT_MAIN_SAFE_12V
+W1020,01_energy_precharge_conversion.kicad_sch,REG_TTL_L,LOG-RET-IN,CONTROLLED RETURN,ACT_0V_CONTROLLED
+W1021,01_energy_precharge_conversion.kicad_sch,REG_TTL_L,LOG-OUT,LEFT DISTAL 9 V,TTL_LDIST_SAFE_9V
+W1022,01_energy_precharge_conversion.kicad_sch,REG_TTL_L,LOG-RET-OUT,RETURN,ACT_0V_CONTROLLED
+W1023,01_energy_precharge_conversion.kicad_sch,REG_TTL_R,LOG-IN,CONTROLLED 12 V INPUT,ACT_MAIN_SAFE_12V
+W1024,01_energy_precharge_conversion.kicad_sch,REG_TTL_R,LOG-RET-IN,CONTROLLED RETURN,ACT_0V_CONTROLLED
+W1025,01_energy_precharge_conversion.kicad_sch,REG_TTL_R,LOG-OUT,RIGHT DISTAL 9 V,TTL_RDIST_SAFE_9V
+W1026,01_energy_precharge_conversion.kicad_sch,REG_TTL_R,LOG-RET-OUT,RETURN,ACT_0V_CONTROLLED
+W1027,01_energy_precharge_conversion.kicad_sch,REG_TTL_H,LOG-IN,CONTROLLED 12 V INPUT,ACT_MAIN_SAFE_12V
+W1028,01_energy_precharge_conversion.kicad_sch,REG_TTL_H,LOG-RET-IN,CONTROLLED RETURN,ACT_0V_CONTROLLED
+W1029,01_energy_precharge_conversion.kicad_sch,REG_TTL_H,LOG-OUT,HEAD ACTUATOR 9 V,TTL_HEAD_SAFE_9V
+W1030,01_energy_precharge_conversion.kicad_sch,REG_TTL_H,LOG-RET-OUT,RETURN,ACT_0V_CONTROLLED
 W2001,02_estop_permit_contactors.kicad_sch,S0,LOG-C1F,CHANNEL 1 FEED,ESTOP_CH1_FEED
 W2002,02_estop_permit_contactors.kicad_sch,S0,LOG-C2F,CHANNEL 2 FEED,ESTOP_CH2_FEED
 W2003,02_estop_permit_contactors.kicad_sch,S0,LOG-C1R,CHANNEL 1 RETURN,ESTOP_CH1_RETURN
@@ -61,45 +62,47 @@ W2030,02_estop_permit_contactors.kicad_sch,K2,LOG-COIL-P,COIL POSITIVE,SAFETY_OU
 W2031,02_estop_permit_contactors.kicad_sch,K2,LOG-COIL-N,COIL RETURN,SAFETY_0V
 W2032,02_estop_permit_contactors.kicad_sch,K2,LOG-MOUT,MAIN OUTPUT TO TETHER,TETHER_MAIN_POS
 W2033,02_estop_permit_contactors.kicad_sch,K2,LOG-AUX,MECHANICALLY LINKED AUXILIARY CANDIDATE,EDM_K2_AUX
-W3001,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-FAN-TACH,HEAD FAN TACH,HEAD_FAN_TACH
-W3002,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-ACTION,STRUCTURED ACTION REQUEST,ACTION_REQUEST_AUTH
-W3003,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-CAM-L,LEFT CAMERA IPC,HEAD_CAM_L_IPC
-W3004,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-CAM-R,RIGHT CAMERA IPC,HEAD_CAM_R_IPC
-W3005,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-DISPLAY,FACE DISPLAY IPC,HEAD_DISPLAY_IPC
-W3006,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-TOUCH,FACE TOUCH IPC,HEAD_TOUCH_IPC
-W3007,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-MIC,MICROPHONE IPC,HEAD_MIC_IPC
-W3008,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-AUDIO,AUDIO OUTPUT IPC,HEAD_AUDIO_IPC
-W3009,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-FAN-PWM,HEAD FAN PWM,HEAD_FAN_PWM
-W3010,03_compute_motion_watchdog.kicad_sch,MCU1,LOG-PERMIT,HARDWIRED PERMIT INPUT,SAFETY_PERMIT_HARDWIRED
-W3011,03_compute_motion_watchdog.kicad_sch,MCU1,LOG-ACTION,AUTHENTICATED ACTION REQUEST,ACTION_REQUEST_AUTH
-W3012,03_compute_motion_watchdog.kicad_sch,MCU1,LOG-PSTAT,PRECHARGE STATUS,PRECHARGE_STATUS
-W3013,03_compute_motion_watchdog.kicad_sch,MCU1,LOG-WD,WATCHDOG HEARTBEAT,MOTION_WD_HEARTBEAT
-W3014,03_compute_motion_watchdog.kicad_sch,MCU1,LOG-PREQ,PRECHARGE REQUEST,PRECHARGE_REQUEST
-W3015,03_compute_motion_watchdog.kicad_sch,WD1,LOG-HB,MOTION HEARTBEAT INPUT,MOTION_WD_HEARTBEAT
-W3016,03_compute_motion_watchdog.kicad_sch,WD1,LOG-REQ,PERMIT REQUEST DIAGNOSTIC,WD_PERMIT_REQUEST
-W3017,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LLEG,101,PA9 AF7 TX,UART_RS-LLEG_TX
-W3018,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LLEG,102,PA10 AF7 RX,UART_RS-LLEG_RX
-W3019,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LLEG,104,PA12 AF7 RTS/DE,UART_RS-LLEG_DIR
-W3020,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RLEG,119,PD5 AF7 TX,UART_RS-RLEG_TX
-W3021,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RLEG,122,PD6 AF7 RX,UART_RS-RLEG_RX
-W3022,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RLEG,118,PD4 AF7 RTS/DE,UART_RS-RLEG_DIR
-W3023,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LARM,77,PD8 AF7 TX,UART_RS-LARM_TX
-W3024,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LARM,78,PD9 AF7 RX,UART_RS-LARM_RX
-W3025,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LARM,81,PD12 AF7 RTS/DE,UART_RS-LARM_DIR
-W3026,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RARM,96,PC6 AF7 TX,UART_RS-RARM_TX
-W3027,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RARM,97,PC7 AF7 RX,UART_RS-RARM_RX
-W3028,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RARM,93,PG8 AF7 RTS/DE,UART_RS-RARM_DIR
-W3029,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_WAIST,111,PC10 AF8 TX,UART_RS-WAIST_TX
-W3030,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_WAIST,112,PC11 AF8 RX,UART_RS-WAIST_RX
-W3031,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_WAIST,110,PA15 AF8 RTS/DE,UART_RS-WAIST_DIR
-W3032,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_LDIST,113,PC12 AF8 HALF-DUPLEX IO,UART_TTL-LDIST_TX
-W3033,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_LDIST,98,PC8 AF8 RTS/DE,UART_TTL-LDIST_DIR
-W3034,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_RDIST,59,PE8 AF7 HALF-DUPLEX IO,UART_TTL-RDIST_TX
-W3035,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_RDIST,60,PE9 AF7 RTS/DE,UART_TTL-RDIST_DIR
-W3036,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_HEAD,142,PE1 AF8 HALF-DUPLEX IO,UART_TTL-HEAD_TX
-W3037,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_HEAD,86,PD15 AF8 RTS/DE,UART_TTL-HEAD_DIR
-W4001,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-5V-IN,AUXILIARY 5 V INPUT,AUX_5V_SAFE
-W4002,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-RET-IN,AUXILIARY RETURN,AUX_0V
+W3001,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-5V,COMPUTE 5.1 V INPUT,COMPUTE_5V1
+W3002,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-RET,AUXILIARY RETURN,AUX_0V_STAR
+W3003,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-FAN-TACH,HEAD FAN TACH,HEAD_FAN_TACH
+W3004,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-ACTION,STRUCTURED ACTION REQUEST,ACTION_REQUEST_AUTH
+W3005,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-CAM-L,LEFT CAMERA IPC,HEAD_CAM_L_IPC
+W3006,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-CAM-R,RIGHT CAMERA IPC,HEAD_CAM_R_IPC
+W3007,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-DISPLAY,FACE DISPLAY IPC,HEAD_DISPLAY_IPC
+W3008,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-TOUCH,FACE TOUCH IPC,HEAD_TOUCH_IPC
+W3009,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-MIC,MICROPHONE IPC,HEAD_MIC_IPC
+W3010,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-AUDIO,AUDIO OUTPUT IPC,HEAD_AUDIO_IPC
+W3011,03_compute_motion_watchdog.kicad_sch,CPU1,LOG-FAN-PWM,HEAD FAN PWM,HEAD_FAN_PWM
+W3012,03_compute_motion_watchdog.kicad_sch,MCU1,LOG-PERMIT,HARDWIRED PERMIT INPUT,SAFETY_PERMIT_HARDWIRED
+W3013,03_compute_motion_watchdog.kicad_sch,MCU1,LOG-ACTION,AUTHENTICATED ACTION REQUEST,ACTION_REQUEST_AUTH
+W3014,03_compute_motion_watchdog.kicad_sch,MCU1,LOG-PSTAT,PRECHARGE STATUS,PRECHARGE_STATUS
+W3015,03_compute_motion_watchdog.kicad_sch,MCU1,LOG-WD,WATCHDOG HEARTBEAT,MOTION_WD_HEARTBEAT
+W3016,03_compute_motion_watchdog.kicad_sch,MCU1,LOG-PREQ,PRECHARGE REQUEST,PRECHARGE_REQUEST
+W3017,03_compute_motion_watchdog.kicad_sch,WD1,LOG-HB,MOTION HEARTBEAT INPUT,MOTION_WD_HEARTBEAT
+W3018,03_compute_motion_watchdog.kicad_sch,WD1,LOG-REQ,PERMIT REQUEST DIAGNOSTIC,WD_PERMIT_REQUEST
+W3019,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LLEG,101,PA9 AF7 TX,UART_RS-LLEG_TX
+W3020,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LLEG,102,PA10 AF7 RX,UART_RS-LLEG_RX
+W3021,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LLEG,104,PA12 AF7 RTS/DE,UART_RS-LLEG_DIR
+W3022,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RLEG,119,PD5 AF7 TX,UART_RS-RLEG_TX
+W3023,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RLEG,122,PD6 AF7 RX,UART_RS-RLEG_RX
+W3024,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RLEG,118,PD4 AF7 RTS/DE,UART_RS-RLEG_DIR
+W3025,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LARM,77,PD8 AF7 TX,UART_RS-LARM_TX
+W3026,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LARM,78,PD9 AF7 RX,UART_RS-LARM_RX
+W3027,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LARM,81,PD12 AF7 RTS/DE,UART_RS-LARM_DIR
+W3028,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RARM,96,PC6 AF7 TX,UART_RS-RARM_TX
+W3029,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RARM,97,PC7 AF7 RX,UART_RS-RARM_RX
+W3030,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RARM,93,PG8 AF7 RTS/DE,UART_RS-RARM_DIR
+W3031,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_WAIST,111,PC10 AF8 TX,UART_RS-WAIST_TX
+W3032,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_WAIST,112,PC11 AF8 RX,UART_RS-WAIST_RX
+W3033,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_WAIST,110,PA15 AF8 RTS/DE,UART_RS-WAIST_DIR
+W3034,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_LDIST,113,PC12 AF8 HALF-DUPLEX IO,UART_TTL-LDIST_TX
+W3035,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_LDIST,98,PC8 AF8 RTS/DE,UART_TTL-LDIST_DIR
+W3036,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_RDIST,59,PE8 AF7 HALF-DUPLEX IO,UART_TTL-RDIST_TX
+W3037,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_RDIST,60,PE9 AF7 RTS/DE,UART_TTL-RDIST_DIR
+W3038,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_HEAD,142,PE1 AF8 HALF-DUPLEX IO,UART_TTL-HEAD_TX
+W3039,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_HEAD,86,PD15 AF8 RTS/DE,UART_TTL-HEAD_DIR
+W4001,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-5V-IN,CONTROL 5 V INPUT,AUX_5V_SAFE
+W4002,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-RET-IN,AUXILIARY RETURN,AUX_0V_STAR
 W4003,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-5V,CONTROL 5 V,CTRL_5V
 W4004,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-3V3,CONTROL 3.3 V,CTRL_3V3
 W4005,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-GND,CONTROL GROUND,CTRL_GND
@@ -502,8 +505,8 @@ W14013,14_head_ttl_sensors_hmi.kicad_sch,PBR_HEAD_TILT,LOG-RET-OUT,ACTUATOR / DA
 W14014,14_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_TILT,2,VDD,HEAD_TILT_VDD
 W14015,14_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_TILT,1,GND,TTL-HEAD_RET
 W14016,14_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_TILT,3,DATA,TTL-HEAD_DATA
-W14017,14_head_ttl_sensors_hmi.kicad_sch,HPWR1,LOG-IN,AUXILIARY 5 V INPUT,AUX_5V_SAFE
-W14018,14_head_ttl_sensors_hmi.kicad_sch,HPWR1,LOG-RET-IN,AUXILIARY RETURN,AUX_0V
+W14017,14_head_ttl_sensors_hmi.kicad_sch,HPWR1,LOG-IN,HMI 5 V INPUT,HMI_5V0
+W14018,14_head_ttl_sensors_hmi.kicad_sch,HPWR1,LOG-RET-IN,AUXILIARY RETURN,AUX_0V_STAR
 W14019,14_head_ttl_sensors_hmi.kicad_sch,HPWR1,LOG-OUT,HEAD 5 V,HEAD_5V
 W14020,14_head_ttl_sensors_hmi.kicad_sch,HPWR1,LOG-RET-OUT,HEAD RETURN,HEAD_0V
 W14021,14_head_ttl_sensors_hmi.kicad_sch,CAM1,LOG-5V,5 V POWER,HEAD_5V
@@ -534,18 +537,28 @@ W14045,14_head_ttl_sensors_hmi.kicad_sch,FAN1,LOG-5V,5 V POWER,HEAD_5V
 W14046,14_head_ttl_sensors_hmi.kicad_sch,FAN1,LOG-RET,RETURN,HEAD_0V
 W14047,14_head_ttl_sensors_hmi.kicad_sch,FAN1,LOG-PWM,PWM,HEAD_FAN_PWM
 W14048,14_head_ttl_sensors_hmi.kicad_sch,FAN1,LOG-TACH,TACHOMETER,HEAD_FAN_TACH
-W15001,15_pelvis_aux_imu.kicad_sch,AUXD1,LOG-IN,CONTROLLED 12 V INPUT,ACT_MAIN_SAFE_12V
-W15002,15_pelvis_aux_imu.kicad_sch,AUXD1,LOG-RET-IN,CONTROLLED RETURN,ACT_0V_CONTROLLED
-W15003,15_pelvis_aux_imu.kicad_sch,AUXD1,LOG-OUT,AUXILIARY 5 V,AUX_5V_SAFE
-W15004,15_pelvis_aux_imu.kicad_sch,AUXD1,LOG-RET-OUT,AUXILIARY RETURN,AUX_0V
-W15005,15_pelvis_aux_imu.kicad_sch,IMU1,LOG-5V,5 V POWER,AUX_5V_SAFE
-W15006,15_pelvis_aux_imu.kicad_sch,IMU1,LOG-RET,RETURN,AUX_0V
-W15007,15_pelvis_aux_imu.kicad_sch,IMU1,LOG-DATA,DETERMINISTIC SENSOR DATA,PELVIS_IMU_DATA
-W15008,15_pelvis_aux_imu.kicad_sch,IMU1,LOG-INT,DATA READY / FAULT,PELVIS_IMU_INT
-W15009,15_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-IMU,PELVIS IMU DATA,PELVIS_IMU_DATA
-W15010,15_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-IMU-INT,PELVIS IMU INTERRUPT,PELVIS_IMU_INT
-W15011,15_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-LFOOT,LEFT FOOT SENSOR DATA,L_FOOT_SENSOR_DATA
-W15012,15_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-RFOOT,RIGHT FOOT SENSOR DATA,R_FOOT_SENSOR_DATA
+W15001,15_pelvis_aux_imu.kicad_sch,AUXCOM1,LOG-IN,CONTROLLED 12 V INPUT,ACT_MAIN_SAFE_12V
+W15002,15_pelvis_aux_imu.kicad_sch,AUXCOM1,LOG-RET-IN,CONTROLLED RETURN,ACT_0V_CONTROLLED
+W15003,15_pelvis_aux_imu.kicad_sch,AUXCOM1,LOG-OUT,COMPUTE 5.1 V,COMPUTE_5V1
+W15004,15_pelvis_aux_imu.kicad_sch,AUXCOM1,LOG-RET-OUT,ISOLATED SECONDARY RETURN,AUX_0V_STAR
+W15005,15_pelvis_aux_imu.kicad_sch,AUXHMI1,LOG-IN,CONTROLLED 12 V INPUT,ACT_MAIN_SAFE_12V
+W15006,15_pelvis_aux_imu.kicad_sch,AUXHMI1,LOG-RET-IN,CONTROLLED RETURN,ACT_0V_CONTROLLED
+W15007,15_pelvis_aux_imu.kicad_sch,AUXHMI1,LOG-OUT,HMI 5 V,HMI_5V0
+W15008,15_pelvis_aux_imu.kicad_sch,AUXHMI1,LOG-RET-OUT,ISOLATED SECONDARY RETURN,AUX_0V_STAR
+W15009,15_pelvis_aux_imu.kicad_sch,AUXCTL1,LOG-IN,CONTROLLED 12 V INPUT,ACT_MAIN_SAFE_12V
+W15010,15_pelvis_aux_imu.kicad_sch,AUXCTL1,LOG-RET-IN,CONTROLLED RETURN,ACT_0V_CONTROLLED
+W15011,15_pelvis_aux_imu.kicad_sch,AUXCTL1,LOG-OUT,CONTROL 5 V,AUX_5V_SAFE
+W15012,15_pelvis_aux_imu.kicad_sch,AUXCTL1,LOG-RET-OUT,ISOLATED SECONDARY RETURN,AUX_0V_STAR
+W15013,15_pelvis_aux_imu.kicad_sch,AUXSTAR1,LOG-RET,COMMON SECONDARY RETURN,AUX_0V_STAR
+W15014,15_pelvis_aux_imu.kicad_sch,AUXSTAR1,LOG-PE,SOLE PROPOSED PE BOND,FRAME_PE_BOUNDARY
+W15015,15_pelvis_aux_imu.kicad_sch,IMU1,LOG-5V,5 V POWER,AUX_5V_SAFE
+W15016,15_pelvis_aux_imu.kicad_sch,IMU1,LOG-RET,RETURN,AUX_0V_STAR
+W15017,15_pelvis_aux_imu.kicad_sch,IMU1,LOG-DATA,DETERMINISTIC SENSOR DATA,PELVIS_IMU_DATA
+W15018,15_pelvis_aux_imu.kicad_sch,IMU1,LOG-INT,DATA READY / FAULT,PELVIS_IMU_INT
+W15019,15_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-IMU,PELVIS IMU DATA,PELVIS_IMU_DATA
+W15020,15_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-IMU-INT,PELVIS IMU INTERRUPT,PELVIS_IMU_INT
+W15021,15_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-LFOOT,LEFT FOOT SENSOR DATA,L_FOOT_SENSOR_DATA
+W15022,15_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-RFOOT,RIGHT FOOT SENSOR DATA,R_FOOT_SENSOR_DATA
 W16001,16_left_foot_load_sensing.kicad_sch,LOAD_L_FL,LOG-EXC-P,EXCITATION +,L_FOOT_EXC_P
 W16002,16_left_foot_load_sensing.kicad_sch,LOAD_L_FL,LOG-EXC-N,EXCITATION -,L_FOOT_EXC_N
 W16003,16_left_foot_load_sensing.kicad_sch,LOAD_L_FL,LOG-SIG-P,SIGNAL +,L_FOOT_FL_SIG_P
@@ -563,7 +576,7 @@ W16014,16_left_foot_load_sensing.kicad_sch,LOAD_L_RR,LOG-EXC-N,EXCITATION -,L_FO
 W16015,16_left_foot_load_sensing.kicad_sch,LOAD_L_RR,LOG-SIG-P,SIGNAL +,L_FOOT_RR_SIG_P
 W16016,16_left_foot_load_sensing.kicad_sch,LOAD_L_RR,LOG-SIG-N,SIGNAL -,L_FOOT_RR_SIG_N
 W16017,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-5V,5 V POWER,AUX_5V_SAFE
-W16018,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-RET,RETURN,AUX_0V
+W16018,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-RET,RETURN,AUX_0V_STAR
 W16019,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-FL-P,FL SIGNAL +,L_FOOT_FL_SIG_P
 W16020,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-FL-N,FL SIGNAL -,L_FOOT_FL_SIG_N
 W16021,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-FR-P,FR SIGNAL +,L_FOOT_FR_SIG_P
@@ -592,7 +605,7 @@ W17014,17_right_foot_load_sensing.kicad_sch,LOAD_R_RR,LOG-EXC-N,EXCITATION -,R_F
 W17015,17_right_foot_load_sensing.kicad_sch,LOAD_R_RR,LOG-SIG-P,SIGNAL +,R_FOOT_RR_SIG_P
 W17016,17_right_foot_load_sensing.kicad_sch,LOAD_R_RR,LOG-SIG-N,SIGNAL -,R_FOOT_RR_SIG_N
 W17017,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-5V,5 V POWER,AUX_5V_SAFE
-W17018,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-RET,RETURN,AUX_0V
+W17018,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-RET,RETURN,AUX_0V_STAR
 W17019,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-FL-P,FL SIGNAL +,R_FOOT_FL_SIG_P
 W17020,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-FL-N,FL SIGNAL -,R_FOOT_FL_SIG_N
 W17021,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-FR-P,FR SIGNAL +,R_FOOT_FR_SIG_P

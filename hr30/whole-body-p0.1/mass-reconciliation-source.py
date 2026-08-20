@@ -626,14 +626,14 @@ def write_lightweight_register(summary: dict) -> None:
         {
             "decision_id": "HR30-LW-001", "affected_system": "torso frame",
             "baseline_candidate": "solid 18 x 18 mm rail envelopes",
-            "lightweight_candidate": "18 x 18 x 2 mm hollow rail envelopes; outer interfaces retained",
-            "mass_effect": "included in fabrication subtotal", "engineering_hold": "exact extrusion, local inserts, buckling, joint loads and received section open",
+            "lightweight_candidate": "18 x 18 x 1.5 mm hollow rail envelopes plus a 2.0 mm-wall shoulder bridge; outer interfaces and joint datums retained",
+            "mass_effect": "included in fabrication subtotal", "engineering_hold": "exact extrusion, local inserts, buckling, bilateral shoulder loads and received section open",
         },
         {
             "decision_id": "HR30-LW-002", "affected_system": "limbs, pelvis and feet",
             "baseline_candidate": "solid plate and link envelopes",
-            "lightweight_candidate": "closed-perimeter windowed plates and longitudinally slotted paired arm links",
-            "mass_effect": "included in fabrication subtotal", "engineering_hold": "stress concentration, fatigue, fasteners, edge finish, DFM and proof loads open",
+            "lightweight_candidate": "2.5 mm closed-perimeter windowed leg plates/ties and foot carriers plus 3.5 mm longitudinally slotted paired arm links; joint axes and outer module interfaces retained",
+            "mass_effect": "included in fabrication subtotal; active tether-first mass changes with the generated CAD volume", "engineering_hold": "gait/fall/payload stress, stress concentration, fatigue, fasteners, edge finish, foot pressure distribution, DFM and proof loads open",
         },
         {
             "decision_id": "HR30-LW-003", "affected_system": "covers",
@@ -710,7 +710,7 @@ def update_docs(summary: dict) -> None:
 
 The former 9.63 kg value was an allocation, not a physical mass model. This pass inventories {summary['fabrication_part_count']} materialized fabrication-CAD parts, {summary['actuator_count']} actuators, {summary['joint_hardware_part_count']} joint-hardware candidate solids, {summary['located_joint_fastener_count']} located joint-fastener candidates, {summary['transmission_belt_count']} catalogue belt candidates and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The complete packaging inventory is **{summary['planning_identified_candidate_mass_kg']:.3f} kg** and includes the exact published 1.057 kg rejected-pack envelope plus cassette and protection allowances. Those three items total **{summary['excluded_onboard_envelope_identified_mass_kg']:.3f} kg** and are not installed in the active tether-first development configuration.
 
-Relative to commit `{BASELINE_COMMIT}`, the lightweight topology reduces the gross identified candidate subtotal by **{BASELINE_MASS['identified'] - summary['planning_identified_candidate_mass_kg']:.3f} kg**. The body retains all 25 axes, complete limbs and hands while using hollow torso rails, windowed and slotted load-path plates, thinner service covers, hollow aluminum shaft screens, topology-lightened carrier frames and pulleys, and actuator-plus-one-external-bearing support on direct axes. Those changes are geometry candidates, not strength or bearing-life evidence.
+Relative to commit `{BASELINE_COMMIT}`, the lightweight topology reduces the gross identified candidate subtotal by **{BASELINE_MASS['identified'] - summary['planning_identified_candidate_mass_kg']:.3f} kg**. The body retains all 25 axes, complete limbs and hands while using 18 x 18 x 1.5 mm hollow torso rails, a 2.0 mm-wall shoulder bridge, 2.5 mm windowed leg plates/ties and foot carriers, 3.5 mm slotted arm links, 0.8 mm service covers, hollow aluminum shaft screens, topology-lightened carrier frames and pulleys, and actuator-plus-one-external-bearing support on direct axes. Those changes are geometry candidates, not strength or bearing-life evidence.
 
 The package now exposes two non-interchangeable dynamics configurations. `HR30-TETHER-FIRST-P0.1` is the active controlled-development baseline at **{summary['active_tether_dynamics_planning_mass_kg']:.3f} kg**, neutral COM **({summary['active_tether_neutral_com_m'][0]:.3f}, {summary['active_tether_neutral_com_m'][1]:.3f}, {summary['active_tether_neutral_com_m'][2]:.3f}) m**, and **{summary['active_tether_margin_to_program_maximum_kg']:.3f} kg** planning margin to the authoritative 10 kg hard limit. The 8 kg product target remains missed. `HR30-ONBOARD-ENVELOPE-P0.1` remains a packaging-only case at **{summary['onboard_envelope_dynamics_planning_mass_kg']:.3f} kg**, which exceeds the 10 kg hard limit by **{-summary['onboard_envelope_margin_to_program_maximum_kg']:.3f} kg**. Its direct 4S source is rejected and it is not an active power configuration. Both models retain the explicit per-link subtotal and residual integration contingency without double-counting the {summary['located_joint_fastener_planning_mass_kg']:.3f} kg of located screw candidates. Exact selections, received masses and dynamic walking proof remain open.
 

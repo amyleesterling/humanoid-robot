@@ -58,6 +58,7 @@ ST_H743_SOURCE = "https://www.st.com/resource/en/datasheet/stm32h742bg.pdf"
 TI_ISOW1432_SOURCE = "https://www.ti.com/lit/ds/symlink/isow1432.pdf"
 TI_LVC1T45_SOURCE = "https://www.ti.com/lit/ds/symlink/sn74lvc1t45.pdf"
 JST_GH_SOURCE = "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf"
+JST_PA_SOURCE = "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf"
 
 
 def load_model():
@@ -304,7 +305,8 @@ def build_sheets(model):
                 ("LOG-PSTAT", "PRECHARGE STATUS", "PRECHARGE_STATUS", "left")]
     s3.components = [
         component(model, "CPU1", "RASPBERRY PI 5 CONVERSATIONAL COMPUTE CANDIDATE",
-                  [("LOG-NET", "NETWORK / OPENAI CLIENT", "EXTERNAL_NETWORK", "left"), ("LOG-ACTION", "STRUCTURED ACTION REQUEST", "ACTION_REQUEST_AUTH", "right"),
+                  [("LOG-5V", "COMPUTE 5.1 V INPUT", "COMPUTE_5V1", "left"), ("LOG-RET", "AUXILIARY RETURN", "AUX_0V_STAR", "left"),
+                   ("LOG-NET", "NETWORK / OPENAI CLIENT", "EXTERNAL_NETWORK", "left"), ("LOG-ACTION", "STRUCTURED ACTION REQUEST", "ACTION_REQUEST_AUTH", "right"),
                    ("LOG-CAM-L", "LEFT CAMERA IPC", "HEAD_CAM_L_IPC", "right"), ("LOG-CAM-R", "RIGHT CAMERA IPC", "HEAD_CAM_R_IPC", "right"),
                    ("LOG-DISPLAY", "FACE DISPLAY IPC", "HEAD_DISPLAY_IPC", "right"), ("LOG-TOUCH", "FACE TOUCH IPC", "HEAD_TOUCH_IPC", "right"),
                    ("LOG-MIC", "MICROPHONE IPC", "HEAD_MIC_IPC", "right"), ("LOG-AUDIO", "AUDIO OUTPUT IPC", "HEAD_AUDIO_IPC", "right"),
@@ -370,7 +372,7 @@ def build_sheets(model):
     s4 = model.Sheet(4, "04_motion_controller_carrier_connectors.kicad_sch", "STM32H743 motion-controller power and carrier connectors", "Physical two-board interface for the eight UART channels; no field actuator power enters either connector.")
     s4.components = [
         component(model, "REG1", "CONTROL 5 V TO 3.3 V REGULATOR - DESIGN REQUIRED",
-                  [("LOG-5V-IN", "AUXILIARY 5 V INPUT", "AUX_5V_SAFE", "left"), ("LOG-RET-IN", "AUXILIARY RETURN", "AUX_0V", "left"),
+                  [("LOG-5V-IN", "CONTROL 5 V INPUT", "AUX_5V_SAFE", "left"), ("LOG-RET-IN", "AUXILIARY RETURN", "AUX_0V_STAR", "left"),
                    ("LOG-5V", "CONTROL 5 V", "CTRL_5V", "right"), ("LOG-3V3", "CONTROL 3.3 V", "CTRL_3V3", "right"), ("LOG-GND", "CONTROL GROUND", "CTRL_GND", "right")],
                   "The exact regulator, filtering, sequencing, brownout, protection, thermal and EMC design remains open. This block does not authorize powering MCU1 or either carrier.", (205, 65), width=108.0),
         component(model, "JMCU_A", "JST BM15B-GHS-TBT - CARRIER A CONTROLLER HEADER", carrier_connector_pins("A"),
@@ -408,11 +410,11 @@ def build_sheets(model):
             footprint="Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm")
 
     def rs_field_connector(bus_id: str, position):
-        return component(model, "J_" + bus_id.replace("-", "_"), "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER",
+        return component(model, "J_" + bus_id.replace("-", "_"), "JST B03B-PASK-1 DATA-ONLY FIELD HEADER",
             [("1", "DATA REFERENCE / GND", f"{bus_id}_RET", "left"), ("2", "DATA+", f"{bus_id}_DP", "left"), ("3", "DATA-", f"{bus_id}_DN", "left")],
-            "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.",
-            position, width=72.0, datasheet=JST_GH_SOURCE,
-            evidence="JST GH official eGH catalog checked 2026-08-14.",
+            "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.",
+            position, width=72.0, datasheet=JST_PA_SOURCE,
+            evidence="JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.",
             status="EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 
     s5 = model.Sheet(5, "05_carrier_a_four_isolated_rs485.kicad_sch", "Carrier A - four isolated RS-485 channels", "Exact ISOW1432 pin-level candidates for both legs and both proximal arms.")
@@ -445,11 +447,11 @@ def build_sheets(model):
             evidence="TI SN74LVC1T45 datasheet SCES515N Rev N, June 2024, checked 2026-08-14; SN74LVC1T45DCKR is active.",
             status="EXACT LEVEL-TRANSLATOR ORDER-CODE CANDIDATE - APPLICATION VALIDATION REQUIRED",
             footprint="Package_TO_SOT_SMD:SOT-363_SC-70-6"))
-        s6.components.append(component(model, "J_" + bus_id.replace("-", "_"), "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER",
+        s6.components.append(component(model, "J_" + bus_id.replace("-", "_"), "JST B02B-PASK-1 DATA-ONLY FIELD HEADER",
             [("1", "DATA REFERENCE / GND", f"{bus_id}_RET", "left"), ("2", "HALF-DUPLEX DATA", f"{bus_id}_DATA", "left")],
-            "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.",
-            (x, 245), width=92.0, datasheet=JST_GH_SOURCE,
-            evidence="JST GH official eGH catalog checked 2026-08-14.", status="EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED"))
+            "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.",
+            (x, 245), width=92.0, datasheet=JST_PA_SOURCE,
+            evidence="JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.08-0.21 mm2 SPHD-002T-P0.5 contact range includes the 0.14 mm2 TTL candidate conductor.", status="EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED"))
     s6.notes = ["The three TTL buses use STM32 single-wire half-duplex mode on the listed TX/IO pins. Their dedicated RX pins remain intentionally unused in P0.1.",
                 "Carrier B shares CTRL_GND with TTL field reference; only the waist RS-485 channel is galvanically isolated. ESD, return/shield topology and physical fault tests remain open."]
     sheets.append(s6)
@@ -464,7 +466,7 @@ def build_sheets(model):
 
     s14 = bus_sheet(model, 14, "14_head_ttl_sensors_hmi.kicad_sch", "Head TTL, cameras, face display, audio and cooling", "TTL-HEAD", BUS_AXES["TTL-HEAD"], by_axis)
     s14.components.extend([
-        component(model, "HPWR1", "PROTECTED HEAD AUXILIARY DISTRIBUTION - DESIGN REQUIRED", [("LOG-IN", "AUXILIARY 5 V INPUT", "AUX_5V_SAFE", "left"), ("LOG-RET-IN", "AUXILIARY RETURN", "AUX_0V", "left"), ("LOG-OUT", "HEAD 5 V", "HEAD_5V", "right"), ("LOG-RET-OUT", "HEAD RETURN", "HEAD_0V", "right")], "Branch protection, filtering, connector and current allocation remain open.", (70, 235), width=82.0),
+        component(model, "HPWR1", "PROTECTED HEAD HMI DISTRIBUTION - DESIGN REQUIRED", [("LOG-IN", "HMI 5 V INPUT", "HMI_5V0", "left"), ("LOG-RET-IN", "AUXILIARY RETURN", "AUX_0V_STAR", "left"), ("LOG-OUT", "HEAD 5 V", "HEAD_5V", "right"), ("LOG-RET-OUT", "HEAD RETURN", "HEAD_0V", "right")], "Branch protection, filtering, connector and current allocation remain open. The present coarse HMI peak equals the 30 W converter rating, so measured-load closure or redesign is mandatory.", (70, 235), width=82.0),
         component(model, "CAM1", "LEFT CAMERA MODULE - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-IPC", "VISION IPC", "HEAD_CAM_L_IPC", "right")], "No safety role; exact module, optics, privacy and mounting remain open.", (175, 235), width=64.0),
         component(model, "CAM2", "RIGHT CAMERA MODULE - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-IPC", "VISION IPC", "HEAD_CAM_R_IPC", "right")], "No safety role; exact module, optics, synchronization and mounting remain open.", (260, 235), width=64.0),
         component(model, "DISP1", "FACE DISPLAY - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-IPC", "DISPLAY IPC", "HEAD_DISPLAY_IPC", "right"), ("LOG-TOUCH", "TOUCH IPC", "HEAD_TOUCH_IPC", "right")], "Exact screen, controller, luminance and touch interface remain open.", (350, 235), width=68.0),
@@ -476,10 +478,13 @@ def build_sheets(model):
     ])
     sheets.append(s14)
 
-    s15 = model.Sheet(15, "15_pelvis_aux_imu.kicad_sch", "Auxiliary conversion and pelvis inertial sensing", "Logical 5 V auxiliary rail and pelvis IMU boundary.")
+    s15 = model.Sheet(15, "15_pelvis_aux_imu.kicad_sch", "Three-rail auxiliary conversion and pelvis inertial sensing", "Two REC30E-2405SZ candidates supply compute/control and one TEN 40-1211E supplies HMI; protection and validation remain open.")
     s15.components = [
-        component(model, "AUXD1", "CONTROLLED 12 V TO 5.1 V AUXILIARY CONVERTER - SELECTION REQUIRED", [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-OUT", "AUXILIARY 5 V", "AUX_5V_SAFE", "right"), ("LOG-RET-OUT", "AUXILIARY RETURN", "AUX_0V", "right"), ("LOG-TLM", "CONVERTER TELEMETRY", "TLM_AUXD1", "right")], "Exact converter, protection, isolation/bonding, inrush, thermal and EMC evidence remain open.", (125, 115), width=96.0),
-        component(model, "IMU1", "PELVIS 6/9-AXIS IMU - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "AUX_5V_SAFE", "left"), ("LOG-RET", "RETURN", "AUX_0V", "left"), ("LOG-DATA", "DETERMINISTIC SENSOR DATA", "PELVIS_IMU_DATA", "right"), ("LOG-INT", "DATA READY / FAULT", "PELVIS_IMU_INT", "right")], "Exact device, range, bandwidth, timestamping, calibration, connector and physical pins remain open.", (315, 115), width=92.0),
+        component(model, "AUXCOM1", "RECOM REC30E-2405SZ COMPUTE-RAIL CANDIDATE", [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-DISABLE", "ACTIVE-LOW DISABLE", "AUX_COMPUTE_DISABLE", "left"), ("LOG-OUT", "COMPUTE 5.1 V", "COMPUTE_5V1", "right"), ("LOG-RET-OUT", "ISOLATED SECONDARY RETURN", "AUX_0V_STAR", "right")], "REC30E-Z datasheet REV 1/2024: 9-36 V input, 5 V/6 A, 30 W. Fuse, reverse/inrush, trim, harness, thermal, EMC and received-part FAI remain open.", (85, 105), width=105.0),
+        component(model, "AUXHMI1", "TRACO POWER TEN 40-1211E HMI-RAIL CANDIDATE", [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-DISABLE", "ACTIVE-LOW DISABLE", "AUX_HMI_DISABLE", "left"), ("LOG-OUT", "HMI 5 V", "HMI_5V0", "right"), ("LOG-RET-OUT", "ISOLATED SECONDARY RETURN", "AUX_0V_STAR", "right")], "TEN 40E datasheet Rev. August 7, 2024: 9-18 V input, 5 V/8 A, 40 W. The 30 W coarse HMI peak has 10 W planning headroom; protection, physical load, transient, thermal, EMC and received-part FAI remain open.", (215, 105), width=105.0),
+        component(model, "AUXCTL1", "RECOM REC30E-2405SZ CONTROL-RAIL CANDIDATE", [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-DISABLE", "ACTIVE-LOW DISABLE", "AUX_CONTROL_DISABLE", "left"), ("LOG-OUT", "CONTROL 5 V", "AUX_5V_SAFE", "right"), ("LOG-RET-OUT", "ISOLATED SECONDARY RETURN", "AUX_0V_STAR", "right")], "This is a deterministic-control rail candidate, not a safety supply. Fuse, reverse/inrush, trim, grounding, harness, thermal and EMC evidence remain open.", (345, 105), width=105.0),
+        component(model, "AUXSTAR1", "SINGLE PROPOSED AUXILIARY RETURN STAR / PE BOND BOUNDARY", [("LOG-RET", "COMMON SECONDARY RETURN", "AUX_0V_STAR", "left"), ("LOG-PE", "SOLE PROPOSED PE BOND", "FRAME_PE_BOUNDARY", "right")], "Exact star-point implementation and the sole possible DC 0 V/PE bond remain SELECTION REQUIRED. No other secondary bond is permitted without a signed grounding revision.", (90, 200), width=105.0),
+        component(model, "IMU1", "PELVIS 6/9-AXIS IMU - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "AUX_5V_SAFE", "left"), ("LOG-RET", "RETURN", "AUX_0V_STAR", "left"), ("LOG-DATA", "DETERMINISTIC SENSOR DATA", "PELVIS_IMU_DATA", "right"), ("LOG-INT", "DATA READY / FAULT", "PELVIS_IMU_INT", "right")], "Exact device, range, bandwidth, timestamping, calibration, connector and physical pins remain open.", (310, 200), width=92.0),
         component(model, "MCU_AUX", "MCU1 AUXILIARY SENSOR PORTS - LOGICAL UNIT", [("LOG-IMU", "PELVIS IMU DATA", "PELVIS_IMU_DATA", "left"), ("LOG-IMU-INT", "PELVIS IMU INTERRUPT", "PELVIS_IMU_INT", "left"), ("LOG-LFOOT", "LEFT FOOT SENSOR DATA", "L_FOOT_SENSOR_DATA", "right"), ("LOG-RFOOT", "RIGHT FOOT SENSOR DATA", "R_FOOT_SENSOR_DATA", "right")], "Alternate logical view of MCU1; exact package pins and interfaces remain open.", (220, 215), width=100.0),
     ]
     sheets.append(s15)
@@ -492,7 +497,7 @@ def build_sheets(model):
         for corner, position in zip(("FL", "FR", "RL", "RR"), positions):
             signal_pins.extend([(f"LOG-{corner}-P", f"{corner} SIGNAL +", f"{prefix}_FOOT_{corner}_SIG_P", "left"), (f"LOG-{corner}-N", f"{corner} SIGNAL -", f"{prefix}_FOOT_{corner}_SIG_N", "left")])
             sheet.components.append(component(model, f"LOAD_{prefix}_{corner}", f"{side.upper()} FOOT {corner} LOAD SENSOR - SELECTION REQUIRED", [("LOG-EXC-P", "EXCITATION +", f"{prefix}_FOOT_EXC_P", "left"), ("LOG-EXC-N", "EXCITATION -", f"{prefix}_FOOT_EXC_N", "left"), ("LOG-SIG-P", "SIGNAL +", f"{prefix}_FOOT_{corner}_SIG_P", "right"), ("LOG-SIG-N", "SIGNAL -", f"{prefix}_FOOT_{corner}_SIG_N", "right")], "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.", position, width=78.0))
-        sheet.components.append(component(model, f"ADC_{prefix}_FOOT", f"{side.upper()} FOOT LOAD ACQUISITION - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "AUX_5V_SAFE", "left"), ("LOG-RET", "RETURN", "AUX_0V", "left"), ("LOG-EXC-P", "EXCITATION +", f"{prefix}_FOOT_EXC_P", "right"), ("LOG-EXC-N", "EXCITATION -", f"{prefix}_FOOT_EXC_N", "right"), ("LOG-DATA", "UPSTREAM SENSOR DATA", f"{prefix}_FOOT_SENSOR_DATA", "right")] + signal_pins, "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.", (205, 280), width=112.0))
+        sheet.components.append(component(model, f"ADC_{prefix}_FOOT", f"{side.upper()} FOOT LOAD ACQUISITION - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "AUX_5V_SAFE", "left"), ("LOG-RET", "RETURN", "AUX_0V_STAR", "left"), ("LOG-EXC-P", "EXCITATION +", f"{prefix}_FOOT_EXC_P", "right"), ("LOG-EXC-N", "EXCITATION -", f"{prefix}_FOOT_EXC_N", "right"), ("LOG-DATA", "UPSTREAM SENSOR DATA", f"{prefix}_FOOT_SENSOR_DATA", "right")] + signal_pins, "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.", (205, 280), width=112.0))
         sheet.notes = ["The four sensor locations correspond to the physical installed-equipment register; no sensor order code or force accuracy is released.", "Foot data supports state estimation only after calibration and fault validation; it carries no independent safety credit."]
         return sheet
 
@@ -598,7 +603,7 @@ def write_docs(sheets):
             "mcu_rx": f"{rx_name} package pin {rx_pin} {rx_af} - INTENTIONALLY UNUSED IN P0.1" if ttl else f"{rx_name} package pin {rx_pin} {rx_af}",
             "mcu_de": f"{de_name} package pin {de_pin} {de_af}", "internal_connector_contacts": contact_map[bus_id],
             "interface_device": "SN74LVC1T45DCKR" if ttl else "ISOW1432DFMR",
-            "field_header": "BM02B-GHS-TBT; 1=reference, 2=data; NO VDD" if ttl else "BM03B-GHS-TBT; 1=reference, 2=data+, 3=data-; NO VDD",
+            "field_header": "B02B-PASK-1; 1=reference, 2=data; NO VDD" if ttl else "B03B-PASK-1; 1=reference, 2=data+, 3=data-; NO VDD",
             "selection_boundary": "PCB layout, passives/protection, exact cable assembly, termination/EMC/timing and physical validation remain open",
             "warning": WARNING,
         })
@@ -608,7 +613,8 @@ def write_docs(sheets):
         {"source_id": "STM32H743ZI", "manufacturer": "STMicroelectronics", "document": "STM32H742xI/G and STM32H743xI/G datasheet", "revision_or_date": "DS12110 Rev 11", "accessed": DATE, "url": ST_H743_SOURCE, "verified": "STM32H743ZIT6 active LQFP144; eight UART/USART peripherals; selected TX/RX/RTS-DE package pins and alternate functions"},
         {"source_id": "ISOW1432", "manufacturer": "Texas Instruments", "document": "ISOW1412/ISOW1432 datasheet", "revision_or_date": "SLLSF86C Rev C; March 2022", "accessed": DATE, "url": TI_ISOW1432_SOURCE, "verified": "ISOW1432DFMR active; 20-pin DFM; exact pins 1-20; 12 Mbps; integrated isolated DC/DC; half-duplex Y/Z and A/B binding"},
         {"source_id": "SN74LVC1T45", "manufacturer": "Texas Instruments", "document": "SN74LVC1T45 datasheet", "revision_or_date": "SCES515N Rev N; June 2024", "accessed": DATE, "url": TI_LVC1T45_SOURCE, "verified": "SN74LVC1T45DCKR active; exact six-pin DCK mapping; 1.65-5.5 V dual rails; DIR high A-to-B"},
-        {"source_id": "JST-GH", "manufacturer": "JST", "document": "GH connector catalog", "revision_or_date": "live official catalog; revision not stated", "accessed": DATE, "url": JST_GH_SOURCE, "verified": "GHR-02/03/15V-S housings; BM02/03/15B-GHS-TBT headers; SSHL-002T-P0.2 contact; 1.25 mm secure-lock family"},
+        {"source_id": "JST-GH", "manufacturer": "JST", "document": "GH connector catalog", "revision_or_date": "live official catalog; revision not stated", "accessed": DATE, "url": JST_GH_SOURCE, "verified": "GHR-15V-S/BM15B-GHS-TBT/SSHL-002T-P0.2 logic-only controller cable family"},
+        {"source_id": "JST-PA", "manufacturer": "JST", "document": "PA connector family catalog", "revision_or_date": "live official catalog; revision not stated", "accessed": "2026-08-18", "url": JST_PA_SOURCE, "verified": "B02B-PASK-1/B03B-PASK-1 through-hole secure-lock field headers; PAP-02V-S/PAP-03V-S housings; SPHD-001T-P0.5 0.13-0.33 mm2 and SPHD-002T-P0.5 0.08-0.21 mm2 contacts"},
         {"source_id": "OPENCR-REF", "manufacturer": "ROBOTIS", "document": "OpenCR Rev H schematic and BOM", "revision_or_date": "Rev H; schematic dated 2020-02-26; official repository checked 2026-08-14", "accessed": DATE, "url": "https://github.com/ROBOTIS-GIT/OpenCR-Hardware", "verified": "manufacturer reference confirms separate UART TX/RX/DIR half-duplex topology and DYNAMIXEL TTL/RS-485 connector conventions; HR-30 uses newer selected devices"},
         {"source_id": "RSP-500-12", "manufacturer": "Mean Well", "document": "RSP-500 series specification", "revision_or_date": "official datasheet; revision not stated", "accessed": DATE, "url": "https://www.meanwell.com/Upload/PDF/RSP-500/RSP-500-SPEC.PDF", "verified": "12 V / 41.7 A / 500.4 W tether-supply candidate; exact panel terminals and application remain open"},
         {"source_id": "SD-15A-24", "manufacturer": "Mean Well", "document": "SD-15 series specification", "revision_or_date": "official datasheet; revision not stated", "accessed": DATE, "url": "https://www.meanwell.com/Upload/PDF/SD-15/SD-15-SPEC.PDF", "verified": "9.2-18 V input to 24 V / 0.625 A safety-control supply candidate"},
@@ -621,7 +627,7 @@ def write_docs(sheets):
     (ECAD / "README.md").write_text("# HR-30 whole-body electrical P0.1\n\n"
         f"**{WARNING}**\n\n"
         "This is the native KiCad 10 whole-body architecture for the current 25-axis HR-30 candidate. It contains a root index plus eighteen populated child sheets. Five RS-485 and three TTL data-only segments match the whole-body bus allocation exactly; all 25 actuators have distinct protected-feed boundaries. Individual head HMI devices, pelvis IMU, bilateral four-point foot sensing and a separate isolated onboard-later energy sheet are also represented.\n\n"
-        "The actuator interface is now a pin-level candidate, not eight abstract boxes. STM32H743ZIT6 LQFP144 package pins are allocated to all eight UART channels; Carrier A contains four ISOW1432DFMR isolated RS-485 candidates; Carrier B contains one ISOW1432DFMR plus three SN74LVC1T45DCKR 3.3/5 V single-wire TTL translators. Exact JST GH controller and data-only field connectors are shown. The field connectors intentionally contain no actuator VDD contact.\n\n"
+        "The actuator interface is now a pin-level candidate, not eight abstract boxes. STM32H743ZIT6 LQFP144 package pins are allocated to all eight UART channels; Carrier A contains four ISOW1432DFMR isolated RS-485 candidates; Carrier B contains one ISOW1432DFMR plus three SN74LVC1T45DCKR 3.3/5 V single-wire TTL translators. The logic-only controller connectors remain JST GH; the eight data-only field ports are JST PA through-hole secure-lock candidates whose published contact ranges include the planning conductors. The field connectors intentionally contain no actuator VDD contact.\n\n"
         "Sheet 01 now encodes the tether-first controlled 12 V source, three regulated 9 V TTL rails and a deliberately disconnected onboard-later battery/charger path. Sheet 02 encodes two independently commanded series contactor coils, linked-auxiliary EDM candidates, dual-channel E-stop, monitored reset, charger inhibit and an ordinary-watchdog inhibit that has zero safety credit. Reset restores eligibility only and cannot command motion.\n\n"
         "AX_* actuator terminals use current official ROBOTIS actuator-side pin numbers. Remaining `LOG-*` identifiers are unresolved functional ports elsewhere in the architecture. Standard ROBOTIS cables carry VDD, so the 25 distinct feeds require a custom/de-pinned data-only harness or breakout. Fuse/limiter values, conductors, connector selections, grounding, safety allocation, timing and physical behavior remain unresolved. The historical mixed HR-V0/HR-30 project is not incorporated as verified wiring.\n\n"
         "## Sheets\n\n" + "\n".join(f"{s.number}. `{s.filename}` — {s.title}" for s in sheets) + "\n\n"
@@ -640,6 +646,12 @@ def write_docs(sheets):
         "direct_14v8_actuator_source_absent": True,
         "individual_actuator_power_feed_count": 25,
         "regulated_ttl_branch_count": 3,
+        "three_rail_auxiliary_architecture_encoded": True,
+        "auxiliary_converter_candidate": "2x RECOM REC30E-2405SZ + 1x TRACO POWER TEN 40-1211E",
+        "auxiliary_positive_rails": ["COMPUTE_5V1", "HMI_5V0", "AUX_5V_SAFE"],
+        "auxiliary_return_star": "AUX_0V_STAR",
+        "auxiliary_hmi_peak_headroom_w": 10,
+        "auxiliary_hmi_zero_peak_headroom_blocker": False,
         "reset_can_command_motion": False,
         "physical_pin_mapping_reconciled": False,
         "interface_devices_selected": False, "protection_values_selected": False,
@@ -679,6 +691,7 @@ def update_package():
         "native_hr30_kicad_direct_14v8_actuator_source_absent": True,
         "native_hr30_kicad_individual_actuator_power_feed_count": 25,
         "native_hr30_kicad_regulated_ttl_branch_count": 3,
+        "native_hr30_kicad_three_rail_auxiliary_architecture": True,
         "native_hr30_kicad_physical_pins_selected": False,
         "native_hr30_kicad_erc_errors": 0,
         "native_hr30_kicad_erc_warnings": 0,

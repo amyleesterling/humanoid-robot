@@ -82,7 +82,7 @@
           (instances (project "hr30-whole-body-electrical-p0.1" (path "/6dbc6f1c-d05b-56f0-8b51-042e5f8599ba" (page "15"))))) (sheet (at 212.00 188.00) (size 92.0 40.64)
           (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
           (stroke (width 0.5) (type solid)) (fill (color 0 0 0 0.0000)) (uuid "272bb044-da53-5815-b645-8af5ee283886")
-          (property "Sheetname" "15 Auxiliary conversion and pelvis inertial sensing" (at 214.54 198.16 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
+          (property "Sheetname" "15 Three-rail auxiliary conversion and pelvis inertial sensing" (at 214.54 198.16 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
           (property "Sheetfile" "15_pelvis_aux_imu.kicad_sch" (at 214.54 213.40 0) (effects (font (size 1.30 1.30)) (justify left top)))
           (instances (project "hr30-whole-body-electrical-p0.1" (path "/6dbc6f1c-d05b-56f0-8b51-042e5f8599ba" (page "16"))))) (sheet (at 312.00 188.00) (size 92.0 40.64)
           (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)

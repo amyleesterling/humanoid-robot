@@ -1,5 +1,5 @@
 Drill report for hr30-carrier-a-p0.1.kicad_pcb
-Created on 2026-08-17T12:56:47
+Created on 2026-08-18T11:50:18
 
 Copper Layer Stackup:
     =============================================================
@@ -14,14 +14,16 @@ Copper Layer Stackup:
 Drill file 'hr30-carrier-a-p0.1-PTH.drl' contains
     plated through holes:
     =============================================================
-    T1  0.150mm  0.0059"  (207 holes))
+    T1  0.150mm  0.0059"  (201 holes))
+    T2  0.750mm  0.0295"  (12 holes))
 
-    Total plated holes count 207
+    Total plated holes count 213
 
 
 Drill file 'hr30-carrier-a-p0.1-NPTH.drl' contains
     unplated through holes:
     =============================================================
-    T1  2.700mm  0.1063"  (4 holes))
+    T1  1.150mm  0.0453"  (4 holes))
+    T2  2.700mm  0.1063"  (4 holes))
 
-    Total unplated holes count 4
+    Total unplated holes count 8

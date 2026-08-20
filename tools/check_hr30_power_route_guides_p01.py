@@ -50,13 +50,17 @@ def main() -> None:
         expected = chord - 2.0 * radius + 3.141592653589793 * radius
         need(abs(centerline - expected) < 0.002, f"centerline mismatch: {row['source_corridor']}")
         need(row["bend_screen"] == "PASS GEOMETRIC CENTERLINE RADIUS", "radius screen must pass")
-        need(row["collision_state"].startswith("NOT EXECUTED"), "collision may not be claimed")
+        need(row["collision_state"].startswith("CONTINUOUS WHOLE-LIMB MOTION ROUTE REJECTED"), "articulation rejection boundary missing")
+        need(row["route_class"].startswith("NEUTRAL-POSE ENVELOPE ONLY"), "neutral-only route class missing")
         need(row["warning"] == WARNING, "warning drift")
     need(len(rows("clamp-obligation-register.csv")) == 24, "24 clamp obligations required")
     need(len(rows("guard-envelope-register.csv")) == 6, "six guard envelopes required")
     need(len(rows("open-holds.csv")) >= 10, "open hold coverage missing")
     status = json.loads((OUT / "status.json").read_text(encoding="utf-8"))
     need(status["route_count"] == 6 and status["exact_circular_turn_count"] == 12, "status counts drift")
+    need(status["neutral_pose_geometry_only"] is True, "neutral-only status missing")
+    need(status["articulated_route_eligible_count"] == 0, "no continuous route may be articulation-eligible")
+    need(status["continuous_whole_limb_rigid_guard_rejected"] is True, "rigid whole-limb guard rejection missing")
     for key in ["guard_solids_complete", "collision_sweeps_complete", "walking_clearance_complete", "physical_validation_complete", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]:
         need(status[key] is False, f"{key} must remain false")
     for artifact in ["HR-30_power_route_guides_candidate.step", "HR-30_power_route_guides_candidate.glb", "HR-30_whole_body_power_routes_candidate.glb"]:
@@ -75,7 +79,7 @@ def main() -> None:
     page = (OUT / "index.html").read_text(encoding="utf-8")
     need("font:17px/1.55" in page and "font-size:16px" in page and "font-size:14px" in page, "legibility CSS missing")
     need("HR-30_whole_body_power_routes_candidate.glb" in page and "camera-controls" in page, "interactive whole-body viewer missing")
-    need(WARNING in page and "0</div><p>executed whole-body collision" in page, "preliminary boundary missing")
+    need(WARNING in page and "0</div><p>routes eligible as articulated whole-limb cables" in page, "preliminary/rejection boundary missing")
     for parent in [ROOT / "hr30" / "whole-body-p0.1" / "index.html", ROOT / "hr30" / "whole-body-p0.1" / "harness" / "index.html"]:
         text = parent.read_text(encoding="utf-8")
         need(text.count("HR30-POWER-ROUTE-GUIDES-P01-START") == 1, f"parent marker missing: {parent}")
@@ -93,7 +97,7 @@ def main() -> None:
         if path.is_file():
             relative = path.relative_to(whole).as_posix()
             need(relative in whole_manifest and whole_manifest[relative]["sha256"] == sha(path), f"whole-body package manifest drift: {relative}")
-    print("PASS: 6 tangent whole-body power routes, 12 exact radius guides, 24 clamp obligations; all physical/work authority open")
+    print("PASS: 6 neutral tangent envelopes retained; 0 articulated whole-limb routes; rigid cross-joint guard rejected")
 
 
 if __name__ == "__main__":

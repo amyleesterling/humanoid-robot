@@ -56,6 +56,7 @@ def main() -> int:
     need(provenance["mujoco_version"] == mujoco.__version__ == "3.10.0", "MuJoCo runtime/version drift")
     need(provenance["official_runtime_source"] == "https://pypi.org/project/mujoco/3.10.0/" and provenance["official_source_accessed"] == "2026-08-17", "official runtime provenance missing")
     need(provenance["integration_timestep_s"] == 0.002 and provenance["settle_time_s"] == 0.5, "integration prescription drift")
+    need(float(provenance["simulation_wall_time_s"]) > 0.0, "simulation wall-time provenance missing")
     need("ideal six-degree-of-freedom" in provenance["fixture"], "fixture boundary missing")
 
     model = mujoco.MjModel.from_xml_path(str((SRC / "hr30_tether_ideal_fixture.xml").resolve()))
@@ -119,7 +120,7 @@ def main() -> int:
     result = "PASS" if status["all_sequences_pass_bounded_ideal_fixture_screen"] else "FAIL"
     max_error = max(float(row["maximum_rotary_tracking_error_deg"]) for row in summaries)
     max_saturation = max(float(row["maximum_rotary_saturation_fraction"]) for row in summaries)
-    print(f"PASS evidence integrity: MuJoCo 3.10.0 compiles the positive-inertia 9.990 kg whole body and executes 2 x 10.72 s ideal-fixture sequences; bounded tracking result {result}, max rotary error {max_error:.3f} deg, max saturation {100*max_saturation:.2f}%; free balance, physical restraint, walking and all authority remain open")
+    print(f"PASS evidence integrity: MuJoCo 3.10.0 compiles the positive-inertia {float(status['mass_kg']):.3f} kg whole body and executes 2 x 10.72 s ideal-fixture sequences; bounded tracking result {result}, max rotary error {max_error:.3f} deg, max saturation {100*max_saturation:.2f}%; free balance, physical restraint, walking and all authority remain open")
     return 0
 
 

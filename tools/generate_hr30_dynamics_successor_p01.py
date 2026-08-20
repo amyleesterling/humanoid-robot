@@ -158,11 +158,28 @@ def simulate(model: mujoco.MjModel, baseline_caps: dict[str, float], successor_c
             data.qpos[model.jnt_qposadr[joint_id]] = float(joint_rows[axis][0]["position_si"])
         mujoco.mj_forward(model, data)
 
+        # The baseline validator now pre-parses trajectory columns into
+        # immutable NumPy series.  Mirror that interface here instead of
+        # rebuilding arrays—or calling the retired rows/field/time helper—on
+        # every 2 ms controller step.
+        root_series = {
+            field: baseline.numeric_series(base_rows, field)
+            for field in ("root_x_m", "root_y_m", "root_z_m")
+        }
+        position_series = {
+            axis: baseline.numeric_series(joint_rows[axis], "position_si")
+            for axis in axes
+        }
+        velocity_series = {
+            axis: baseline.numeric_series(joint_rows[axis], "velocity_si_s")
+            for axis in axes
+        }
+
         def desired(time_s: float) -> tuple[dict[str, float], dict[str, float], np.ndarray, dict, dict[str, float]]:
             nearest = min(int(round(time_s / 0.02)), len(base_rows) - 1)
-            root = np.array([baseline.interpolate(base_rows, field, time_s) for field in ("root_x_m", "root_y_m", "root_z_m")])
-            position = {axis: baseline.interpolate(joint_rows[axis], "position_si", time_s) for axis in axes}
-            velocity = {axis: baseline.interpolate(joint_rows[axis], "velocity_si_s", time_s) for axis in axes}
+            root = np.array([baseline.interpolate(root_series[field], time_s) for field in ("root_x_m", "root_y_m", "root_z_m")])
+            position = {axis: baseline.interpolate(position_series[axis], time_s) for axis in axes}
+            velocity = {axis: baseline.interpolate(velocity_series[axis], time_s) for axis in axes}
             feedforward = {
                 axis: 0.0 if axis.endswith("_GRIPPER") else float(np.interp(time_s, *demand[sequence_id][axis]))
                 for axis in axes

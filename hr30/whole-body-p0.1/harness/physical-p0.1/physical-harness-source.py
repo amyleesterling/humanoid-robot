@@ -32,6 +32,19 @@ WARNING = (
 AUTHORITY = "NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 OPEN = "SELECTION REQUIRED"
 
+# Physical power routing follows the articulated body, not the logical data-
+# bus partition.  The wrist/gripper axes, for example, remain on a TTL data
+# segment but their dedicated power pairs still cross the upstream shoulder
+# and elbow joints.
+POWER_CHAINS = {
+    "HN01_TORSO_POWER_SPINE": ["WAIST_YAW"],
+    "HN01_HEAD_POWER_BRANCH": ["HEAD_PAN", "HEAD_TILT"],
+    "HN01_L_ARM_POWER": ["L_SHOULDER_PITCH", "L_SHOULDER_ROLL", "L_ELBOW_PITCH", "L_WRIST_ROTATION", "L_GRIPPER"],
+    "HN01_R_ARM_POWER": ["R_SHOULDER_PITCH", "R_SHOULDER_ROLL", "R_ELBOW_PITCH", "R_WRIST_ROTATION", "R_GRIPPER"],
+    "HN01_L_LEG_POWER": ["L_HIP_YAW", "L_HIP_ROLL", "L_HIP_PITCH", "L_KNEE_PITCH", "L_ANKLE_PITCH", "L_ANKLE_ROLL"],
+    "HN01_R_LEG_POWER": ["R_HIP_YAW", "R_HIP_ROLL", "R_HIP_PITCH", "R_KNEE_PITCH", "R_ANKLE_PITCH", "R_ANKLE_ROLL"],
+}
+
 
 def read_csv(path: Path) -> list[dict[str, str]]:
     with path.open(encoding="utf-8-sig", newline="") as handle:
@@ -95,7 +108,7 @@ def rod_between(
 
 
 def write_route_cad(routes: list[dict], points: list[dict]) -> int:
-    """Export all 62 registered centerlines in a recognizable 762 mm body.
+    """Export every registered centerline in a recognizable 762 mm body.
 
     The route rods are visualization/reference geometry.  Their display
     diameter is deliberately not a cable OD, bundle diameter, clearance, or
@@ -269,6 +282,13 @@ def build() -> dict[str, int | float]:
         bus_bindings[binding["bus_id"]].append(binding)
     for values in bus_bindings.values():
         values.sort(key=lambda row: int(row["segment_position_provisional"]))
+    power_chain_by_axis = {
+        axis: (corridor, chain)
+        for corridor, chain in POWER_CHAINS.items()
+        for axis in chain
+    }
+    if set(power_chain_by_axis) != set(by_axis):
+        raise SystemExit("physical power-chain allocation does not cover exactly 25 whole-body axes")
     predecessor: dict[str, str | None] = {}
     successor: dict[str, str | None] = {}
     for values in bus_bindings.values():
@@ -342,6 +362,7 @@ def build() -> dict[str, int | float]:
     retention_rows: list[dict] = []
     derating_rows: list[dict] = []
     transition_rows: list[dict] = []
+    power_crossing_rows: list[dict] = []
     # Every connector boundary required by the eight one-bus walking-power
     # assemblies is instantiated from the authoritative bus ownership.  The
     # downstream walking-power package must independently reconcile to this
@@ -414,33 +435,84 @@ def build() -> dict[str, int | float]:
         pdu_output = f"J-{board_id}-OUT-{channel}"
         pseg, dseg = f"LOOP-{axis}-PWR", f"LOOP-{axis}-DATA"
         module = axis_module(axis)
-        for service, seg, xoff, y0, y1 in (("ACTUATOR POWER", pseg, 5.0, -14.0, 14.0), ("DATA", dseg, -5.0, -10.0, 10.0)):
-            p1 = (center[0] + xoff, center[1] + y0, center[2])
-            p2 = (center[0] + xoff, center[1] + y1, center[2])
+        power_corridor, power_chain = power_chain_by_axis[axis]
+        target_index = power_chain.index(axis)
+        upstream_stages = power_chain[: target_index + 1]
+        power_crossing_segments: list[str] = []
+        for crossing_index, stage_axis in enumerate(upstream_stages, start=1):
+            stage = by_axis[stage_axis]
+            stage_center = (float(stage["x_mm"]), float(stage["y_mm"]), float(stage["z_mm"]))
+            seg = pseg if stage_axis == axis else f"CROSS-{axis}-AT-{stage_axis}-PWR"
+            # A distinct lane is reserved for each branch that crosses the
+            # same joint.  These are centerline envelopes, not released cable
+            # spacing or guard clearances.
+            lane_offset_x = 4.0 + (target_index - (crossing_index - 1)) * 3.2
+            p1 = (stage_center[0] + lane_offset_x, stage_center[1] - 14.0, stage_center[2])
+            p2 = (stage_center[0] + lane_offset_x, stage_center[1] + 14.0, stage_center[2])
             route_rows.append({
-                "segment_id": seg, "segment_kind": "MOVING JOINT LOOP", "assembly_id": module,
-                "service": service, "from_point": seg + "-P01", "to_point": seg + "-P02",
+                "segment_id": seg, "segment_kind": "DIRECT POWER JOINT CROSSING", "assembly_id": axis_module(stage_axis),
+                "service": "ACTUATOR POWER", "from_point": seg + "-P01", "to_point": seg + "-P02",
                 "planning_length_mm": f"{dist(p1,p2):.3f}", "minimum_bend_radius_mm": OPEN,
                 "corridor_diameter_mm": OPEN,
-                "separation_rule": "POWER/DATA LOCAL LOOPS OFFSET 10 mm IN X; VERIFY THROUGH FULL JOINT RANGE",
+                "separation_rule": "DIRECT BRANCH LANE OFFSET IS NOMINAL ONLY; VERIFY ALL PARALLEL PAIRS, DATA SEPARATION AND FULL JOINT RANGE",
                 "selection_state": "GEOMETRY CANDIDATE - SWEEP/CUT LENGTH/FLEX LIFE/CLAMP TEST OPEN", "authority": AUTHORITY,
             })
             for n, p in ((1, p1), (2, p2)):
                 point_rows.append({
                     "point_id": f"{seg}-P0{n}", "segment_id": seg, "sequence": n,
                     "x_mm": f"{p[0]:.3f}", "y_mm": f"{p[1]:.3f}", "z_mm": f"{p[2]:.3f}",
-                    "datum_basis": f"OFFSET FROM {axis} CANDIDATE AXIS DATUM", "tolerance": OPEN,
+                    "datum_basis": f"BRANCH {axis} OFFSET FROM CROSSED JOINT {stage_axis} CANDIDATE AXIS DATUM", "tolerance": OPEN,
                 })
+            power_crossing_segments.append(seg)
+            power_crossing_rows.append({
+                "crossing_id": f"XING-{axis}-AT-{stage_axis}", "pair_id": f"PAIR-{axis}",
+                "target_axis": axis, "crossed_joint": stage_axis, "bus_id": bus, "power_corridor": power_corridor,
+                "branch_ordinal": str(target_index + 1), "joint_ordinal": str(crossing_index),
+                "crossing_sequence": f"{crossing_index} OF {len(upstream_stages)}",
+                "segment_id": seg, "lane_offset_x_mm": f"{lane_offset_x:.3f}",
+                "joint_axis_xyz_mm": fxyz(stage_center),
+                "joint_axis_direction": f"({stage['direction_x']},{stage['direction_y']},{stage['direction_z']})",
+                "planning_crossing_length_mm": f"{dist(p1, p2):.3f}",
+                "topology_rule": "UNSPLICED DIRECT PAIR CROSSES EVERY UPSTREAM JOINT FROM BUS ROOT THROUGH TARGET AXIS",
+                "selection_state": "CENTERLINE/LANE CANDIDATE; FULL-POSE SWEEP, CUT LENGTH, CLAMPING AND FLEX PROOF OPEN",
+                "authority": AUTHORITY,
+            })
+
+        # The serial data chain has one link per actuator node.  Unlike the
+        # direct power branches, it does not replicate every distal pair at
+        # each upstream joint.
+        p1 = (center[0] - 5.0, center[1] - 10.0, center[2])
+        p2 = (center[0] - 5.0, center[1] + 10.0, center[2])
+        route_rows.append({
+            "segment_id": dseg, "segment_kind": "SERIAL DATA JOINT LINK", "assembly_id": module,
+            "service": "DATA", "from_point": dseg + "-P01", "to_point": dseg + "-P02",
+            "planning_length_mm": f"{dist(p1,p2):.3f}", "minimum_bend_radius_mm": OPEN,
+            "corridor_diameter_mm": OPEN,
+            "separation_rule": "DATA LINK OFFSET FROM DIRECT POWER PAIR LANES; VERIFY THROUGH FULL JOINT RANGE",
+            "selection_state": "GEOMETRY CANDIDATE - SWEEP/CUT LENGTH/FLEX LIFE/CLAMP TEST OPEN", "authority": AUTHORITY,
+        })
+        for n, p in ((1, p1), (2, p2)):
+            point_rows.append({
+                "point_id": f"{dseg}-P0{n}", "segment_id": dseg, "sequence": n,
+                "x_mm": f"{p[0]:.3f}", "y_mm": f"{p[1]:.3f}", "z_mm": f"{p[2]:.3f}",
+                "datum_basis": f"OFFSET FROM {axis} CANDIDATE AXIS DATUM", "tolerance": OPEN,
+            })
         axis_rows.append({
             "axis_id": axis, "module_assembly": module, "bus_id": bus,
             "segment_position": binding["segment_position_provisional"], "actuator_family": family,
+            "physical_power_corridor": power_corridor, "physical_power_chain_position": target_index + 1,
             "axis_xyz_mm": fxyz(center), "axis_direction": f"({a['direction_x']},{a['direction_y']},{a['direction_z']})",
             "power_trunk": trunk_for(axis, "POWER"), "power_loop": pseg,
+            "power_crossing_count": len(power_crossing_segments),
+            "power_crossing_segments": "; ".join(power_crossing_segments),
             "data_trunk": trunk_for(axis, "DATA"), "data_loop": dseg,
             "physical_range_sweep": "NOT EXECUTED", "authority": AUTHORITY,
         })
         loop_rows.append({
-            "axis_id": axis, "power_loop": pseg, "data_loop": dseg,
+            "axis_id": axis, "power_loop": pseg,
+            "power_crossing_count": len(power_crossing_segments),
+            "power_crossing_segments": "; ".join(power_crossing_segments),
+            "data_loop": dseg,
             "joint_axis_xyz_mm": fxyz(center), "joint_axis_direction": f"({a['direction_x']},{a['direction_y']},{a['direction_z']})",
             "commanded_range": a["provisional_commanded_range"], "minimum_bend_radius": OPEN,
             "slack_length": OPEN, "clamp_locations": OPEN, "flex_cycle_requirement": OPEN,
@@ -466,7 +538,17 @@ def build() -> dict[str, int | float]:
         outgoing_endpoint = f"J-OUT-{axis}" if next_axis is not None else "NO OUTGOING CABLE - FAR END"
         incoming_pin_map = "1=INDIVIDUAL RETURN; 2=INDIVIDUAL VDD; 3=DATA+; 4=DATA-" if protocol_is_rs else "1=INDIVIDUAL RETURN; 2=INDIVIDUAL VDD; 3=DATA"
         outgoing_pin_map = "1=EMPTY; 2=EMPTY; 3=DATA+; 4=DATA-" if protocol_is_rs else "1=EMPTY; 2=EMPTY; 3=DATA"
-        power_one_way_mm = dist(board_center, center) + 28.0
+        upstream_centers = [
+            (
+                float(by_axis[stage_axis]["x_mm"]),
+                float(by_axis[stage_axis]["y_mm"]),
+                float(by_axis[stage_axis]["z_mm"]),
+            )
+            for stage_axis in upstream_stages
+        ]
+        power_one_way_mm = dist(board_center, upstream_centers[0])
+        power_one_way_mm += sum(dist(a, b) for a, b in zip(upstream_centers, upstream_centers[1:]))
+        power_one_way_mm += 28.0 * len(power_crossing_segments)
         if previous_axis is None:
             data_route = trunk_by_id[trunk_for(axis, "DATA")]
             data_start = xyz(data_route["start_xyz_mm"])
@@ -542,7 +624,7 @@ def build() -> dict[str, int | float]:
             "source_boundary": pdu_output, "inline_transition": f"{transition_dynamic} MATES {transition_pigtail}", "destination_connector": f"J-ACT-{axis}",
             "destination_contacts": "1=RETURN; 2=VDD", "one_way_planning_length_mm": f"{power_one_way_mm:.3f}",
             "round_trip_planning_length_mm": f"{2 * power_one_way_mm:.3f}",
-            "length_basis": "POWER-CORRIDOR START TO AXIS DATUM PLUS 28 mm LOCAL LOOP; CUT LENGTH/SLACK NOT RELEASED",
+            "length_basis": "BOARD DATUM TO FIRST JOINT PLUS SERIAL JOINT-DATUM LINK DISTANCES PLUS 28 mm FOR EACH REQUIRED UPSTREAM CROSSING; CUT LENGTH/SLACK NOT RELEASED",
             "conductor_selection": "CANDIDATE SPLIT: CF130 MOVING PAIR + FIXED MICRO-FIT TRANSITION + RESTRAINED ALPHA 3051 PIGTAIL; NOT RELEASED", "authority": AUTHORITY,
         })
         data_link_rows.append({
@@ -596,7 +678,7 @@ def build() -> dict[str, int | float]:
                 core_rows.append({
                     "core_id": dynamic_core, "axis_id": axis,
                     "from_connector_contact": f"{pdu_output}/{'2' if net == 'VDD' else '1'}", "to_connector_contact": f"{transition_dynamic}/{pin}",
-                    "net": physical_net, "service": service, "route": pseg,
+                    "net": physical_net, "service": service, "route": "; ".join(power_crossing_segments),
                     "conductor_cross_section": "igus CF130.03.02.UL 22 AWG / 0.34 mm2 CANDIDATE",
                     "insulation_temperature_flex": "MEDIUM-DUTY MOVING CABLE; PUBLISHED CONDITIONS AND ROUTE-SPECIFIC QUALIFICATION APPLY",
                     "shield_or_twist": "UNSHIELDED TWO-CONDUCTOR POWER PAIR",
@@ -626,7 +708,10 @@ def build() -> dict[str, int | float]:
                     "end_to_end_test": "NOT EXECUTED",
                 })
         retention_rows.append({
-            "retention_id": f"RET-{axis}", "axis_id": axis, "power_loop": pseg, "data_loop": dseg,
+            "retention_id": f"RET-{axis}", "axis_id": axis, "power_loop": pseg,
+            "power_crossing_count": len(power_crossing_segments),
+            "power_crossing_segments": "; ".join(power_crossing_segments),
+            "data_loop": dseg,
             "fixed_side_clamp": f"REQUIRED AT {transition_dynamic}; BRACKET/CLAMP SELECTION OPEN", "moving_side_clamp": OPEN,
             "connector_load_isolation": "MICRO-FIT PANEL TRANSITION AND PIGTAIL CLAMP REQUIRED TO ISOLATE JST EH FROM JOINT FLEX",
             "minimum_pull_test": OPEN, "abrasion_guard": OPEN, "inspection_access": OPEN, "validation": "NOT EXECUTED",
@@ -635,7 +720,7 @@ def build() -> dict[str, int | float]:
             "circuit": f"PWR-{axis}", "bus_branch": bus, "endpoint_current_a": f"{amps:.2f}",
             "normal_rms_current_a": OPEN, "fault_current_a": OPEN, "length_mm": f"{power_one_way_mm:.3f}",
             "round_trip_planning_length_mm": f"{2 * power_one_way_mm:.3f}",
-            "length_basis": "GEOMETRY-DERIVED PLANNING LENGTH ONLY; CUT LENGTH AND SLACK OPEN",
+            "length_basis": "BOARD-TO-FIRST-JOINT PLUS SERIAL JOINT-DATUM LINKS PLUS ALL REGISTERED CROSSINGS; GEOMETRY-DERIVED PLANNING LENGTH ONLY; CUT LENGTH AND SLACK OPEN",
             "ambient_c": OPEN, "bundle_count": OPEN, "duty_cycle": OPEN, "inrush": OPEN,
             "connector_limit_a": "JST EH 3 A AT AWG22 HEADLINE PLUS MICRO-FIT APPLICATION DERATING/TEMPERATURE-RISE VALIDATION OPEN",
             "conductor_selection": "CF130 MOVING + MICRO-FIT TRANSITION + ALPHA 3051 PIGTAIL CANDIDATE; NOT RELEASED", "calculation_state": "PARTIAL - LENGTH PRESENT; RMS/FAULT/AMBIENT/BUNDLING/DUTY/INRUSH STILL REQUIRED",
@@ -643,6 +728,7 @@ def build() -> dict[str, int | float]:
 
     write_csv(OUT / "route-segment-register.csv", route_rows)
     write_csv(OUT / "route-point-register.csv", point_rows)
+    write_csv(OUT / "direct-power-crossing-register.csv", power_crossing_rows)
     write_csv(OUT / "axis-harness-binding.csv", axis_rows)
     write_csv(OUT / "service-loop-register.csv", loop_rows)
     write_csv(OUT / "actuator-power-drop-register.csv", power_rows)
@@ -706,7 +792,7 @@ def build() -> dict[str, int | float]:
         ("INSP-04", "polarity", "VDD/return polarity and data pair identity", "100%", "before actuator connection"),
         ("INSP-05", "shield/bond", "bond endpoints and insulation from unintended frame points", "100%", "before EMC testing"),
         ("INSP-06", "retention", "connector retention and strain-relief pull", OPEN, "before motion"),
-        ("INSP-07", "joint sweep", "full commanded-range clearance, bend radius and pinch inspection", "25 axes", "unpowered before motion"),
+        ("INSP-07", "joint sweep", "full commanded-range clearance, bend radius and pinch inspection for every direct-power crossing and serial-data joint link", "76 power crossings + 25 data links", "unpowered before motion"),
         ("INSP-08", "current injection", "current-limited branch voltage-drop/thermal check", OPEN, "guarded bench only after approved test plan"),
         ("INSP-09", "communications", "termination/waveform/reflection/error-rate test", "8 buses", "guarded bench only after approved test plan"),
         ("INSP-10", "post-cycle", "abrasion, conductor damage, retention and continuity after flex-cycle target", OPEN, "before walking development"),
@@ -720,7 +806,7 @@ def build() -> dict[str, int | float]:
         ("HSEL-01", "all power conductors", "cross-section/insulation/flex construction", "fault current, RMS/peak duty, length, ambient, bundling, voltage-drop, jurisdiction"),
         ("HSEL-02", "25 actuator power feeds", "individual fuse/current limiter, distribution and disconnect implementation", "prospective fault current, inrush, coordination, DC interrupt rating, connector/conductor limits"),
         ("HSEL-03", "25 actuator drops", "controlled split-harness candidate: individual VDD/return pair into each input housing; serial data-only outgoing housing with GND/VDD cavities empty", "candidate contact drawings now present; crimp process, cavity inspection, no-backfeed continuity and fault-injection evidence still required"),
-        ("HSEL-04", "all moving joints", "dynamic cable family, slack and minimum bend radius", "joint sweep, cycle target, torsion, temperature, abrasion and supplier flex data"),
+        ("HSEL-04", "76 direct-power joint crossings plus 25 serial-data joint links", "dynamic cable family, branch lane allocation, slack and minimum bend radius", "every-crossing full-pose sweep, cycle target, torsion, temperature, abrasion and supplier flex data"),
         ("HSEL-05", "eight data buses", "termination/bias/baud/shielding", "measured topology, cable impedance/length, transceiver limits, waveform and EMC tests"),
         ("HSEL-06", "equipment interfaces", "mating connectors/contacts/keying", "manufacturer pinout/revision, voltage/current, retention, service access and procurement availability"),
         ("HSEL-07", "retention", "clamps, grommets, strain relief and abrasion protection", "full geometry, pull load, serviceability, material/fire/environment evidence"),
@@ -823,7 +909,10 @@ def build() -> dict[str, int | float]:
 
     route_cad_solid_count = write_route_cad(route_rows, point_rows)
     stats = {
-        "fixed_route_segments": len(trunks), "moving_joint_route_segments": 50,
+        "fixed_route_segments": len(trunks),
+        "moving_power_crossing_segments": len(power_crossing_rows),
+        "moving_data_link_segments": len(data_link_rows),
+        "moving_joint_route_segments": len(power_crossing_rows) + len(data_link_rows),
         "total_route_segments": len(route_rows), "route_points": len(point_rows),
         "route_cad_solid_count": route_cad_solid_count,
         "axes": len(axis_rows), "buses": len(buses), "harness_assemblies": len(assembly_rows),
@@ -837,6 +926,8 @@ def build() -> dict[str, int | float]:
         "manufacturer_interface_discrepancies_open": len(discrepancy_rows),
         "candidate_12v_stall_endpoint_sum_a": round(sum(float(r["candidate_12v_stall_endpoint_a"]) for r in power_rows), 2),
     }
+    if len(power_crossing_rows) != 76 or len(route_rows) != 113 or len(point_rows) != 226:
+        raise SystemExit("direct-power crossing / serial-data / fixed-corridor route count drift")
     write_visuals(route_rows, point_rows, axis_rows, buses, stats, chain_rows)
     status = {
         "identifier": IDENTIFIER, "warning": WARNING, "scope": "complete HR-30 P0.1 physical harness architecture",
@@ -853,6 +944,7 @@ def build() -> dict[str, int | float]:
         "route_geometry_candidate_present": True, "whole_body_route_step_present": True,
         "whole_body_route_glb_present": True, "route_cad_is_cable_size_release": False,
         "every_axis_has_power_and_data_loop": True,
+        "every_direct_power_pair_crosses_all_upstream_joints": True,
         "every_equipment_item_bound": True, "every_logical_terminal_retained": True,
         "standard_dynamixel_cable_direct_use_approved": False, "assembled_cables_selected": False,
         "u2d2_final_whole_body_controller_approved": False,
@@ -871,7 +963,7 @@ def build() -> dict[str, int | float]:
 
 This is the first complete physical translation of the HR-30 logical wiring architecture. It binds all **{stats['axes']} joints**, **{stats['buses']} actuator buses**, **{stats['equipment_items']} installed equipment items**, and **{stats['logical_terminals']} current ECAD logical terminals** to a controlled harness architecture.
 
-It contains {stats['fixed_route_segments']} body corridors plus 50 explicit moving-joint power/data loops ({stats['total_route_segments']} route segments and {stats['route_points']} route points). All {stats['route_cad_solid_count']} registered routes are also exported as named editable STEP solids and as one interactive GLB in a recognizable 762 mm body context. Those rods are route centerlines—not selected cable diameters, bundle clearances, or bend-radius releases. Each actuator has a known device-side contact map, a branch-power relationship, a data-link boundary, a moving-loop obligation, retention obligation, derating inputs, and an inspection path.
+It contains {stats['fixed_route_segments']} body corridors, {stats['moving_power_crossing_segments']} explicit direct-power joint crossings, and {stats['moving_data_link_segments']} serial-data joint links ({stats['total_route_segments']} route segments and {stats['route_points']} route points). All {stats['route_cad_solid_count']} registered routes are also exported as named editable STEP solids and as one interactive GLB in a recognizable 762 mm body context. Those rods are route centerlines—not selected cable diameters, bundle clearances, or bend-radius releases. Each actuator has a known device-side contact map, a branch-power relationship, a data-link boundary, every required upstream power-crossing obligation, retention obligation, derating inputs, and an inspection path.
 
 The architecture now defines one two-conductor power pair per actuator and a serial data chain for each bus. Every actuator input housing receives its own return, VDD, and data contacts. Every inter-actuator outgoing housing populates only the data contacts: GND and VDD cavities remain empty, so no power current is daisy-chained through a preceding actuator connector. This controlled split-harness is the P0.1 construction candidate; crimp tooling, conductor selection, cavity inspection, no-backfeed tests, and fault injection remain required before release.
 
@@ -940,8 +1032,14 @@ def write_visuals(routes: list[dict], points: list[dict], axes: list[dict], buse
         diagram_cards.append(f'<article class="diagram"><h3>{html.escape(bus_id)}</h3><div class="diagram-scroll"><img src="bus-diagrams/{slug}.svg" alt="{html.escape(bus_id)} serial data chain and individual power-pair drawing"></div></article>')
 
     bus_cards = "".join(f'<button class="bus" data-bus="{html.escape(b["bus_id"])}"><strong>{html.escape(b["bus_id"])}</strong><span>{html.escape(b["protocol"])} · {html.escape(b["axis_count"])} axes</span><span>{html.escape(b["candidate_12v_stall_endpoint_sum_a"])} A endpoint sum</span></button>' for b in buses)
-    axis_cards = "".join(f'<tr data-bus="{html.escape(a["bus_id"])}"><td>{html.escape(a["axis_id"])}</td><td>{html.escape(a["bus_id"])}</td><td>{html.escape(a["actuator_family"])}</td><td>{html.escape(a["axis_xyz_mm"])}</td><td>{html.escape(a["power_loop"])}<br>{html.escape(a["data_loop"])}</td></tr>' for a in axes)
+    axis_cards = "".join(f'<tr data-bus="{html.escape(a["bus_id"])}"><td>{html.escape(a["axis_id"])}</td><td>{html.escape(a["bus_id"])}</td><td>{html.escape(a["actuator_family"])}</td><td>{html.escape(a["axis_xyz_mm"])}</td><td>{a["power_crossing_count"]} direct-power crossings<br>{html.escape(a["data_loop"])}</td></tr>' for a in axes)
     page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 physical harness P0.1</title><style>:root{{--navy:#0d2d57;--blue:#179de3;--sky:#d8f1ff;--gold:#f4b400;--paper:#f8fcff}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--navy);font:16px/1.5 system-ui,sans-serif}}header{{background:linear-gradient(135deg,var(--navy),#185d9d);color:white;padding:32px max(24px,calc((100% - 1180px)/2))}}h1{{font-size:clamp(32px,5vw,60px);line-height:1.05;margin:.2em 0}}.warning{{background:var(--gold);color:#1b2840;padding:14px 18px;font-weight:800;border-radius:12px}}main{{max-width:1180px;margin:auto;padding:28px 20px 70px}}h2{{font-size:clamp(25px,3vw,38px);margin-top:46px}}.stats,.buses{{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}}.stat,.bus,.panel{{background:white;border:2px solid #9bd5f5;border-radius:16px;padding:18px;box-shadow:0 6px 18px #0d2d5712}}.stat strong{{display:block;font-size:28px}}.bus{{font:inherit;color:inherit;text-align:left;cursor:pointer}}.bus strong,.bus span{{display:block}}.bus.active{{border-color:var(--gold);box-shadow:0 0 0 3px #f4b40055}}.map{{width:100%;max-height:760px}}.tablewrap{{overflow:auto;border:2px solid #9bd5f5;border-radius:16px;background:white}}table{{border-collapse:collapse;width:100%;min-width:900px}}th,td{{padding:13px 14px;border-bottom:1px solid #cfeafa;text-align:left;vertical-align:top}}th{{position:sticky;top:0;background:var(--navy);color:white;font-size:14px}}td{{font-size:14px}}a{{color:#075f9f;font-weight:700}}.open{{border-left:8px solid var(--gold)}}@media(max-width:600px){{header{{padding:24px 18px}}main{{padding:20px 14px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>HR-30 · Whole-body P0.1</p><h1>Physical harness guide</h1><p>Every body corridor, actuator feed, data bus, joint loop and current ECAD terminal is accounted for—without pretending unresolved cable and protection choices are finished.</p></header><main><section class="stats"><div class="stat"><strong>{stats['axes']}</strong>separate actuator feeds</div><div class="stat"><strong>{stats['total_route_segments']}</strong>route segments</div><div class="stat"><strong>{stats['logical_terminals']}</strong>logical terminals</div><div class="stat"><strong>{stats['candidate_12v_stall_endpoint_sum_a']}</strong>A endpoint sum, not demand</div></section><h2>Whole-body route map</h2><div class="panel"><img class="map" src="whole-body-physical-harness.svg" alt="Front map of the HR-30 physical harness routes and joint loops"></div><h2>Eight data buses</h2><p>Select a data bus to filter the joint table; select it again to show all.</p><div class="buses">{bus_cards}</div><h2>All 25 protected-feed candidates</h2><div class="tablewrap"><table><thead><tr><th>Axis</th><th>Data bus</th><th>Actuator</th><th>Joint datum (mm)</th><th>Moving loops</th></tr></thead><tbody>{axis_cards}</tbody></table></div><h2>Critical power boundary</h2><div class="panel open"><p>Each actuator now has its own protection/telemetry boundary and VDD net. Standard ROBOTIS X3P/X4P cables include VDD, so a custom data-only/power-injection breakout or controlled depinning method is required to keep the 25 feeds isolated.</p><p>The {stats['candidate_12v_stall_endpoint_sum_a']:.2f} A figure is the arithmetic sum of momentary 12 V stall-current endpoints—not a normal-load forecast, fuse rating, cable rating, or permission to energize.</p></div><h2>Manufacturer interface reality check</h2><div class="panel open"><p><strong>Pinouts are verified; the cable assembly is not.</strong> ROBOTIS lists 21 AWG DYNAMIXEL wire, while JST's EH catalog limits the listed SEH-001T-P0.6 contact to AWG 22. ROBOTIS also writes EHR-03/EHR-04 while JST's own catalog table writes EHR-3/EHR-4. Neither discrepancy is silently normalized.</p><p>U2D2 remains a one-segment commissioning candidate only. It is not the final eight-segment controller. The 10 A U2D2 Power Hub is rejected for whole-body and leg power aggregation.</p><p><a href="actuator-interface-verification-register.csv">verified device interfaces</a> · <a href="robotis-cable-family-register.csv">commercial cable review</a> · <a href="manufacturer-interface-discrepancy-register.csv">open manufacturer discrepancies</a></p></div><h2>Build registers</h2><div class="panel"><p><a href="route-segment-register.csv">route segments</a> · <a href="route-point-register.csv">route points</a> · <a href="axis-harness-binding.csv">axis bindings</a> · <a href="connector-contact-map.csv">actuator contacts</a> · <a href="cable-core-register.csv">cable cores</a> · <a href="equipment-interface-register.csv">equipment interfaces</a> · <a href="logical-terminal-binding.csv">logical terminals</a> · <a href="current-derating-register.csv">derating inputs</a> · <a href="inspection-test-register.csv">inspection/tests</a> · <a href="unresolved-harness-selections.csv">open selections</a></p></div></main><script>const buttons=[...document.querySelectorAll('.bus')],rows=[...document.querySelectorAll('tbody tr')];buttons.forEach(b=>b.addEventListener('click',()=>{{const on=!b.classList.contains('active');buttons.forEach(x=>x.classList.remove('active'));b.classList.toggle('active',on);rows.forEach(r=>r.hidden=on&&r.dataset.bus!==b.dataset.bus)}}));</script></body></html>'''
+    page = page.replace("<th>Moving loops</th>", "<th>Required moving segments</th>", 1)
+    page = page.replace(
+        "</strong>A endpoint sum, not demand</div></section>",
+        f"</strong>A endpoint sum, not demand</div><div class=\"stat\"><strong>{stats['moving_power_crossing_segments']}</strong>direct-power crossings</div></section>",
+        1,
+    )
     page = page.replace(
         "<title>HR-30 physical harness P0.1</title><style>",
         '<title>HR-30 physical harness P0.1</title><script type="module" src="../../vendor/model-viewer.min.js"></script><style>',
@@ -952,13 +1050,13 @@ def write_visuals(routes: list[dict], points: list[dict], axes: list[dict], buse
         "model-viewer{display:block;width:100%;height:clamp(500px,70vh,760px);background:radial-gradient(circle,#fff,#d8f1ff)}.map{width:100%;max-height:760px}",
         1,
     )
-    route_viewer = '''<h2>Orbit all 62 routes in the complete body</h2><div class="panel"><model-viewer src="HR30_whole_body_harness_centerlines_candidate.glb" camera-controls camera-orbit="32deg 76deg 105%" field-of-view="27deg" shadow-intensity="0.8" exposure="1.05" alt="Interactive recognizable 762 millimetre HR-30 whole body with all 62 registered harness centerlines"></model-viewer><p>Gold rods are actuator-power centerlines; sky-blue rods are data/low-voltage centerlines. The translucent body is lightweight positional context. Rod diameter is illustrative and does not release cable OD, bundle clearance, or bend radius.</p><p><a href="HR30_whole_body_harness_centerlines_candidate.step">Download editable route STEP</a> · <a href="route-cad-register.csv">Inspect the 62-solid CAD register</a></p></div>'''
+    route_viewer = f'''<h2>Orbit all {stats['total_route_segments']} routes in the complete body</h2><div class="panel"><model-viewer src="HR30_whole_body_harness_centerlines_candidate.glb" camera-controls camera-orbit="32deg 76deg 105%" field-of-view="27deg" shadow-intensity="0.8" exposure="1.05" alt="Interactive recognizable 762 millimetre HR-30 whole body with all {stats['total_route_segments']} registered harness centerlines"></model-viewer><p>Gold rods are actuator-power centerlines; sky-blue rods are data/low-voltage centerlines. The translucent body is lightweight positional context. Rod diameter is illustrative and does not release cable OD, bundle clearance, or bend radius.</p><p><a href="HR30_whole_body_harness_centerlines_candidate.step">Download editable route STEP</a> · <a href="route-cad-register.csv">Inspect the {stats['route_cad_solid_count']}-solid CAD register</a></p></div>'''
     page = page.replace("<h2>Whole-body route map</h2>", route_viewer + "<h2>Whole-body route map</h2>", 1)
     transition_section = '''<h2>Fixed transition at every actuator branch</h2><div class="panel open"><p><strong>Moving CF130 no longer terminates directly into JST EH.</strong> Each of the 25 branches now ends the moving cable at Molex 430250200 / 430300001, mates to panel-mounted 430200200 / 430310001, then continues through a restrained Alpha Wire 3051 pigtail to the actuator.</p><p>The parts are exact candidates, not released selections. CF130 core OD, bracket/fastener geometry, pigtail length, crimp qualification, derating, pull, temperature-rise and flex tests remain open.</p><p><a href="actuator-power-transition-register.csv">Inspect all 25 transition bindings</a></p></div>'''
     page = page.replace("<h2>Critical power boundary</h2>", transition_section + "<h2>Critical power boundary</h2>", 1)
     page = page.replace(
         '<a href="route-point-register.csv">route points</a> ·',
-        '<a href="route-point-register.csv">route points</a> · <a href="route-cad-register.csv">route CAD</a> ·',
+        '<a href="route-point-register.csv">route points</a> · <a href="direct-power-crossing-register.csv">direct-power crossings</a> · <a href="route-cad-register.csv">route CAD</a> ·',
         1,
     )
     (OUT / "index.html").write_text(page, encoding="utf-8")
@@ -1001,7 +1099,7 @@ def integrate_whole_body_package(stats: dict) -> None:
 
 {marker}
 
-The [interactive physical harness guide](harness/physical-p0.1/index.html) translates the logical ECAD into {stats['total_route_segments']} route segments: 12 reserved body corridors and two moving-loop candidates at every one of the 25 joint axes. It retains all {stats['logical_terminals']} current logical terminals and binds every installed equipment item without inventing unresolved conductor sizes or protection values.
+The [interactive physical harness guide](harness/physical-p0.1/index.html) translates the logical ECAD into {stats['total_route_segments']} route segments: 12 reserved body corridors, {stats['moving_power_crossing_segments']} direct-power joint crossings and {stats['moving_data_link_segments']} serial-data joint links. It retains all {stats['logical_terminals']} current logical terminals and binds every installed equipment item without inventing unresolved conductor sizes or protection values.
 
 All {stats['route_cad_solid_count']} route centerlines now exist as named editable STEP solids and one interactive GLB in a recognizable 762 mm body context. The display rods are centerline references only; they do not release cable OD, bundle clearance, bend radius, cut length, or retention.
 
@@ -1011,7 +1109,10 @@ Four actuator-family interfaces are now source-verified, five commercial ROBOTIS
 """
     if marker in readme:
         start = readme.index(marker)
-        end = readme.find("\n## ", start + len(marker))
+        next_heading = readme.find("\n## ", start + len(marker))
+        next_control_marker = readme.find("\n<!-- ", start + len(marker))
+        candidates = [position for position in (next_heading, next_control_marker) if position >= 0]
+        end = min(candidates) if candidates else -1
         readme = readme[:start].rstrip() + "\n\n" + block.strip() + ("\n\n" + readme[end + 1:] if end >= 0 else "\n")
     else:
         readme = readme.rstrip() + "\n\n" + block.strip() + "\n"
@@ -1034,6 +1135,9 @@ Four actuator-family interfaces are now source-verified, five commercial ROBOTIS
         "physical_harness_route_segments": stats["total_route_segments"],
         "physical_harness_route_points": stats["route_points"],
         "physical_harness_route_cad_solids": stats["route_cad_solid_count"],
+        "physical_harness_direct_power_crossing_count": stats["moving_power_crossing_segments"],
+        "physical_harness_serial_data_joint_link_count": stats["moving_data_link_segments"],
+        "physical_harness_every_direct_pair_crosses_upstream_joints": True,
         "physical_harness_route_step_present": True,
         "physical_harness_route_glb_present": True,
         "physical_harness_axes_bound": stats["axes"],

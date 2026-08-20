@@ -130,17 +130,17 @@ def build() -> list[Equipment]:
 
     for suffix, x, buses, candidate, watts, heat, source, revision in (
         ("A", -48, "RS-LLEG | RS-RLEG | RS-LARM | RS-RARM",
-         "four-channel carrier with 4x TI ISOW1432DFMR and 4x JST BM03B-GHS-TBT data-only field headers",
+         "four-channel carrier with 4x TI ISOW1432DFMR and 4x JST B03B-PASK-1 data-only field headers",
          3.0, 2.2, "https://www.ti.com/product/ISOW1432", "TI SLLSF86C Rev C; March 2022; accessed 2026-08-14"),
         ("B", 48, "RS-WAIST | TTL-LDIST | TTL-RDIST | TTL-HEAD",
-         "four-channel carrier with 1x TI ISOW1432DFMR, 3x SN74LVC1T45DCKR and exact JST GH data-only field headers",
+         "four-channel carrier with 1x TI ISOW1432DFMR, 3x SN74LVC1T45DCKR and exact JST PA data-only field headers",
          1.5, 1.0, "https://www.ti.com/product/SN74LVC1T45", "TI SCES515N Rev N; June 2024; accessed 2026-08-14"),
     ):
         add(f"EQ-T01-BUS-CARRIER-{suffix}", "C01", "four-channel actuator-bus interface carrier",
             f"{candidate}; buses {buses}",
             box(82, 14, 42, (x, 11, 526), 2), 0.045, watts, heat,
             "torso rear electronics tray", "+Y rear-cover withdrawal",
-            "JST GHR-15V-S logic-only controller cable plus per-segment BM02/BM03B-GHS-TBT field headers; no actuator VDD contacts",
+            "JST GHR-15V-S logic-only controller cable plus per-segment B02B/B03B-PASK-1 field headers with PAP housings; no actuator VDD contacts",
             source, revision,
             "complete sourced application circuit and 82 x 42 mm native PCB placement candidate exist; copper routing, stackup/isolation geometry, EMC, thermal and physical validation remain open; U2D2 stays external commissioning-only",
             "torso", control)
@@ -203,11 +203,13 @@ def build() -> list[Equipment]:
             "exact product family candidate and installed clearance envelope; current margin, transients, protection, thermal behavior and reverse-energy validation remain open",
             "torso", power)
     add("EQ-P01-AUX-CONVERTER", "P01", "auxiliary power conversion",
-        "isolated 14.8 V to 5.1 V compute/HMI converter candidate; exact model required",
-        box(62, 18, 24, (-35, -4, 408), 2), 0.095, 0.0, 6.0,
-        "upper pelvis conductive tray", "-Y front-cover withdrawal",
-        "protected primary input; separate compute and control outputs; grounding scheme open",
-        "SELECTION REQUIRED", "SELECTION REQUIRED", "planning envelope/mass/loss only", "base_link", power)
+        "150 x 58 mm three-rail carrier candidate with 2x RECOM REC30E-2405SZ + 1x TRACO POWER TEN 40-1211E; compute/HMI/control positive rails remain separate",
+        box(150, 16, 58, (0, -4, 408), 2), 0.185, 0.0, 9.0,
+        "upper pelvis vertical electronics datum", "-Y front-cover withdrawal",
+        "three protected 12 V inputs; COMPUTE_5V1/HMI_5V0/AUX_5V_SAFE outputs; returns meet at AUX_0V_STAR; fuse/reverse-inrush/bond/harness open",
+        "https://www.tracopower.com/overview/ten40e", "TEN 40E datasheet Rev. August 7, 2024 plus REC30E-Z datasheet REV 1/2024; live product pages accessed 2026-08-19",
+        "exact converter candidates and native carrier package exist; HMI rail has 10 W coarse-peak headroom; protection, trim, thermal, EMC, DFM/FAI and physical validation remain open",
+        "base_link", power)
     add("EQ-P01-IMU", "P01", "pelvis inertial sensor",
         "industrial 6/9-axis IMU module candidate; exact model required",
         box(34, 10, 34, (43, -4, 408), 2), 0.025, 0.8, 0.8,
@@ -429,7 +431,8 @@ def update_package(items: list[Equipment]) -> None:
         seen.add(key)
         source_rows.append({
             "candidate": item.candidate, "manufacturer_source_url": item.source_url,
-            "document_revision_or_date": item.source_revision, "accessed_date": ACCESSED,
+            "document_revision_or_date": item.source_revision,
+            "accessed_date": "2026-08-19" if item.item_id == "EQ-P01-AUX-CONVERTER" else ACCESSED,
             "verified_or_provisional": item.evidence_state, "selection_state": "CANDIDATE / SELECTION REQUIRED",
             "warning": WARNING,
         })
@@ -504,6 +507,11 @@ The former empty torso, pelvis, head and foot reservations now contain {len(item
             row["candidate"] = "Pi Active Cooler plus head tach fan; installed envelopes/masses modeled; torso duct/fan selection open"
         elif row["item_id"] == "HR30-BOM-032":
             row["candidate"] = "distributed 0.340 kg planning allowance placed by module; exact counts/grades/torques/locking remain open"
+        elif row["item_id"] == "HR30-BOM-025":
+            row["manufacturer"] = "SELECTION REQUIRED / RECOM / TRACO POWER"
+            row["candidate"] = ("tethered current-limited controlled 12 V source plus 2x REC30E-2405SZ compute/control converters "
+                                "and 1x TEN 40-1211E HMI converter on the 150 x 58 mm auxiliary carrier; source, protection, "
+                                "wiring, PE bond, thermal and physical validation remain open")
     write_csv(bom_path, bom)
 
     package_status_path = OUT / "package-status.json"
@@ -526,7 +534,7 @@ The former empty torso, pelvis, head and foot reservations now contain {len(item
         if row["hold_id"] == "HR30-P01-H04":
             row["unresolved_item"] = ("The whole-body CAD retains the superseded 177.6 Wh Grepow/Tattu pack envelope only as legacy packaging evidence; that direct 4S actuator-bus source is rejected. Tether-first is the active development configuration, while the Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Exact battery configuration, protection, connector, current/thermal capability, containment, retention, charger, regeneration handling, grounding and pinout remain unselected and unvalidated.")
         elif row["hold_id"] == "HR30-P01-H07":
-            row["unresolved_item"] = ("Fourteen module harness assemblies and 62 route segments now have planning geometry, mass allowances and connector boundaries, including separate neck power/data paths and 25 individually routed actuator-power pairs from eight bus-specific walking-power boards. Exact conductor selections, fill, flex life, service-loop validation, production connectors, strain relief, shielding, current derating, EMC and thermal evidence remain open.")
+            row["unresolved_item"] = ("Fourteen module harness assemblies and 113 route segments now have planning geometry, mass allowances and connector boundaries: 12 fixed corridors, 76 direct-power joint crossings and 25 serial-data joint links, including separate neck power/data paths and 25 individually protected actuator-power pairs from eight bus-specific walking-power boards. Exact conductor selections, fill, flex life, service-loop validation, production connectors, strain relief, shielding, current derating, EMC and thermal evidence remain open.")
     write_csv(holds_path, holds)
 
 

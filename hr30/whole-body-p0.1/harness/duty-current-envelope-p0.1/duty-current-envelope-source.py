@@ -98,7 +98,7 @@ def build_trace() -> tuple[list[dict], list[dict], list[dict], dict[str, float],
         row = next(item for item in current_rows if item["axis_id"] == axis)
         successor_caps[axis] *= dynamics_successor.SUCCESSOR_RATIO / float(row["transmission_ratio"])
 
-    source_model = BODY / "lightweight-hip-successor-p0.1" / "hr30_tether_light4_control_candidate.xml"
+    source_model = BODY / "mujoco-dynamics-validation-p0.1" / "hr30_tether_ideal_fixture.xml"
     model = mujoco.MjModel.from_xml_path(str(source_model.resolve()))
     control_successor.install_controller()
     installed_control = dynamics_successor.control
@@ -313,7 +313,7 @@ def main() -> int:
         ("generator", Path(__file__)),
         ("control successor generator", ROOT / "tools" / "generate_hr30_control_successor_p01.py"),
         ("simulation implementation", ROOT / "tools" / "generate_hr30_dynamics_successor_p01.py"),
-        ("lightweight whole-body control model", BODY / "lightweight-hip-successor-p0.1" / "hr30_tether_light4_control_candidate.xml"),
+        ("active tether-first ideal-fixture control model", BODY / "mujoco-dynamics-validation-p0.1" / "hr30_tether_ideal_fixture.xml"),
         ("control successor status", BODY / "control-successor-p0.1" / "control-successor-status.json"),
         ("axis current endpoints", BODY / "current-constrained-actuation-p0.1" / "axis-current-torque-register.csv"),
         ("bus current budgets", BODY / "current-constrained-actuation-p0.1" / "bus-current-budget.csv"),

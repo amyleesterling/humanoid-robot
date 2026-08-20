@@ -1,7 +1,7 @@
 {
   "identifier": "HR30-WHOLE-BODY-CONTROL-SUCCESSOR-P0.1",
   "warning": "PRELIMINARY - WHOLE-BODY CONTROL CANDIDATE ONLY - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION",
-  "executed_utc": "2026-08-18T03:17:01.234157+00:00",
+  "executed_utc": "2026-08-19T12:15:01.098322+00:00",
   "integration_timestep_s": 0.002,
   "settle_time_s": 0.5,
   "rotary_kp_factor": 8.0,

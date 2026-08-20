@@ -22,10 +22,15 @@ ROOT = Path(__file__).resolve().parents[1]
 WHOLE = ROOT / "hr30" / "whole-body-p0.1"
 PHYSICAL = WHOLE / "harness" / "physical-p0.1"
 POLICY = WHOLE / "harness" / "current-policy-binding-p0.1"
+BRACKETS = WHOLE / "harness" / "actuator-transition-brackets-p0.1"
+BUS_TOPOLOGY = WHOLE / "actuator-bus-topology.csv"
+CARRIERS = WHOLE / "electrical" / "carriers-p0.1"
+TETHER = WHOLE / "electrical" / "tether-power-core-p0.1"
+GROUNDING = WHOLE / "electrical" / "grounding-reference-architecture-p0.1"
 OUT = WHOLE / "harness" / "actuator-cable-kit-p0.1"
 RELEASE = ROOT / "release" / "hr30" / "whole-body-p0.1" / "harness" / OUT.name
 IDENTIFIER = "HR30-ACTUATOR-CABLE-KIT-P0.1"
-DATE = "2026-08-17"
+DATE = "2026-08-18"
 WARNING = "PRELIMINARY - UNBUILT ACTUATOR CABLE-KIT CANDIDATE - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION"
 AUTHORITY = "NO PROCUREMENT, FABRICATION, CONNECTION, POWERED-TEST, MOTION OR ENERGIZATION AUTHORITY"
 
@@ -58,6 +63,12 @@ def source_rows() -> list[dict[str, object]]:
         ("ACK-S02", PHYSICAL / "bus-physical-link-register.csv", "25 physical bus links and outgoing-link topology"),
         ("ACK-S03", PHYSICAL / "actuator-interface-verification-register.csv", "manufacturer actuator interface verification"),
         ("ACK-S04", PHYSICAL / "manufacturer-interface-discrepancy-register.csv", "existing interface discrepancy register"),
+        ("ACK-S24", BRACKETS / "bracket-status.json", "dimensioned 25-axis transition-bracket status"),
+        ("ACK-S25", BRACKETS / "placement-register.csv", "25 module-specific transition-bracket placements"),
+        ("ACK-S26", BUS_TOPOLOGY, "eight-bus protocol, axis and controller-interface topology"),
+        ("ACK-S27", CARRIERS / "carrier-terminal-register.csv", "five isolated RS-485 and three non-isolated TTL carrier field boundaries"),
+        ("ACK-S28", TETHER / "wire-number-table.csv", "PDU_COMMON_RET and eight bus-feed return landings"),
+        ("ACK-S29", GROUNDING / "bond-register.csv", "proposed single CTRL_GND-to-actuator-return reference point"),
     ]
     rows = []
     for ident, path, role in local:
@@ -194,6 +205,71 @@ def cavity_rows() -> list[dict[str, object]]:
     return rows
 
 
+def bus_reference_rows(axis: list[dict[str, object]]) -> list[dict[str, object]]:
+    topology = read_csv(BUS_TOPOLOGY)
+    if len(topology) != 8:
+        raise RuntimeError("eight authoritative actuator buses required")
+    carrier = {
+        "RS-LLEG": ("A", "J101.1", "RS-LLEG_RET", "ISOW1432DFMR", "ISOLATED CONTROLLER/FIELD DOMAINS; FIELD RETURN STAR-REFERENCED"),
+        "RS-RLEG": ("A", "J102.1", "RS-RLEG_RET", "ISOW1432DFMR", "ISOLATED CONTROLLER/FIELD DOMAINS; FIELD RETURN STAR-REFERENCED"),
+        "RS-LARM": ("A", "J103.1", "RS-LARM_RET", "ISOW1432DFMR", "ISOLATED CONTROLLER/FIELD DOMAINS; FIELD RETURN STAR-REFERENCED"),
+        "RS-RARM": ("A", "J104.1", "RS-RARM_RET", "ISOW1432DFMR", "ISOLATED CONTROLLER/FIELD DOMAINS; FIELD RETURN STAR-REFERENCED"),
+        "RS-WAIST": ("B", "J105.1", "RS-WAIST_RET", "ISOW1432DFMR", "ISOLATED CONTROLLER/FIELD DOMAINS; FIELD RETURN STAR-REFERENCED"),
+        "TTL-LDIST": ("B", "J201.1", "CTRL_GND", "SN74LVC1T45DCKR", "NOT GALVANICALLY ISOLATED"),
+        "TTL-RDIST": ("B", "J202.1", "CTRL_GND", "SN74LVC1T45DCKR", "NOT GALVANICALLY ISOLATED"),
+        "TTL-HEAD": ("B", "J203.1", "CTRL_GND", "SN74LVC1T45DCKR", "NOT GALVANICALLY ISOLATED"),
+    }
+    axis_by_bus: dict[str, list[dict[str, object]]] = {}
+    for item in axis:
+        axis_by_bus.setdefault(str(item["bus_id"]), []).append(item)
+    rows: list[dict[str, object]] = []
+    for source in topology:
+        bus_id = source["bus_id"]
+        if bus_id not in carrier or len(axis_by_bus.get(bus_id, [])) != int(source["axis_count"]):
+            raise RuntimeError(f"bus/reference coverage drift: {bus_id}")
+        board, terminal, reference_net, interface, isolation = carrier[bus_id]
+        drops = sorted((float(r["voltage_drop_20c_at_candidate_cap_v"]) / 2.0 for r in axis_by_bus[bus_id]), reverse=True)
+        pair_offset = drops[0] + drops[1] if len(drops) > 1 else drops[0]
+        rows.append(common({
+            "bus_id": bus_id,
+            "protocol": source["protocol"],
+            "axis_count": source["axis_count"],
+            "carrier_board": board,
+            "carrier_reference_terminal": terminal,
+            "carrier_reference_net": reference_net,
+            "interface_candidate": interface,
+            "controller_isolation_state": isolation,
+            "single_reference_path": (
+                "PDU_COMMON_RET AT RB0; RS-485 FIELD RETURN LANDS ONCE AT THE PELVIS STAR"
+                if source["protocol"].startswith("RS-485")
+                else "PDU_COMMON_RET AT RB0; CTRL_GND LANDS ONCE THROUGH PROPOSED GR-PB09"
+            ),
+            "actuator_reference_path": "EACH ACTUATOR PIN 1 RETURNS ON ITS OWN DEDICATED POWER-PAIR CONDUCTOR TO PDU_COMMON_RET",
+            "inter_actuator_pin_1_rule": "EMPTY - NO DAISY GND CONDUCTOR",
+            "inter_actuator_pin_2_rule": "EMPTY - NO DAISY VDD CONDUCTOR",
+            "parallel_motor_return_path": "PROHIBITED",
+            "max_star_to_axis_offset_screen_v": f"{drops[0]:.6f}",
+            "max_pairwise_opposite_sign_offset_screen_v": f"{pair_offset:.6f}",
+            "screen_basis": "ONE-HALF OF REJECTED-CF9 PREDECESSOR 20 C LOOP-DROP SCREEN; CURRENT CAPS AND ROUTE LENGTHS ONLY; NOT A CANDIDATE-CABLE OR LOGIC-MARGIN RELEASE",
+            "validation_state": "NOT EXECUTED - COMMON-MODE, TTL THRESHOLD, TRANSIENT RETURN CURRENT, REGENERATION AND OPEN-RETURN FAULT TESTS REQUIRED",
+        }))
+    return rows
+
+
+def bus_reference_test_rows() -> list[dict[str, object]]:
+    data = [
+        ("ACK-BRT01", "verify one and only one controlled carrier-reference landing per bus at PDU_COMMON_RET", "continuity/isolation matrix with every actuator disconnected", "one intended star path; no unintended parallel path"),
+        ("ACK-BRT02", "verify all 17 outgoing pin-1 and pin-2 cavities remain empty", "100% cavity inspection plus continuity matrix", "34 empty cavities; no GND/VDD daisy conductor"),
+        ("ACK-BRT03", "measure controller-reference to every actuator-pin-1 DC and transient offset", "isolated differential probe during synchronized current-cap waveforms", "SELECTION REQUIRED from accepted interface margins and noise budget"),
+        ("ACK-BRT04", "measure all five RS-485 common-mode voltages and differential waveforms", "isolated oscilloscope plus bus error counter", "within accepted ISOW1432/application limits with zero unexplained errors"),
+        ("ACK-BRT05", "measure all three TTL high, low, edge and reference margins", "isolated oscilloscope at controller, first axis and far axis", "SELECTION REQUIRED from XC330 and translator limits"),
+        ("ACK-BRT06", "open each actuator branch return on a protected unpowered/fault-injection fixture", "continuity/current injection", "no alternate motor-current return through data, shield, frame or adjacent branch"),
+        ("ACK-BRT07", "exercise motoring, braking and regeneration states", "synchronized current/voltage/common-mode capture", "no reference-domain overstress, communication loss or unintended return sharing"),
+        ("ACK-BRT08", "repeat waveform and return-current tests across final route, shield and termination states", "final assembled topology/error-rate/EMC test", "accepted by qualified electrical reviewer before any powered whole-body work"),
+    ]
+    return [common({"test_id": ident, "inspection_or_test": test, "method_or_unit": method, "acceptance_limit": limit, "measured_value": "NONE", "result": "NOT EXECUTED", "evidence": "NONE"}) for ident, test, method, limit in data]
+
+
 def inspection_rows() -> list[dict[str, object]]:
     data = [
         ("ACK-T01", "verify received EHR-3/EHR-4 and SEH-001T-P0.6 identity and lot", "100% visual/label/CoC", "exact candidate family and traceable lot"),
@@ -226,9 +302,9 @@ def hold_rows() -> list[dict[str, object]]:
         ("ACK-H08", "data-only outgoing cavity construction is unbuilt and uninspected", "serialized 100% cavity, continuity, isolation and no-backfeed records"),
         ("ACK-H09", "whole-body bus termination, bias, baud and shielding remain unvalidated", "final controller, cable and topology tests across motion/power states"),
         ("ACK-H10", "qualified electrical and functional-safety review is absent", "signed review of the identical frozen as-built harness and test evidence"),
-        ("ACK-H11", "outgoing data-only connectors omit GND as well as VDD, leaving signal reference through individual branch returns", "approved reference/isolation architecture and measured RS-485 common-mode plus TTL ground-offset/waveform evidence without power-branch paralleling"),
+        ("ACK-H11", "the eight buses now use a proposed single-point reference architecture: each actuator references PDU_COMMON_RET through its dedicated branch return, with no inter-actuator GND/VDD daisy conductors; physical common-mode, TTL margin, regeneration and fault behavior remain unvalidated", "execute ACK-BRT01 through ACK-BRT08 on the identical frozen harness and obtain qualified electrical acceptance without power-branch paralleling"),
         ("ACK-H12", "CF130 individual-core insulation diameter is unpublished against the Micro-Fit terminal's 1.85 mm maximum", "igus construction drawing or written confirmation plus received-lot core-OD measurements before any crimp trial"),
-        ("ACK-H13", "the 25 panel-mount transition locations, brackets, clamp spacing and pigtail lengths are not dimensioned in module CAD", "module-by-module CAD placement, collision sweep, bracket drawing, pull-load path and service-access review"),
+        ("ACK-H13", "dimensioned bracket CAD and 25 nominal module placements exist, but the official connector cutout, received fit, material, fasteners, clamp force, pigtail length and production-body tolerance sweep remain unverified", "revision-controlled Micro-Fit cutout review, received-part fit coupon, DFM/material/fastener release, cable-clamp tests, selected pigtail lengths and joined production-CAD collision/service review"),
         ("ACK-H14", "Micro-Fit current/temperature capability is not released for the HR-30 two-circuit 22 AWG duty", "measured RMS/peak/regeneration waveform, ambient/bundling model and connector temperature-rise/fault tests using exact received terminals and tooling"),
     ]
     return [common({"hold_id": i, "unresolved_item": item, "closure_evidence": evidence, "state": "OPEN"}) for i, item, evidence in data]
@@ -263,10 +339,14 @@ def render(axis: list[dict[str, object]], cavities: list[dict[str, object]]) -> 
 
 
 def drawing() -> str:
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc"><title id="title">HR-30 fixed-side actuator power transition</title><desc id="desc">Each protected branch uses moving CF130 cable, a fixed panel-mounted Micro-Fit transition, a restrained Alpha 3051 pigtail and a JST EH actuator connector.</desc><style>text{{font:600 18px system-ui;fill:#102b46}}.h{{font-size:34px;font-weight:900}}.s{{font-size:16px}}.box{{fill:#fff;stroke:#0b4f91;stroke-width:4}}.power{{stroke:#f2b91d;stroke-width:10;fill:none}}.fixed{{stroke:#982520;stroke-width:4;stroke-dasharray:12 8}}.warn{{fill:#fff0b5;stroke:#982520;stroke-width:4}}</style><rect width="1600" height="900" fill="#eef8ff"/><text class="h" x="55" y="65">One of 25 actuator-power branches</text><rect class="box" x="55" y="190" width="260" height="190" rx="20"/><text x="88" y="235">Protected output</text><text class="s" x="88" y="280">individual VDD + return</text><text class="s" x="88" y="320">cap &lt;= 2.499 A candidate</text><path class="power" d="M315 285 H520"/><text x="350" y="255">CF130 moving pair</text><rect class="box" x="520" y="150" width="420" height="270" rx="20"/><text x="555" y="200">Fixed panel transition</text><text class="s" x="555" y="245">430250200 + 2 x 430300001</text><text class="s" x="555" y="285">mates with</text><text class="s" x="555" y="325">430200200 + 2 x 430310001</text><path class="fixed" d="M500 430 H960"/><text class="s" x="620" y="465">structure / bracket boundary</text><path class="power" d="M940 285 H1135"/><text x="965" y="255">Alpha 3051 pigtail</text><rect class="box" x="1135" y="190" width="400" height="190" rx="20"/><text x="1170" y="235">JST EH actuator input</text><text class="s" x="1170" y="280">pin 1 return / pin 2 VDD</text><text class="s" x="1170" y="320">pigtail clamped; no joint flex</text><rect class="warn" x="110" y="570" width="1380" height="190" rx="20"/><text class="h" x="155" y="625">Candidate architecture, not a released cable</text><text x="155" y="675">CF130 core OD, exact bracket geometry, crimp tooling, derating and temperature rise remain open.</text><text x="155" y="715">No procurement, fabrication, connection, powered testing, motion or energization authority.</text><text class="s" x="55" y="850">{html.escape(WARNING)}</text></svg>'''
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc"><title id="title">HR-30 fixed-side actuator power transition</title><desc id="desc">Each protected branch uses moving CF130 cable, a fixed panel-mounted Micro-Fit transition, a restrained Alpha 3051 pigtail and a JST EH actuator connector.</desc><style>text{{font:600 18px system-ui;fill:#102b46}}.h{{font-size:34px;font-weight:900}}.s{{font-size:16px}}.box{{fill:#fff;stroke:#0b4f91;stroke-width:4}}.power{{stroke:#f2b91d;stroke-width:10;fill:none}}.fixed{{stroke:#982520;stroke-width:4;stroke-dasharray:12 8}}.warn{{fill:#fff0b5;stroke:#982520;stroke-width:4}}</style><rect width="1600" height="900" fill="#eef8ff"/><text class="h" x="55" y="65">One of 25 actuator-power branches</text><rect class="box" x="55" y="190" width="260" height="190" rx="20"/><text x="88" y="235">Protected output</text><text class="s" x="88" y="280">individual VDD + return</text><text class="s" x="88" y="320">cap &lt;= 2.499 A candidate</text><path class="power" d="M315 285 H520"/><text x="350" y="255">CF130 moving pair</text><rect class="box" x="520" y="150" width="420" height="270" rx="20"/><text x="555" y="200">Fixed panel transition</text><text class="s" x="555" y="245">430250200 + 2 x 430300001</text><text class="s" x="555" y="285">mates with</text><text class="s" x="555" y="325">430200200 + 2 x 430310001</text><path class="fixed" d="M500 430 H960"/><text class="s" x="575" y="465">dimensioned bracket candidate / 25 nominal placements</text><path class="power" d="M940 285 H1135"/><text x="965" y="255">Alpha 3051 pigtail</text><rect class="box" x="1135" y="190" width="400" height="190" rx="20"/><text x="1170" y="235">JST EH actuator input</text><text class="s" x="1170" y="280">pin 1 return / pin 2 VDD</text><text class="s" x="1170" y="320">pigtail clamped; no joint flex</text><rect class="warn" x="110" y="570" width="1380" height="190" rx="20"/><text class="h" x="155" y="625">Candidate architecture, not a released cable</text><text x="155" y="675">Official cutout, received fit, clamp force, crimp, derating and thermal proof remain open.</text><text x="155" y="715">No procurement, fabrication, connection, powered testing, motion or energization authority.</text><text class="s" x="55" y="850">{html.escape(WARNING)}</text></svg>'''
 
 
-def render(axis: list[dict[str, object]], cavities: list[dict[str, object]]) -> str:
+def reference_drawing() -> str:
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc"><title id="title">HR-30 eight-bus single-point reference candidate</title><desc id="desc">Five isolated RS-485 and three non-isolated TTL controller channels reference actuator branches at one pelvis return star. No ground or voltage conductor is daisy chained between actuators.</desc><style>text{{font:600 18px system-ui;fill:#102b46}}.h{{font-size:34px;font-weight:900}}.s{{font-size:16px}}.box{{fill:#fff;stroke:#0b4f91;stroke-width:4}}.star{{fill:#f2b91d;stroke:#805600;stroke-width:4}}.data{{stroke:#28a9df;stroke-width:8;fill:none}}.ret{{stroke:#0b4f91;stroke-width:8;fill:none}}.empty{{stroke:#982520;stroke-width:6;stroke-dasharray:12 9;fill:none}}.hold{{fill:#fff0b5;stroke:#982520;stroke-width:4}}</style><rect width="1600" height="980" fill="#eef8ff"/><text class="h" x="55" y="65">Eight-bus single-point reference candidate</text><rect class="box" x="55" y="150" width="390" height="260" rx="20"/><text x="90" y="200">Controller carriers</text><text class="s" x="90" y="245">5 x ISOW1432 isolated RS-485</text><text class="s" x="90" y="285">3 x SN74LVC1T45 TTL</text><text class="s" x="90" y="325">TTL channels are not isolated</text><path class="data" d="M445 240 H720"/><path class="data" d="M445 315 H720"/><rect class="box" x="720" y="130" width="380" height="320" rx="20"/><text x="755" y="180">Actuator bus</text><text class="s" x="755" y="225">data conductor(s) continue</text><text class="s" x="755" y="270">each actuator pin 1 uses its</text><text class="s" x="755" y="305">own branch-return conductor</text><text class="s" x="755" y="350">outgoing pin 1: EMPTY</text><text class="s" x="755" y="385">outgoing pin 2: EMPTY</text><path class="ret" d="M910 450 V610 H540"/><rect class="star" x="405" y="565" width="270" height="100" rx="50"/><text x="445" y="625">PDU_COMMON_RET</text><path class="ret" d="M405 615 H250 V410"/><path class="empty" d="M1100 285 H1470"/><text class="s" x="1140" y="250">No daisy GND or VDD path</text><text class="s" x="1120" y="330">prevents parallel motor return</text><rect class="hold" x="110" y="745" width="1380" height="150" rx="20"/><text x="155" y="795">This selects topology only. RS-485 common-mode, TTL logic margins, regeneration and open-return faults are untested.</text><text x="155" y="840">No connection or powered-work authority follows from this diagram.</text><text class="s" x="55" y="945">{html.escape(WARNING)}</text></svg>'''
+
+
+def render(axis: list[dict[str, object]], cavities: list[dict[str, object]], references: list[dict[str, object]]) -> str:
     page = _legacy_render(axis, cavities)
     page = page.replace("min-width:1180px", "min-width:1480px")
     page = page.replace("The 25 actuator cables now have explicit pin populations.", "The 25 actuator feeds now separate static and dynamic 22 AWG candidates.")
@@ -276,13 +356,15 @@ def render(axis: list[dict[str, object]], cavities: list[dict[str, object]]) -> 
     page = page.replace("The 25 actuator feeds now separate static and dynamic 22 AWG candidates.", "All 25 actuator feeds now use a fixed-side transition candidate.")
     page = page.replace("Alpha Wire 3051 is the static suspended-commissioning coupon candidate. CF130.03.02.UL is the dynamic coupon candidate. CF9 is rejected for actuator power, and outgoing bus links remain data-only.", "CF130 is the moving-cable candidate to a panel-mounted Molex Micro-Fit 3.0 pair; a restrained Alpha Wire 3051 pigtail continues to JST EH. Direct CF130-to-JST crimping is rejected.")
     page = page.replace("axis power pairs have static/dynamic 22 AWG coupon candidates", "axis power pairs have fixed-transition plus restrained-pigtail candidates")
-    transition_section = '''<section><h2>Fixed-side transition for every joint</h2><div class="grid"><article><h3>Moving side</h3><p><strong>igus CF130.03.02.UL</strong> terminates in Molex <strong>430250200</strong> with two <strong>430300001</strong> female terminals.</p></article><article><h3>Fixed panel side</h3><p>Molex <strong>430200200</strong> with two <strong>430310001</strong> male terminals mounts to the module structure.</p></article><article><h3>Actuator pigtail</h3><p>Two restrained <strong>Alpha Wire 3051</strong> conductors continue to the JST EH power cavities. The pigtail must not flex with the joint.</p></article></div><div class="panel hold"><p>The connector families are exact candidates, not released parts. CF130 core OD, current derating, bracket geometry, crimp tooling, pull strength, temperature rise and cycle testing remain open.</p></div></section>'''
-    page = page.replace("<section><h2>All 25 axis feeds</h2>", transition_section + "<section><h2>All 25 axis feeds</h2>")
+    transition_section = '''<section><h2>Fixed-side transition for every joint</h2><div class="grid"><article><h3>Moving side</h3><p><strong>igus CF130.03.02.UL</strong> terminates in Molex <strong>430250200</strong> with two <strong>430300001</strong> female terminals.</p></article><article><h3>Fixed panel side</h3><p>Molex <strong>430200200</strong> with two <strong>430310001</strong> male terminals mounts in the dimensioned bracket candidate. All 25 nominal placements are bound to the whole-body CAD.</p></article><article><h3>Actuator pigtail</h3><p>Two restrained <strong>Alpha Wire 3051</strong> conductors continue to the JST EH power cavities. The pigtail must not flex with the joint.</p></article></div><div class="panel hold"><p>The bracket and connector families are candidates, not released parts. Official cutout geometry, received fit, production material/fasteners, clamp force, pigtail lengths, tolerance-aware integration, crimp tooling, pull strength, temperature rise and cycle testing remain open.</p><p><a href="../actuator-transition-brackets-p0.1/index.html">Open the 25-placement transition-bracket guide</a>.</p></div></section>'''
+    max_ref = max(float(r["max_pairwise_opposite_sign_offset_screen_v"]) for r in references)
+    reference_section = f'''<section><h2>Reference current returns to one controlled star</h2><img src="bus-reference-architecture.svg" alt="Eight-bus single-point reference architecture"><div class="grid"><article><div class="metric">5</div><p>RS-485 buses use isolated ISOW1432 controller/field domains.</p></article><article class="hold"><div class="metric">3</div><p>TTL buses are translated but not galvanically isolated.</p></article><article><div class="metric">{max_ref:.3f} V</div><p>largest opposite-sign pair offset in the rejected-CF9 planning screen; not an interface-margin release.</p></article></div><div class="panel hold"><p>Each actuator pin 1 returns to <strong>PDU_COMMON_RET</strong> through its own branch conductor. Inter-actuator pin 1 and pin 2 cavities stay empty, so the data harness cannot become a parallel motor-current return. This is a proposed physical topology only: all eight bus-reference tests remain unexecuted.</p><p><a href="bus-reference-register.csv">Eight bus bindings</a> | <a href="bus-reference-test-plan.csv">Reference validation plan</a></p></div></section>'''
+    page = page.replace("<section><h2>All 25 axis feeds</h2>", transition_section + reference_section + "<section><h2>All 25 axis feeds</h2>")
     page = page.replace('<a href="connector-family-disposition.csv">Connector family</a> |', '<a href="connector-family-disposition.csv">Connector family</a> | <a href="actuator-power-transition-register.csv">25 fixed transitions</a> |')
     return page
 
 
-def integrate_root(axis: list[dict[str, object]], cavities: list[dict[str, object]]) -> None:
+def integrate_root(axis: list[dict[str, object]], cavities: list[dict[str, object]], references: list[dict[str, object]]) -> None:
     max_drop = max(float(r["voltage_drop_20c_at_candidate_cap_v"]) for r in axis)
     status_path = WHOLE / "package-status.json"
     status = json.loads(status_path.read_text(encoding="utf-8"))
@@ -296,7 +378,8 @@ def integrate_root(axis: list[dict[str, object]], cavities: list[dict[str, objec
         "actuator_power_cable_geometric_candidate_bound": True,
         "actuator_power_fixed_transition_candidate_bound": True,
         "actuator_power_direct_cf130_to_jst_rejected": True,
-        "actuator_power_transition_brackets_dimensioned": False,
+        "actuator_power_transition_brackets_dimensioned": True,
+        "actuator_power_transition_bracket_placement_count": 25,
         "actuator_power_cf130_core_od_verified": False,
         "actuator_power_cable_20c_planning_calculated": True,
         "actuator_power_cable_hot_ampacity_verified": False,
@@ -304,6 +387,13 @@ def integrate_root(axis: list[dict[str, object]], cavities: list[dict[str, objec
         "actuator_data_cable_selected": False,
         "actuator_crimp_process_selected": False,
         "actuator_cable_kit_built": False,
+        "actuator_bus_reference_architecture_defined": True,
+        "actuator_bus_reference_count": len(references),
+        "actuator_bus_reference_star_node": "PDU_COMMON_RET",
+        "actuator_bus_parallel_motor_return_prohibited": True,
+        "actuator_bus_rs485_isolated_channel_count": sum(r["protocol"].startswith("RS-485") for r in references),
+        "actuator_bus_ttl_nonisolated_channel_count": sum(r["protocol"].startswith("TTL") for r in references),
+        "actuator_bus_reference_validated": False,
         "procurement_authority": False, "fabrication_authority": False, "connection_authority": False,
         "powered_test_authority": False, "motion_authority": False, "energization_authority": False,
     })
@@ -315,7 +405,7 @@ def integrate_root(axis: list[dict[str, object]], cavities: list[dict[str, objec
     if start in text and end in text:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     block = f'''{start}\n## Actuator cable kit\n\nThe [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their accepted candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **{len(cavities)} connector-cavity records**. Outgoing inter-actuator housings intentionally leave every GND/VDD cavity empty so the 25 separately protected power branches cannot be paralleled. No wire is released: the current CF130 0.34 mm² test-coupon candidate exceeds JST's published 0.33 mm² maximum and stays blocked pending supplier disposition or reselection.\n{end}\n'''
-    block = f'''{start}\n## Actuator cable kit\n\nThe [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **{len(cavities)} connector-cavity records**. The igus **CF9.UL.02.02** 0.25 mm2 continuous-flex test-coupon candidate is inside JST's published conductor-size range; the largest manufacturer-DCR-based 20 C planning drop is **{max_drop:.3f} V**. This is not an ampacity or thermal release. Outgoing inter-actuator housings leave GND/VDD cavities empty so the 25 separately protected power branches cannot be paralleled; signal-reference behavior remains a validation hold.\n{end}\n'''
+    block = f'''{start}\n## Actuator cable kit\n\nThe [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **{len(cavities)} connector-cavity records**. The dimensioned transition-bracket candidate and all **25 nominal module placements** are configuration-bound. All **8 actuator buses** now bind to the proposed `PDU_COMMON_RET` single-point reference architecture: each actuator uses its dedicated branch return, while the 17 inter-actuator links leave both GND and VDD empty to prevent a parallel motor-return path. Five RS-485 carrier channels are isolated; three TTL channels are not. The retained rejected-CF9 predecessor calculation has a largest 20 C planning drop of **{max_drop:.3f} V**; it is not an ampacity, logic-margin or thermal release. Every bus-reference test and physical validation gate remains open.\n{end}\n'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-README-START -->"
     if marker in text:
         text = text.replace(marker, block + marker)
@@ -329,7 +419,7 @@ def integrate_root(axis: list[dict[str, object]], cavities: list[dict[str, objec
     if start in text and end in text:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     section = f'''{start}<section id="actuator-cable-kit"><h2>The actuator pin population is explicit</h2><div class="grid"><article class="card pass"><div class="metric">25 / 25</div><p>axis feeds carry their deterministic candidate current caps and routed planning lengths.</p></article><article class="card"><div class="metric">{len(cavities)}</div><p>controlled actuator connector-cavity records.</p></article><article class="card"><div class="metric">34</div><p>outgoing GND/VDD cavities required to remain empty across 17 data-only links.</p></article><article class="card hold"><h3>Wire remains unselected</h3><p>CF130's 0.34 mm² nominal conductor exceeds JST's 0.33 mm² maximum; supplier disposition or reselection is required.</p></article></div><p><a href="harness/actuator-cable-kit-p0.1/index.html">Open the interactive actuator cable-kit guide</a>. It defines the candidate architecture but grants no procurement, crimping, connection or powered-work authority.</p></section>{end}'''
-    section = f'''{start}<section id="actuator-cable-kit"><h2>The actuator wire candidate now fits the contact range</h2><div class="grid"><article class="card pass"><div class="metric">25 / 25</div><p>axis feeds carry calculated 20 C resistance, drop and loss values.</p></article><article class="card"><div class="metric">{max_drop:.3f} V</div><p>largest planning drop at a candidate current cap.</p></article><article class="card"><div class="metric">34</div><p>outgoing GND/VDD cavities required to remain empty across 17 data-only links.</p></article><article class="card hold"><h3>Thermal release remains open</h3><p>CF9.UL.02.02 fits the JST conductor range, but AWG24 current capacity, hot bundling, crimp temperature rise and route life are not validated.</p></article></div><p><a href="harness/actuator-cable-kit-p0.1/index.html">Open the interactive actuator cable-kit guide</a>. It defines a test-coupon candidate but grants no procurement, crimping, connection or powered-work authority.</p></section>{end}'''
+    section = f'''{start}<section id="actuator-cable-kit"><h2>All eight actuator buses now have an explicit reference path</h2><div class="grid"><article class="card pass"><div class="metric">25 / 25</div><p>axis feeds bind moving cable, fixed transition and restrained pigtail candidates.</p></article><article class="card"><div class="metric">8 / 8</div><p>buses return their signal reference to the proposed pelvis star without a daisy ground.</p></article><article class="card"><div class="metric">5 + 3</div><p>five isolated RS-485 channels and three non-isolated TTL channels.</p></article><article class="card hold"><h3>Physical validation remains open</h3><p>Common-mode, TTL margin, regeneration, open-return faults, crimp and thermal behavior are untested.</p></article></div><p><a href="harness/actuator-cable-kit-p0.1/index.html">Open the interactive actuator cable-kit guide</a>. It defines the proposed topology but grants no procurement, crimping, connection or powered-work authority.</p></section>{end}'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-START -->"
     if marker in text:
         text = text.replace(marker, section + marker)
@@ -371,21 +461,31 @@ def main() -> int:
     OUT.mkdir(parents=True)
     sources, connectors = source_rows(), connector_rows()
     axes, data, cavities = axis_rows(), data_candidates(), cavity_rows()
+    references = bus_reference_rows(axes)
     transitions = transition_rows(axes)
-    tests, holds = inspection_rows(), hold_rows()
+    tests, reference_tests, holds = inspection_rows(), bus_reference_test_rows(), hold_rows()
     write_csv(OUT / "primary-source-register.csv", sources)
     write_csv(OUT / "connector-family-disposition.csv", connectors)
     write_csv(OUT / "axis-power-cable-candidate.csv", axes)
     write_csv(OUT / "actuator-power-transition-register.csv", transitions)
     write_csv(OUT / "data-cable-candidate.csv", data)
     write_csv(OUT / "connector-cavity-population.csv", cavities)
+    write_csv(OUT / "bus-reference-register.csv", references)
+    write_csv(OUT / "bus-reference-test-plan.csv", reference_tests)
     write_csv(OUT / "inspection-test-plan.csv", tests)
     write_csv(OUT / "open-holds.csv", holds)
     status = {
         "identifier": IDENTIFIER, "warning": WARNING, "source_count": len(sources), "connector_decision_count": len(connectors),
         "axis_count": len(axes), "transition_count": len(transitions), "data_candidate_count": len(data), "cavity_record_count": len(cavities),
         "required_empty_cavity_count": sum(r["required_population"] == "EMPTY" for r in cavities),
-        "inspection_test_count": len(tests), "open_hold_count": len(holds), "current_caps_propagated": True,
+        "inspection_test_count": len(tests), "bus_reference_test_count": len(reference_tests), "open_hold_count": len(holds), "current_caps_propagated": True,
+        "bus_reference_architecture_defined": True,
+        "bus_reference_count": len(references),
+        "bus_reference_star_node": "PDU_COMMON_RET",
+        "parallel_motor_return_path_prohibited": True,
+        "rs485_isolated_channel_count": sum(r["protocol"].startswith("RS-485") for r in references),
+        "ttl_nonisolated_channel_count": sum(r["protocol"].startswith("TTL") for r in references),
+        "bus_reference_validated": False,
         "canonical_jst_order_code_family_bound": True,
         "cf9_jst_cross_section_geometry_compatible": True,
         "cf9_power_candidate_rejected": True,
@@ -395,7 +495,8 @@ def main() -> int:
         "microfit_fixed_transition_candidate_defined": True,
         "microfit_fixed_transition_exact_order_codes_bound": True,
         "microfit_cf130_core_od_verified": False,
-        "transition_brackets_dimensioned": False,
+        "transition_brackets_dimensioned": True,
+        "transition_bracket_placement_count": 25,
         "cf9_current_capacity_released": False,
         "cf9_route_life_verified": False,
         "planning_resistance_basis_ohm_per_km_at_20c": 79.0,
@@ -406,16 +507,17 @@ def main() -> int:
         "connection_authority": False, "powered_test_authority": False, "motion_authority": False, "energization_authority": False,
     }
     (OUT / "actuator-cable-kit-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
-    (OUT / "README.md").write_text(f"# HR-30 actuator cable kit P0.1\n\n**{WARNING}**\n\nThis package defines all 25 actuator-power branches as a moving igus CF130.03.02.UL pair ending at a fixed, panel-mounted Molex Micro-Fit 3.0 transition, followed by a restrained Alpha Wire 3051 pigtail into the JST EH actuator housing. Direct CF130-to-JST crimping is rejected. Exact transition order-code candidates are bound, but CF130 core OD, bracket geometry, crimp qualification, derating, temperature rise, flex life and every physical work authority remain open.\n", encoding="utf-8", newline="\n")
+    (OUT / "README.md").write_text(f"# HR-30 actuator cable kit P0.1\n\n**{WARNING}**\n\nThis package defines all 25 actuator-power branches as a moving igus CF130.03.02.UL pair ending at a fixed, panel-mounted Molex Micro-Fit 3.0 transition, followed by a restrained Alpha Wire 3051 pigtail into the JST EH actuator housing. Direct CF130-to-JST crimping is rejected. All eight actuator buses now bind to the proposed PDU_COMMON_RET single-point reference: each actuator references the star through its own branch return; every inter-actuator GND and VDD cavity remains empty so the data harness cannot become a parallel motor-current return. Five RS-485 carrier channels are isolated; the three TTL channels are not. Common-mode, TTL margin, regeneration, open-return faults, received fit, crimp, derating, temperature rise, flex life and every physical work authority remain open.\n", encoding="utf-8", newline="\n")
     (OUT / "actuator-cable-kit.svg").write_text(drawing(), encoding="utf-8", newline="\n")
-    (OUT / "index.html").write_text(render(axes, cavities), encoding="utf-8", newline="\n")
+    (OUT / "bus-reference-architecture.svg").write_text(reference_drawing(), encoding="utf-8", newline="\n")
+    (OUT / "index.html").write_text(render(axes, cavities, references), encoding="utf-8", newline="\n")
     shutil.copy2(Path(__file__), OUT / "actuator-cable-kit-source.py")
     manifest = [{"path": p.relative_to(OUT).as_posix(), "bytes": p.stat().st_size, "sha256": sha(p), "warning": WARNING} for p in sorted(OUT.rglob("*")) if p.is_file() and p.name != "file-manifest.csv"]
     write_csv(OUT / "file-manifest.csv", manifest)
     if RELEASE.exists():
         shutil.rmtree(RELEASE)
     shutil.copytree(OUT, RELEASE)
-    integrate_root(axes, cavities)
+    integrate_root(axes, cavities, references)
     correct_root_copy()
     import generate_hr30_system_package_p01 as system
     system.refresh_manifest_and_release()

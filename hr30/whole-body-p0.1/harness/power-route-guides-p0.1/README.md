@@ -1,5 +1,5 @@
-# HR-30 power route guides P0.1
+# HR-30 neutral power-route envelopes P0.1
 
 PRELIMINARY - WHOLE-BODY POWER ROUTE-GUIDE CANDIDATE - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION
 
-This package replaces six straight corridor placeholders with six editable tangent whole-body route candidates. It releases no cable cut, guard, clamp, connection, motion or energized work.
+This package retains six fixed-pose tangent centerlines as planning evidence. It is rejected as a continuous articulated cable/rigid-guard topology; use ../articulated-power-harness-p0.1/.

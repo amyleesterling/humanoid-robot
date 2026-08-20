@@ -51,6 +51,7 @@ def main() -> int:
         path = OUT / row["file"]
         assert int(row["bytes"]) == path.stat().st_size
         assert row["sha256"] == sha(path)
+    assert sha(OUT / "control-successor-source.py") == sha(ROOT / "tools" / "generate_hr30_control_successor_p01.py")
     source_files = sorted(path.name for path in OUT.iterdir() if path.is_file())
     release_files = sorted(path.name for path in REL.iterdir() if path.is_file())
     assert source_files == release_files
