@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "HR30_CAL")(type "KiCad")(uri "${KIPRJMOD}/HR30_CAL.pretty")(options "")(descr "Pomona 73099 candidate from D2134437 rev.101"))
+)

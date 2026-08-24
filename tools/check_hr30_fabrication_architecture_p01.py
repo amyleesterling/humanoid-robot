@@ -69,7 +69,12 @@ def main() -> int:
     cover_mass = sum(float(row["cad_mass_screen_kg"]) for row in parts if row["role"] == "removable cover")
     require(abs(frame_mass - status["frame_mass_screen_kg"]) < 1e-4, "frame mass screen mismatch")
     require(abs(cover_mass - status["cover_mass_screen_kg"]) < 1e-4, "cover mass screen mismatch")
-    require(1.40 < frame_mass < 1.50 and 0.25 < cover_mass < 0.31, "whole-body lightweight fabrication mass screens outside controlled P0.1 bands")
+    require(1.28 < frame_mass < 1.34 and 0.25 < cover_mass < 0.31, "whole-body lightweight fabrication mass screens outside controlled P0.1 bands")
+    materials = {row["part_id"]: row["material_candidate"] for row in parts}
+    require("1.5 MM WALL" in materials["T01_TORSO_RAIL_L"] and "1.5 MM WALL" in materials["T01_TORSO_RAIL_R"], "1.5 mm torso-rail candidate not preserved")
+    require("2.0 MM WALL" in materials["T01_SHOULDER_CROSS_TUBE"], "2.0 mm shoulder-bridge candidate not preserved")
+    require(all("2.5 MM WINDOWED PLATE" in row["material_candidate"] for row in parts if row["role"] in {"shin side plate", "thigh side plate", "shin cross tie", "thigh cross tie", "foot sole carrier", "foot top bridge"}), "2.5 mm leg/foot topology not preserved")
+    require(all("3.5 MM SLOTTED PLATE" in row["material_candidate"] for row in parts if row["role"] in {"upper-arm link plate", "forearm link plate"}), "3.5 mm arm-link topology not preserved")
 
     model = cq.importers.importStep(str(SRC / "HR-30_modular_fabrication_candidate.step")).val()
     require(model.isValid() and model.Volume() > 100000, "fabrication STEP invalid or empty")

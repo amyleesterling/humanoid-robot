@@ -4,7 +4,7 @@
 
 This is the native KiCad 10 whole-body architecture for the current 25-axis HR-30 candidate. It contains a root index plus eighteen populated child sheets. Five RS-485 and three TTL data-only segments match the whole-body bus allocation exactly; all 25 actuators have distinct protected-feed boundaries. Individual head HMI devices, pelvis IMU, bilateral four-point foot sensing and a separate isolated onboard-later energy sheet are also represented.
 
-The actuator interface is now a pin-level candidate, not eight abstract boxes. STM32H743ZIT6 LQFP144 package pins are allocated to all eight UART channels; Carrier A contains four ISOW1432DFMR isolated RS-485 candidates; Carrier B contains one ISOW1432DFMR plus three SN74LVC1T45DCKR 3.3/5 V single-wire TTL translators. Exact JST GH controller and data-only field connectors are shown. The field connectors intentionally contain no actuator VDD contact.
+The actuator interface is now a pin-level candidate, not eight abstract boxes. STM32H743ZIT6 LQFP144 package pins are allocated to all eight UART channels; Carrier A contains four ISOW1432DFMR isolated RS-485 candidates; Carrier B contains one ISOW1432DFMR plus three SN74LVC1T45DCKR 3.3/5 V single-wire TTL translators. The logic-only controller connectors remain JST GH; the eight data-only field ports are JST PA through-hole secure-lock candidates whose published contact ranges include the planning conductors. The field connectors intentionally contain no actuator VDD contact.
 
 Sheet 01 now encodes the tether-first controlled 12 V source, three regulated 9 V TTL rails and a deliberately disconnected onboard-later battery/charger path. Sheet 02 encodes two independently commanded series contactor coils, linked-auxiliary EDM candidates, dual-channel E-stop, monitored reset, charger inhibit and an ordinary-watchdog inhibit that has zero safety credit. Reset restores eligibility only and cannot command motion.
 
@@ -26,7 +26,7 @@ AX_* actuator terminals use current official ROBOTIS actuator-side pin numbers. 
 12. `12_left_distal_ttl.kicad_sch` — Left wrist/gripper TTL data bus and individual feeds
 13. `13_right_distal_ttl.kicad_sch` — Right wrist/gripper TTL data bus and individual feeds
 14. `14_head_ttl_sensors_hmi.kicad_sch` — Head TTL, cameras, face display, audio and cooling
-15. `15_pelvis_aux_imu.kicad_sch` — Auxiliary conversion and pelvis inertial sensing
+15. `15_pelvis_aux_imu.kicad_sch` — Three-rail auxiliary conversion and pelvis inertial sensing
 16. `16_left_foot_load_sensing.kicad_sch` — Left foot four-point load sensing
 17. `17_right_foot_load_sensing.kicad_sch` — Right foot four-point load sensing
 18. `18_onboard_later_energy_evaluation.kicad_sch` — Onboard-later isolated energy evaluation

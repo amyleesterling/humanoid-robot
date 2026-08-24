@@ -1,0 +1,54 @@
+{
+  "identifier": "HR30-E1-DIAGNOSTIC-WATCHDOG-P0.1",
+  "date": "2026-08-18",
+  "warning": "PRELIMINARY - DIAGNOSTIC ONLY - ZERO SAFETY CREDIT - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION",
+  "native_kicad_schematic_sheet_count": 2,
+  "native_kicad_board": true,
+  "board_dimensions_mm": [
+    40,
+    25,
+    1.6
+  ],
+  "copper_layers": 2,
+  "component_count": 12,
+  "named_net_count": 6,
+  "via_count": 8,
+  "erc_errors": 0,
+  "erc_warnings": 0,
+  "drc_violations": 0,
+  "unconnected_items": 0,
+  "tps3431_exact_candidate_bound": true,
+  "watchdog_timeout_ms": {
+    "minimum": 1360,
+    "typical": 1600,
+    "maximum": 1840
+  },
+  "jio1_populated_contacts": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "jio1_physically_empty_contacts": [
+    4,
+    6,
+    7,
+    8
+  ],
+  "permit_hard_tied_low": true,
+  "watchdog_outputs_local_only": true,
+  "actuator_interfaces_present": false,
+  "actuator_power_path_present": false,
+  "diagnostic_only": true,
+  "functional_safety_credit": false,
+  "pcb_fabricated": false,
+  "fixture_cable_built": false,
+  "hil_executed": false,
+  "procurement_authority": false,
+  "fabrication_authority": false,
+  "assembly_authority": false,
+  "connection_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false
+}

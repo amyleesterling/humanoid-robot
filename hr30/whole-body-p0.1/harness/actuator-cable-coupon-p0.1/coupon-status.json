@@ -1,7 +1,7 @@
 {
   "identifier": "HR30-ACTUATOR-CABLE-COUPON-P0.1",
   "warning": "PRELIMINARY - UNBUILT CABLE COUPON PLAN - NOT APPROVED FOR PROCUREMENT, PRODUCTION CUTTING, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION",
-  "source_count": 18,
+  "source_count": 20,
   "tooling_candidate_count": 4,
   "bom_item_count": 11,
   "specimen_family_count": 11,
@@ -16,6 +16,8 @@
   "dynamic_22awg_candidate_defined": true,
   "complete_fixed_transition_coupon_defined": true,
   "direct_cf130_to_jst_eh_crimp_rejected": true,
+  "transition_brackets_dimensioned": true,
+  "transition_bracket_placement_count": 25,
   "alpha_3051_crimp_process_selected": false,
   "cf130_crimp_process_selected": false,
   "cf9_specific_crimp_process_selected": false,

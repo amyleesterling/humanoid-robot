@@ -15,7 +15,7 @@
   ],
   "bpl_gripper_plate_sha256": "3f34070885c28e9322eddbdbe4c286319664a76d6407c1957d0c2230f410bc63",
   "complete_fit_check_zip_stl_count": 98,
-  "complete_fit_check_zip_sha256": "13ad657b9781336640a4b2fda010bf0a5af0842cb222f0a6226e9318c6a70d62",
+  "complete_fit_check_zip_sha256": "e3a91f8895c4a87d72dd82ecb0eccb238ff99fea344255a01f3d74fd32776ad2",
   "bpl_service_currently_available": false,
   "bpl_print_time_verified": false,
   "makerspace_capability_confirmed": false,

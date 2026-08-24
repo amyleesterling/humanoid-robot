@@ -43,6 +43,7 @@ TI_TPD = "https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf"
 TDK_FB = "https://product.tdk.com/en/search/emc/emc/beads/info?part_no=MPZ1005S331ETD25"
 LITTELFUSE_SM712 = "https://www.littelfuse.com/assetdocs/littelfuse_tvs_diode_array_sm712_datasheet?assetguid=8313a28c-8802-4d47-a2a7-e30b5b1f67d8"
 JST_GH = "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf"
+JST_PA = "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf"
 JLC_6_LAYER = "https://jlcpcb.com/6-layer-pcb"
 JLC_IMPEDANCE = "https://jlcpcb.com/impedance"
 
@@ -135,11 +136,76 @@ def apply_stackup(board_path: Path) -> None:
 
 
 def lib_fp(identifier: str):
+    if identifier.startswith("HR30_PA:"):
+        return pa_field_footprint(identifier.split(":", 1)[1])
     library, name = identifier.split(":", 1)
     fp = pcbnew.FootprintLoad(str(FP_ROOT / f"{library}.pretty"), name)
     if fp is None:
         raise RuntimeError(f"cannot load footprint {identifier}")
     return fp
+
+
+def footprint_layers(*layers: int) -> pcbnew.LSET:
+    result = pcbnew.LSET()
+    for layer in layers:
+        result.AddLayer(layer)
+    return result
+
+
+def add_fp_line(fp: pcbnew.FOOTPRINT, start: tuple[float, float], end: tuple[float, float], layer: int, width: float) -> None:
+    item = pcbnew.PCB_SHAPE(fp)
+    item.SetShape(pcbnew.SHAPE_T_SEGMENT)
+    item.SetStart(pcbnew.VECTOR2I_MM(*start)); item.SetEnd(pcbnew.VECTOR2I_MM(*end))
+    item.SetLayer(layer); item.SetWidth(pcbnew.FromMM(width)); fp.Add(item)
+
+
+def pa_field_footprint(name: str) -> pcbnew.FOOTPRINT:
+    """Create the JST PA top-entry through-hole field footprint.
+
+    The pad pitch, nominal plated-hole diameter, alignment-boss diameter and
+    boss offset come directly from JST's ePA-F catalog page 3.  The 6/8 x
+    5.3 mm Fab envelope comes from the part table and page-9 orthographic
+    drawing.  The courtyard is intentionally conservative; JST application
+    review and received-part fit remain open.
+    """
+    circuits_by_name = {"JST_PA_B02B-PASK-1": 2, "JST_PA_B03B-PASK-1": 3}
+    if name not in circuits_by_name:
+        raise KeyError(name)
+    circuits = circuits_by_name[name]
+    fp = pcbnew.FOOTPRINT(None); fp.SetFPID(pcbnew.LIB_ID("HR30_PA", name)); fp.SetValue(name)
+    span = (circuits - 1) * 2.0
+    x0 = -span / 2.0
+    pad_layers = pcbnew.LSET.AllCuMask(); pad_layers.AddLayer(pcbnew.F_Mask); pad_layers.AddLayer(pcbnew.B_Mask)
+    for index in range(circuits):
+        pad = pcbnew.PAD(fp); pad.SetNumber(str(index + 1)); pad.SetAttribute(pcbnew.PAD_ATTRIB_PTH)
+        pad.SetShape(pcbnew.PAD_SHAPE_RECT if index == 0 else pcbnew.PAD_SHAPE_CIRCLE)
+        pad.SetSize(pcbnew.VECTOR2I_MM(1.40, 1.40)); pad.SetDrillSize(pcbnew.VECTOR2I_MM(0.75, 0.75))
+        pad.SetFPRelativePosition(pcbnew.VECTOR2I_MM(x0 + index * 2.0, 0.0)); pad.SetLayerSet(pad_layers); fp.Add(pad)
+    boss = pcbnew.PAD(fp); boss.SetNumber(""); boss.SetAttribute(pcbnew.PAD_ATTRIB_NPTH)
+    boss.SetShape(pcbnew.PAD_SHAPE_CIRCLE); boss.SetSize(pcbnew.VECTOR2I_MM(1.15, 1.15)); boss.SetDrillSize(pcbnew.VECTOR2I_MM(1.15, 1.15))
+    boss.SetFPRelativePosition(pcbnew.VECTOR2I_MM(span / 2.0 + 1.5, 1.7)); boss.SetLayerSet(footprint_layers(pcbnew.F_Mask, pcbnew.B_Mask)); fp.Add(boss)
+    body_w = 6.0 if circuits == 2 else 8.0
+    for start, end in (((-body_w / 2, -2.65), (body_w / 2, -2.65)), ((body_w / 2, -2.65), (body_w / 2, 2.65)), ((body_w / 2, 2.65), (-body_w / 2, 2.65)), ((-body_w / 2, 2.65), (-body_w / 2, -2.65))):
+        add_fp_line(fp, start, end, pcbnew.F_Fab, 0.15)
+    courtyard_w = body_w + 1.0
+    for start, end in (((-courtyard_w / 2, -3.25), (courtyard_w / 2, -3.25)), ((courtyard_w / 2, -3.25), (courtyard_w / 2, 3.25)), ((courtyard_w / 2, 3.25), (-courtyard_w / 2, 3.25)), ((-courtyard_w / 2, 3.25), (-courtyard_w / 2, -3.25))):
+        add_fp_line(fp, start, end, pcbnew.F_CrtYd, 0.05)
+    fp.Reference().SetVisible(False); fp.Value().SetVisible(False)
+    return fp
+
+
+def write_custom_footprint_library() -> None:
+    library = OUT / "HR30_PA.pretty"
+    library.mkdir(parents=True, exist_ok=True)
+    for stale in library.glob("*.kicad_mod"):
+        stale.unlink()
+    io = pcbnew.PCB_IO_KICAD_SEXPR()
+    for name in ("JST_PA_B02B-PASK-1", "JST_PA_B03B-PASK-1"):
+        io.FootprintSave(str(library), pa_field_footprint(name))
+    (OUT / "fp-lib-table").write_text(
+        '(fp_lib_table\n  (version 7)\n  (lib (name "HR30_PA")(type "KiCad")(uri "${KIPRJMOD}/HR30_PA.pretty")(options "")(descr "JST PA field connector candidates from official ePA-F catalog"))\n)\n',
+        encoding="utf-8",
+    )
 
 
 def add_part(parts: list[Part], *args, **kwargs) -> Part:
@@ -176,7 +242,7 @@ def circuit_parts() -> list[Part]:
             "17": f"{bus}_DP", "18": f"{bus}_DN", "19": f"{bus}_DN", "20": f"{bus}_DP",
         }
         add_part(parts, board, uref, f"ISOW1432DFMR {bus}", "ISOW1432DFMR", "Texas Instruments", "Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm", pins, cx, cy, 90, source=TI_ISOW, evidence="SLLSF86C Rev C, March 2022; pin functions and decoupling requirements")
-        add_part(parts, board, f"J{100 + index}", f"{bus} data-only field", "BM03B-GHS-TBT", "JST", "Connector_JST:JST_GH_BM03B-GHS-TBT_1x03-1MP_P1.25mm_Vertical", {"1": f"{bus}_RET", "2": f"{bus}_DP", "3": f"{bus}_DN"}, cx, 4.0, source=JST_GH, evidence="No actuator VDD contact")
+        add_part(parts, board, f"J{100 + index}", f"{bus} data-only field", "B03B-PASK-1", "JST", "HR30_PA:JST_PA_B03B-PASK-1", {"1": f"{bus}_RET", "2": f"{bus}_DP", "3": f"{bus}_DN"}, cx, 4.0, 180, source=JST_PA, evidence="JST PA 2.0 mm secure-lock through-hole header; PAP-03V-S/SPHD-001T-P0.5 harness candidate; no actuator VDD contact")
         add_part(parts, board, f"FB{tag}P", "330R@100MHz isolated supply bead", "MPZ1005S331ETD25", "TDK", "Inductor_SMD:L_0402_1005Metric", {"1": iso_out, "2": iso_in}, cx + 2.0, 14.0, source=TDK_FB, evidence="Production; 330 ohm at 100 MHz; 700 mA; 0.28 ohm max")
         add_part(parts, board, f"FB{tag}N", "330R@100MHz isolated return bead", "MPZ1005S331ETD25", "TDK", "Inductor_SMD:L_0402_1005Metric", {"1": gnd2, "2": f"{bus}_RET"}, cx + 4.4, 14.0, source=TDK_FB, evidence="Second ferrite follows TI two-bead emissions layout")
         cap_specs = (
@@ -198,7 +264,7 @@ def circuit_parts() -> list[Part]:
         tag = f"{index}"
         data_pre = f"{bus}_DATA_PRE"
         add_part(parts, board, f"U20{tag}", f"SN74LVC1T45DCKR {bus}", "SN74LVC1T45DCKR", "Texas Instruments", "Package_TO_SOT_SMD:SOT-363_SC-70-6", {"1": "CTRL_3V3", "2": "CTRL_GND", "3": f"UART_{bus}_TX", "4": data_pre, "5": f"UART_{bus}_DIR", "6": "CTRL_5V"}, cx, 20.0, source=TI_LVC, evidence="SCES515N Rev N, June 2024; exact DCK pin mapping")
-        add_part(parts, board, f"J20{tag}", f"{bus} data-only field", "BM02B-GHS-TBT", "JST", "Connector_JST:JST_GH_BM02B-GHS-TBT_1x02-1MP_P1.25mm_Vertical", {"1": "CTRL_GND", "2": f"{bus}_DATA"}, cx, 4.0, source=JST_GH, evidence="No actuator VDD contact")
+        add_part(parts, board, f"J20{tag}", f"{bus} data-only field", "B02B-PASK-1", "JST", "HR30_PA:JST_PA_B02B-PASK-1", {"1": "CTRL_GND", "2": f"{bus}_DATA"}, cx, 4.0, 180, source=JST_PA, evidence="JST PA 2.0 mm secure-lock through-hole header; PAP-02V-S/SPHD-002T-P0.5 harness candidate; no actuator VDD contact")
         add_part(parts, board, f"C20{tag}A", "100nF 50V X7R VCCA", "C1608X7R1H104K080AA", "TDK", "Capacitor_SMD:C_0603_1608Metric", {"1": "CTRL_3V3", "2": "CTRL_GND"}, cx - 3.0, 23.0, source=TI_LVC, evidence="Local VCCA bypass")
         add_part(parts, board, f"C20{tag}B", "100nF 50V X7R VCCB", "C1608X7R1H104K080AA", "TDK", "Capacitor_SMD:C_0603_1608Metric", {"1": "CTRL_5V", "2": "CTRL_GND"}, cx + 3.0, 23.0, source=TI_LVC, evidence="Local VCCB bypass")
         add_part(parts, board, f"R20{tag}S", "33R 1% series", "RC0603FR-0733RL", "Yageo", "Resistor_SMD:R_0603_1608Metric", {"1": data_pre, "2": f"{bus}_DATA"}, cx, 14.0, source=TI_LVC, evidence="Signal-integrity candidate; waveform validation required")
@@ -335,6 +401,24 @@ def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> di
             return False
         return True
 
+    def point_clear_of_other_field_pth(x: float, y: float, net_name: str, margin: float = 0.18) -> bool:
+        for other in pad_records:
+            if other["net"] == net_name or not bool(other["through"]) or not str(other["ref"]).startswith("J"):
+                continue
+            left, top_y, right, bottom_y = map(float, other["bounds"])
+            if left - margin <= x <= right + margin and top_y - margin <= y <= bottom_y + margin:
+                return False
+        return True
+
+    def segment_clear_of_other_field_pth(start: tuple[float, float], end: tuple[float, float], net_name: str) -> bool:
+        for step in range(1, 10):
+            fraction = step / 10.0
+            x = start[0] + (end[0] - start[0]) * fraction
+            y = start[1] + (end[1] - start[1]) * fraction
+            if not point_clear_of_other_field_pth(x, y, net_name):
+                return False
+        return True
+
     # Move every escape via far enough beyond its SMD pad to clear unrelated
     # copper and every other drilled escape.  The fan-out direction remains
     # normal to the package pad row, preserving a short deterministic stub.
@@ -435,6 +519,8 @@ def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> di
         if not (0 <= ix < nx and 0 <= iy < ny):
             return False
         x, y = point_for(cell)
+        if not point_clear_of_other_field_pth(x, y, net_name):
+            return False
         if not all((x - hx) ** 2 + (y - hy) ** 2 >= 1.85 ** 2 for hx, hy in mounting_centers):
             return False
         return all(not (x0 <= x <= x1 and y0 <= y <= y1) for x0, x1, y0, y1 in isolation_barriers)
@@ -468,6 +554,8 @@ def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> di
 
     def edge_available(layer: int, start: tuple[int, int], end: tuple[int, int], net_name: str) -> bool:
         a, b = point_for(start), point_for(end)
+        if not segment_clear_of_other_field_pth(a, b, net_name):
+            return False
         if not all(other_net == net_name or point_segment_distance((ox, oy), a, b) >= 0.39 for ox, oy, other_net in escape_obstacles):
             return False
         return all(other_net == net_name or point_segment_distance(point_for(cell), a, b) >= 0.39 for cell, other_net in transition_vias.items())
@@ -476,7 +564,7 @@ def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> di
         base = nearest_cell(point)
         candidates = [(dx * dx + dy * dy, (base[0] + dx, base[1] + dy)) for dx in range(-3, 4) for dy in range(-3, 4)]
         for _, cell in sorted(candidates):
-            if any(cell_available(layer, cell, net_name) for layer in layers):
+            if any(cell_available(layer, cell, net_name) for layer in layers) and segment_clear_of_other_field_pth(point, point_for(cell), net_name):
                 return cell
         raise RuntimeError(f"no internal grid access near {point} for {net_name}")
 
@@ -598,11 +686,14 @@ def write_board(board_id: str, parts: list[Part]) -> dict[str, object]:
         edge = pcbnew.PCB_SHAPE(board); edge.SetShape(pcbnew.SHAPE_T_SEGMENT); edge.SetStart(pcbnew.VECTOR2I_MM(*start)); edge.SetEnd(pcbnew.VECTOR2I_MM(*end))
         edge.SetLayer(pcbnew.Edge_Cuts); edge.SetWidth(pcbnew.FromMM(0.20)); board.Add(edge)
     routing = route_board(board, nets)
-    add_text(board, f"HR-30 CARRIER {board_id} P0.1", 26, 1.8, 0.9, pcbnew.B_SilkS)
     add_text(board, "DATA ONLY - NO ACTUATOR VDD", 25, 40.0, 0.8, pcbnew.B_SilkS)
     add_text(board, "PRELIMINARY / DO NOT FABRICATE OR CONNECT", 18, 35.0, 0.8, pcbnew.B_SilkS)
     board_path = OUT / f"carrier-{board_id.lower()}" / f"hr30-carrier-{board_id.lower()}-p0.1.kicad_pcb"
     board_path.parent.mkdir(parents=True, exist_ok=True); pcbnew.SaveBoard(str(board_path), board)
+    (board_path.parent / "fp-lib-table").write_text(
+        '(fp_lib_table\n  (version 7)\n  (lib (name "HR30_PA")(type "KiCad")(uri "${KIPRJMOD}/../HR30_PA.pretty")(options "")(descr "JST PA field connector candidates from official ePA-F catalog"))\n)\n',
+        encoding="utf-8",
+    )
     apply_stackup(board_path)
     return {"board": board_id, "path": board_path, "parts": len(board_parts), "nets": len(net_names), "routing": routing}
 
@@ -748,7 +839,8 @@ def publish(parts: list[Part], boards: list[dict[str, object]], validation: list
         ("TI-TPD1E10B06", "Texas Instruments", "TPD1E10B06 datasheet", "SLLSEB1G Rev G; August 2024", TI_TPD, "active 5.5 V bidirectional single-line ESD candidate"),
         ("TDK-MPZ1005", "TDK", "MPZ1005S331ETD25 product page", "live production page; accessed 2026-08-14", TDK_FB, "330 ohm at 100 MHz; 700 mA; 0.28 ohm max; 0402"),
         ("LITTELFUSE-SM712", "Littelfuse", "SM712 datasheet", "revised 2019-08-22; active page accessed 2026-08-14", LITTELFUSE_SM712, "RS-485 -7/+12 V working range; exact SOT23-3 order code"),
-        ("JST-GH", "JST", "GH connector catalog", "live catalog accessed 2026-08-14", JST_GH, "BM15/BM03/BM02 header families; data-only connector boundary"),
+        ("JST-GH", "JST", "GH connector catalog", "live catalog accessed 2026-08-14", JST_GH, "BM15 controller-side logic header family only"),
+        ("JST-PA", "JST", "PA connector family catalog", "live official catalog accessed 2026-08-18; publication revision not stated", JST_PA, "B02B-PASK-1/B03B-PASK-1 through-hole secure-lock field headers; PAP-02V-S/PAP-03V-S housings; SPHD-001T-P0.5 0.13-0.33 mm2 and SPHD-002T-P0.5 0.08-0.21 mm2 contacts"),
         ("JLC-6L-CAPABILITY", "JLCPCB", "6-layer PCB manufacturing capability", "live official page accessed 2026-08-14", JLC_6_LAYER, "six-layer 1.6 mm capability and catalog manufacturing limits"),
         ("JLC-STACKUP-3313", "JLCPCB", "PCB impedance and stackup calculator", "live official page accessed 2026-08-14", JLC_IMPEDANCE, f"{STACKUP_ID} nominal layer buildup and material identifiers"),
     ]
@@ -758,12 +850,12 @@ def publish(parts: list[Part], boards: list[dict[str, object]], validation: list
         "carrier_a": {"board_mm": [82, 42, 1.6], "copper_layers": 6, "components": next(b["parts"] for b in boards if b["board"] == "A"), "native_pcb": True},
         "carrier_b": {"board_mm": [82, 42, 1.6], "copper_layers": 6, "components": next(b["parts"] for b in boards if b["board"] == "B"), "native_pcb": True},
         "validation": validation,
-        "design_advancement": "complete native carrier schematics, exact footprints, deterministic routed copper, native isolation moats, candidate stackup and machine-readable fabrication-candidate outputs",
+        "design_advancement": "complete native carrier schematics, catalog-dimensioned JST PA field footprints, deterministic routed copper, native isolation moats, candidate stackup and machine-readable fabrication-candidate outputs",
         "routing_complete": True, "unconnected_pad_count": 0, "kicad_drc_violations": 0, "kicad_erc_errors": 0, "kicad_erc_warnings": 0,
         "stackup_candidate": STACKUP_ID, "stackup_manufacturer_nominal_finished_thickness_mm": 1.6, "published_buildup_without_soldermask_mm": 1.5384,
         "fabrication_candidate_outputs_generated": True, "fabrication_outputs_released": False,
         "drc_acceptance": False, "fabrication_authority": False, "assembly_authority": False, "connection_authority": False, "motion_authority": False, "energization_authority": False,
-        "open": ["independent schematic/footprint/routing/DFM review", "manufacturer confirmation of stackup, finished thickness, finish and controlled impedance", "termination and bias configuration", "surge/miswire/EMC/timing/thermal tests", "cable and power-injection hardware", "physical isolation and fault testing", "qualified electrical and safety review"],
+        "open": ["independent schematic/footprint/routing/DFM review", "JST PA received-part fit and harness insulation-diameter/crimp-tool validation", "manufacturer confirmation of stackup, finished thickness, finish and controlled impedance", "termination and bias configuration", "surge/miswire/EMC/timing/thermal tests", "cable and power-injection hardware", "physical isolation and fault testing", "qualified electrical and safety review"],
     }
     (OUT / "carrier-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
     cards = []
@@ -771,9 +863,9 @@ def publish(parts: list[Part], boards: list[dict[str, object]], validation: list
         bid = str(b["board"]); stem = Path(b["path"]).stem
         layer_views = ''.join(f'''<details><summary>{layer} routing</summary><div class="board"><object data="output/{stem}-{layer.lower().replace('.', '-')}.svg" type="image/svg+xml" aria-label="Carrier {bid} {layer} routed copper"></object></div></details>''' for layer in ("In1.Cu", "In2.Cu", "In3.Cu", "In4.Cu"))
         cards.append(f'''<article><h2>Carrier {bid}</h2><p><strong>{b['parts']} components · {b['nets']} named nets · {b['routing']['vias']} vias · 0 unconnected pads</strong></p><h3>Front copper and components</h3><div class="board"><object data="output/{stem}-front.svg" type="image/svg+xml" aria-label="Carrier {bid} front routed board"></object></div><h3>Internal routing atlas</h3>{layer_views}<h3>Back copper and components</h3><div class="board"><object data="output/{stem}-back.svg" type="image/svg+xml" aria-label="Carrier {bid} back routed board"></object></div><p><a href="carrier-{bid.lower()}/{stem}.kicad_pcb">Open native KiCad PCB</a> · <a href="validation/{stem}-drc.rpt">Read the complete DRC 0/0 report</a> · <a href="fabrication-candidate-not-released/carrier-{bid.lower()}/">Inspect machine fabrication candidates</a></p></article>''')
-    (OUT / "index.html").write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 actuator interface carriers P0.1</title><style>:root{{--ink:#071b38;--blue:#0b4f91;--sky:#b9e8ff;--gold:#f5bd2b;--paper:#f5fbff}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,sans-serif}}header,main{{max-width:1180px;margin:auto;padding:28px}}header{{max-width:none;background:var(--ink);color:white}}header>div{{max-width:1180px;margin:auto}}h1{{font-size:clamp(2rem,5vw,4rem);line-height:1.05}}.warning{{border:3px solid var(--gold);padding:14px;font-weight:900}}article{{background:white;border:2px solid var(--blue);border-radius:16px;padding:20px;margin:22px 0}}.board{{overflow:auto;border:1px solid #8bc7e8;background:white}}object{{display:block;width:100%;min-width:760px;min-height:420px}}details{{margin:14px 0;border:1px solid #8bc7e8;border-radius:10px;padding:12px}}summary{{cursor:pointer;font-size:18px;font-weight:850;color:var(--blue)}}a{{color:#07549a;font-weight:800}}small{{font-size:14px}}@media(max-width:680px){{body{{font-size:16px}}header,main{{padding:20px 14px}}}}</style></head><body><header><div><p class="warning">{html.escape(WARNING)}</p><h1>Two routed physical carrier candidates.</h1><p>The whole-body architecture now has complete application circuits, exact footprints, 82 × 42 mm routed board geometry, editable KiCad sources and layer-by-layer inspection views.</p></div></header><main><p><strong>Verified here:</strong> native KiCad ERC 0/0, DRC 0/0, zero unconnected pads, exact all-copper isolation moats and a bound {STACKUP_ID} candidate stackup. <strong>Not verified:</strong> independent layout acceptance, manufacturer DFM, controlled impedance, signal integrity, EMC, thermal, fault behavior or physical safety. Machine files are inspection/quotation candidates only and are not released for ordering.</p>{''.join(cards)}<article><h2>Configuration and source records</h2><p><a href="carrier-component-register.csv">Component register</a> · <a href="carrier-terminal-register.csv">pad/net register</a> · <a href="carrier-routing-register.csv">routing register</a> · <a href="isolation-moat-register.csv">isolation moats</a> · <a href="stackup-register.csv">stackup</a> · <a href="fabrication-candidate-register.csv">machine-file register</a> · <a href="primary-source-register.csv">primary sources</a> · <a href="{PROJECT}.kicad_pro">native schematic project</a></p></article></main></body></html>''', encoding="utf-8")
+    (OUT / "index.html").write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 actuator interface carriers P0.1</title><style>:root{{--ink:#071b38;--blue:#0b4f91;--sky:#b9e8ff;--gold:#f5bd2b;--paper:#f5fbff}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,sans-serif}}header,main{{max-width:1180px;margin:auto;padding:28px}}header{{max-width:none;background:var(--ink);color:white}}header>div{{max-width:1180px;margin:auto}}h1{{font-size:clamp(2rem,5vw,4rem);line-height:1.05}}.warning{{border:3px solid var(--gold);padding:14px;font-weight:900}}article{{background:white;border:2px solid var(--blue);border-radius:16px;padding:20px;margin:22px 0}}.board{{overflow:auto;border:1px solid #8bc7e8;background:white}}object{{display:block;width:100%;min-width:760px;min-height:420px}}details{{margin:14px 0;border:1px solid #8bc7e8;border-radius:10px;padding:12px}}summary{{cursor:pointer;font-size:18px;font-weight:850;color:var(--blue)}}a{{color:#07549a;font-weight:800}}small{{font-size:14px}}@media(max-width:680px){{body{{font-size:16px}}header,main{{padding:20px 14px}}}}</style></head><body><header><div><p class="warning">{html.escape(WARNING)}</p><h1>Two routed physical carrier candidates.</h1><p>The whole-body architecture now has complete application circuits, exact footprints, 82 × 42 mm routed board geometry, editable KiCad sources and layer-by-layer inspection views.</p></div></header><main><p><strong>Verified here:</strong> native KiCad ERC 0/0, DRC 0/0, zero unconnected pads, exact all-copper isolation moats and a bound {STACKUP_ID} candidate stackup. <strong>Not verified:</strong> independent layout acceptance, manufacturer DFM, controlled impedance, signal integrity, EMC, thermal, fault behavior or physical safety. Machine files are inspection/quotation candidates only and are not released for ordering.</p><article><h2>Field connectors now match the planning conductors</h2><p>The five RS-485 ports use JST PA <strong>B03B-PASK-1</strong> headers with PAP-03V-S housings and SPHD-001T-P0.5 contacts; the published 0.13–0.33 mm² contact range includes the 0.25 mm² planning conductor. The three TTL ports use <strong>B02B-PASK-1</strong>, PAP-02V-S and SPHD-002T-P0.5; its 0.08–0.21 mm² range includes the 0.14 mm² planning conductor. Both are data-only boundaries with no actuator VDD contact. Received-part fit, insulation diameter, crimp tooling, pull strength and physical electrical validation remain open.</p></article>{''.join(cards)}<article><h2>Configuration and source records</h2><p><a href="carrier-component-register.csv">Component register</a> · <a href="carrier-terminal-register.csv">pad/net register</a> · <a href="carrier-routing-register.csv">routing register</a> · <a href="isolation-moat-register.csv">isolation moats</a> · <a href="stackup-register.csv">stackup</a> · <a href="fabrication-candidate-register.csv">machine-file register</a> · <a href="primary-source-register.csv">primary sources</a> · <a href="{PROJECT}.kicad_pro">native schematic project</a></p></article></main></body></html>''', encoding="utf-8")
     readme = f"""# HR-30 actuator-interface carriers P0.1\n\n**{WARNING}**\n\nThis package advances the whole humanoid's eight actuator buses to two dimensioned, routed native KiCad PCB candidates. Carrier A contains four complete ISOW1432 RS-485 application channels. Carrier B contains one complete ISOW1432 channel and three SN74LVC1T45 translator channels. Both boards are 82 x 42 mm, use six copper layers, retain data-only field connectors, and regenerate from the source tool.\n\nKiCad 10 verifies schematic ERC at 0 errors / 0 warnings and both boards at 0 DRC violations / 0 unconnected pads. The deterministic route uses four internal signal layers with 0.15 mm general traces, 0.20 mm return/power-related traces, and 0.35/0.15 mm through vias. Five native all-copper rule areas preserve 4.0 mm isolation moats across the ISOW1432 barriers. The native boards bind the manufacturer-published {STACKUP_ID} nominal 1.6 mm six-layer candidate; the published copper/dielectric buildup totals 1.5384 mm before solder mask.\n\nThe machine-readable Gerber, Excellon, IPC-D-356, position and board-statistics outputs are fabrication candidates for inspection and DFM quotation only. They are explicitly not released for ordering. DRC completion does not establish independent design acceptance, controlled impedance, enclosure fit, cable retention, surge/miswire behavior, timing, waveform integrity, EMC, thermal performance, fault safety or permission for any powered test.\n\nOpen `index.html` for the interactive layer-by-layer guide.\n"""
-    (OUT / "README.md").write_text(readme, encoding="utf-8")
+    (OUT / "README.md").write_text(readme + "\nThe eight field ports use catalog-dimensioned JST PA through-hole secure-lock candidates: B03B-PASK-1/PAP-03V-S/SPHD-001T-P0.5 for the 0.25 mm2 RS-485 conductors, and B02B-PASK-1/PAP-02V-S/SPHD-002T-P0.5 for the 0.14 mm2 TTL conductors. This removes the prior JST GH conductor-range mismatch. Received-part fit, insulation O.D., crimp tooling, pull testing and qualified application review remain open.\n", encoding="utf-8")
     files = [p for p in OUT.rglob("*") if p.is_file() and p.name != "file-manifest.csv"]
     write_csv(OUT / "file-manifest.csv", ["path", "bytes", "sha256", "warning"], [{"path": p.relative_to(OUT).as_posix(), "bytes": p.stat().st_size, "sha256": sha256(p), "warning": WARNING} for p in sorted(files)])
 
@@ -805,7 +897,7 @@ def update_whole_body_package() -> None:
         if row["hold_id"] == "HR30-P01-H11":
             row["unresolved_item"] = (
                 "The native 19-sheet HR-30 KiCad project and ten-sheet carrier project bind all 25 axes, 25 distinct actuator power-feed boundaries, eight STM32 UART groups, five complete "
-                "ISOW1432 application circuits, three complete SN74LVC1T45 application circuits, exact data-only JST GH "
+                "ISOW1432 application circuits, three complete SN74LVC1T45 application circuits, catalog-dimensioned data-only JST PA "
                 "connectors, and two 82 x 42 mm six-layer routed candidates. Carrier schematic ERC is 0/0; both boards have "
                 "KiCad DRC 0/0 and zero unconnected pads. Five native all-copper isolation moats and the JLC06161H-3313 stackup "
                 "candidate are bound in source. Independent layout/DFM acceptance, manufacturer stackup confirmation, cables, "
@@ -867,6 +959,7 @@ def main() -> None:
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
+    write_custom_footprint_library()
     parts = circuit_parts(); print("carrier: writing schematic", flush=True); write_schematic(parts)
     print("carrier: writing board A", flush=True); board_a = write_board("A", parts)
     print("carrier: writing board B", flush=True); board_b = write_board("B", parts)

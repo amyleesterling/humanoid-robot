@@ -64,7 +64,9 @@ def main() -> int:
 
     model = mujoco.MjModel.from_xml_path(str((BODY / "mujoco-dynamics-validation-p0.1" / "hr30_tether_ideal_fixture.xml").resolve()))
     need((model.nq, model.nv, model.nu, model.nmocap) == (32, 31, 25, 1), "compiled model topology drift")
-    need(abs(float(model.body_subtreemass[1]) - 9.989582) < 5e-6, "model mass drift")
+    mass_summary = json.loads((BODY / "mass-reconciliation-summary.json").read_text(encoding="utf-8"))
+    expected_mass = float(mass_summary["active_tether_dynamics_planning_mass_kg"])
+    need(abs(float(model.body_subtreemass[1]) - expected_mass) < 5e-6, "model mass drift")
 
     samples = rows(SRC / "inverse-dynamics-samples.csv")
     summaries = rows(SRC / "axis-demand-summary.csv")

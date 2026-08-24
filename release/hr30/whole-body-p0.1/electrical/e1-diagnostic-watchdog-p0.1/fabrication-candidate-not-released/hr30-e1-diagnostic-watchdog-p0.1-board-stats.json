@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "date": "2026-08-18T20:07:19",
+    "generator": "KiCad 10.0.5",
+    "project": "hr30-e1-diagnostic-watchdog-p0.1",
+    "board_name": "hr30-e1-diagnostic-watchdog-p0.1"
+  },
+  "board": {
+    "has_outline": true,
+    "width": "40.0000 mm",
+    "height": "25.0000 mm",
+    "area": "1000.00 mm²",
+    "front_component_density": "19.31",
+    "back_component_density": "1.13",
+    "front_copper_area": "891.599 mm²",
+    "back_copper_area": "909.333 mm²",
+    "min_track_clearance": "0.4000 mm",
+    "min_track_width": "0.2000 mm",
+    "min_drill_diameter": "0.3000 mm",
+    "board_thickness": "1.6000 mm",
+    "front_footprint_area": "193.113 mm²",
+    "back_footprint_area": "11.329 mm²",
+    "front_footprint_density": "19.31",
+    "back_footprint_density": "1.13"
+  },
+  "pads": {
+    "through_hole": 0,
+    "smd": 36,
+    "connector": 0,
+    "npth": 2,
+    "castellated": 0,
+    "press_fit": 0
+  },
+  "vias": {
+    "through": 8,
+    "blind": 0,
+    "buried": 0,
+    "micro": 0
+  },
+  "components": {
+    "tht": {
+      "front": 0,
+      "back": 0,
+      "total": 0
+    },
+    "smd": {
+      "front": 7,
+      "back": 0,
+      "total": 7
+    },
+    "unspecified": {
+      "front": 7,
+      "back": 0,
+      "total": 7
+    },
+    "total": {
+      "front": 14,
+      "back": 0,
+      "total": 14
+    }
+  },
+  "drill_holes": [
+    {
+      "count": 8,
+      "shape": "Round",
+      "x_size": "0.3000 mm",
+      "y_size": "0.3000 mm",
+      "plated": true,
+      "source": "Via",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 2,
+      "shape": "Round",
+      "x_size": "2.7000 mm",
+      "y_size": "2.7000 mm",
+      "plated": false,
+      "source": "Pad",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "identifier": "HR30-FIRST-ENERGIZATION-CELL-P0.1",
+  "date": "2026-08-18",
+  "warning": "PRELIMINARY - UNBUILT STATIC FIRST-ENERGIZATION CELL CANDIDATE - NOT A WALKING GANTRY OR RATED FALL-ARREST SYSTEM - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, WALKING OR ENERGIZATION",
+  "robot_source": "hr30/whole-body-p0.1/HR-30_p00_neutral_stand_candidate.step",
+  "robot_source_sha256": "586ff788f5cad84288af26984345b7fdc5c619705e7a0ba1371b65608f7db5a7",
+  "robot_source_extent_mm": [
+    330.0000002,
+    152.5000002,
+    764.5000002
+  ],
+  "robot_translation_z_mm": 92.5,
+  "pelvis_reservation_source": "component-envelope-schedule.csv PELVIS_RESTRAINT_INTERFACE_ENVELOPE",
+  "pelvis_reservation_cell_xyz_mm": {
+    "x": [
+      -40,
+      40
+    ],
+    "y": [
+      6,
+      58
+    ],
+    "z": [
+      496.5,
+      516.5
+    ]
+  }
+}

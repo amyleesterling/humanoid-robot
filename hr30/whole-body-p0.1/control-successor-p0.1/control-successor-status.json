@@ -8,7 +8,7 @@
   "sequence_count": 2,
   "axis_result_count": 50,
   "all_sequences_pass_bounded_control_screen": true,
-  "maximum_rotary_tracking_error_deg": 0.945411,
+  "maximum_rotary_tracking_error_deg": 0.923947,
   "maximum_rotary_saturation_fraction": 0.0,
   "axes_failing_bounded_screen": [],
   "inverse_demand_within_candidate_endpoints_for_selected_leg_axes": true,

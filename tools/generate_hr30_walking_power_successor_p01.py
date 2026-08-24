@@ -927,9 +927,27 @@ def main() -> int:
     RELEASE.parent.mkdir(parents=True, exist_ok=True)
     shutil.copytree(OUT, RELEASE)
     integrate_root(status)
-    sys.path.insert(0, str(ROOT / "tools"))
-    import generate_hr30_system_package_p01 as system_package
-    system_package.refresh_manifest_and_release()
+    # This generator runs under KiCad's Python because it uses pcbnew.  Do not
+    # import the CadQuery-backed system generator merely to refresh the package
+    # manifest; KiCad's isolated runtime does not carry CadQuery.  Refresh the
+    # aggregate deterministically from the files already generated instead.
+    whole_manifest = WHOLE / "file-manifest.csv"
+    if whole_manifest.exists():
+        whole_manifest.unlink()
+    whole_rows = []
+    for path in sorted(p for p in WHOLE.rglob("*") if p.is_file()):
+        whole_rows.append({
+            "path": path.relative_to(WHOLE).as_posix(),
+            "sha256": sha(path),
+            "bytes": path.stat().st_size,
+            "warning": WHOLE_WARNING,
+        })
+    write_csv(whole_manifest, whole_rows)
+    whole_release = ROOT / "release" / "hr30" / "whole-body-p0.1"
+    if whole_release.exists():
+        shutil.rmtree(whole_release)
+    whole_release.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copytree(WHOLE, whole_release)
     print(f"generated {OUT.relative_to(ROOT)}: 25 axes, 50 populated eFuses, exact YWP, routed PCB, ERC/DRC 0/0")
     return 0
 

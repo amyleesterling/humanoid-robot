@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 WHOLE = ROOT / "hr30" / "whole-body-p0.1"
 POLICY = WHOLE / "harness" / "current-policy-binding-p0.1" / "axis-power-policy-binding.csv"
 ROUTES = WHOLE / "harness" / "physical-p0.1" / "route-segment-register.csv"
+ROUTE_GUIDES = WHOLE / "harness" / "power-route-guides-p0.1" / "route-centerline-register.csv"
 OUT = WHOLE / "harness" / "distributed-power-harness-successor-p0.1"
 RELEASE = ROOT / "release" / "hr30" / "whole-body-p0.1" / "harness" / OUT.name
 RELEASE_WHOLE = ROOT / "release" / "hr30" / "whole-body-p0.1"
@@ -99,12 +100,12 @@ def integrate_parent_guides() -> None:
     body_index = WHOLE / "index.html"
     replace_marker(harness_readme, """## Distributed actuator-power successor
 
-The [interactive distributed-power guide](distributed-power-harness-successor-p0.1/index.html) rejects the physically impossible one-jacketed-cable-per-axis bundle. Six local protected nodes feed exact Alpha Wire 12-, 4-, and 2-core candidate trunks with an explicit protected pair for every one of the 25 axes. All six trunk diameter screens fit; five existing bend reservations require route-guide redesign. Protection devices, breakout ECAD, routed joint sweeps, thermal validation and every powered-work authority remain open.""")
-    replace_marker(harness_index, """<section id="distributed-power-harness"><h2>The actuator-power trunks now fit their reserved corridors</h2><div class="grid"><article><h3>25 protected pairs</h3><p>Every actuator retains a dedicated positive and return pair with explicit trunk cores and cavities.</p></article><article><h3>6 local nodes</h3><p>Protection moves to the pelvis, shoulder roots, waist bay and neck base.</p></article><article><h3>6 / 6 diameter screens</h3><p>The multi-core trunk candidate fits every circular corridor screen.</p></article><article><h3>1 / 6 bend screens</h3><p>Five route turns still require larger guides and exact 3D sweeps before fabrication.</p></article></div><p><a href="distributed-power-harness-successor-p0.1/index.html">Open the distributed-power harness guide.</a></p></section>""")
+The [interactive distributed-power guide](distributed-power-harness-successor-p0.1/index.html) rejects the physically impossible one-jacketed-cable-per-axis bundle. Six local protected nodes feed exact Alpha Wire 12-, 4-, and 2-core candidate trunks with an explicit protected pair for every one of the 25 axes. All six trunk diameter screens fit, and all six now bind to the dimensioned tangent guides in the whole-body route CAD. Protection devices, breakout ECAD, guard and collision sweeps, thermal validation and every powered-work authority remain open.""")
+    replace_marker(harness_index, """<section id="distributed-power-harness"><h2>The actuator-power trunks now fit their routed corridors</h2><div class="grid"><article><h3>25 protected pairs</h3><p>Every actuator retains a dedicated positive and return pair with explicit trunk cores and cavities.</p></article><article><h3>6 local nodes</h3><p>Protection moves to the pelvis, shoulder roots, waist bay and neck base.</p></article><article><h3>6 / 6 diameter screens</h3><p>The multi-core trunk candidate fits every circular corridor screen.</p></article><article><h3>6 / 6 routed bend screens</h3><p>Every trunk binds to two dimensioned tangent circular guides at the cable-specific planning radius.</p></article></div><p><a href="distributed-power-harness-successor-p0.1/index.html">Open the distributed-power harness guide.</a></p></section>""")
     replace_marker(body_readme, """## Distributed whole-body actuator power
 
-The [distributed-power harness successor](harness/distributed-power-harness-successor-p0.1/index.html) replaces the rejected 25-jacket corridor bundle with six local protected distribution nodes and multi-core limb trunks. It binds a dedicated protected core pair to every axis and exact cable/terminal candidates. All six diameter screens pass; five bend reservations, the protection electronics, breakout ECAD, routed motion sweeps and thermal tests remain open.""")
-    replace_marker(body_index, """<section id="distributed-power-harness"><h2>A physically packable power route for all 25 axes</h2><div class="grid"><article class="card pass"><div class="metric">25</div><p>explicit protected conductor pairs</p></article><article class="card pass"><div class="metric">6 / 6</div><p>multi-core trunk diameter screens pass</p></article><article class="card"><div class="metric">6</div><p>local distribution nodes across the whole body</p></article><article class="card hold"><div class="metric">5</div><p>bend reservations still require route redesign</p></article></div><p><a href="harness/distributed-power-harness-successor-p0.1/index.html">Open the interactive distributed-power harness guide.</a></p></section>""")
+The [distributed-power harness successor](harness/distributed-power-harness-successor-p0.1/index.html) replaces the rejected 25-jacket corridor bundle with six local protected distribution nodes and multi-core limb trunks. It binds a dedicated protected core pair to every axis and exact cable/terminal candidates. All six diameter screens and all six dimensioned route-guide radius screens pass; protection electronics, breakout ECAD, guards, full-pose collision sweeps and thermal tests remain open.""")
+    replace_marker(body_index, """<section id="distributed-power-harness"><h2>A physically routed power architecture for all 25 axes</h2><div class="grid"><article class="card pass"><div class="metric">25</div><p>explicit protected conductor pairs</p></article><article class="card pass"><div class="metric">6 / 6</div><p>multi-core trunk diameter screens pass</p></article><article class="card"><div class="metric">6</div><p>local distribution nodes across the whole body</p></article><article class="card pass"><div class="metric">6 / 6</div><p>dimensioned tangent route-guide radius screens pass</p></article></div><p><a href="harness/distributed-power-harness-successor-p0.1/index.html">Open the interactive distributed-power harness guide.</a> Guarding, full-pose collision, thermal and physical validation remain open.</p></section>""")
 
     harness_manifest = WHOLE / "harness" / "file-manifest.csv"
     update_manifest_rows(harness_manifest, WHOLE / "harness", [harness_readme, harness_index], HARNESS_WARNING)
@@ -138,6 +139,7 @@ def source_rows() -> list[dict[str, object]]:
     for sid, path, role in [
         ("DPH-S01", POLICY, "25-axis current-cap and route-length binding"),
         ("DPH-S02", ROUTES, "whole-body corridor diameters and bend reservations"),
+        ("DPH-S12", ROUTE_GUIDES, "dimensioned whole-body tangent route-guide geometry"),
     ]:
         local.append(common({"source_id": sid, "publisher": "Project Button", "document": role, "revision_or_date": "current P0.1 input", "official_url_or_path": path.relative_to(ROOT).as_posix(), "sha256": sha(path), "verified_scope": role}))
     official = [
@@ -181,8 +183,11 @@ def group_for_axis(axis: dict[str, str]) -> tuple[str, str, str]:
 def build_rows(specs: dict[str, dict[str, object]]) -> tuple[list[dict[str, object]], list[dict[str, object]], list[dict[str, object]], list[dict[str, object]]]:
     axes = read_csv(POLICY)
     route_map = {r["segment_id"]: r for r in read_csv(ROUTES) if r["segment_kind"] == "FIXED BODY CORRIDOR"}
+    guide_map = {r["source_corridor"]: r for r in read_csv(ROUTE_GUIDES)}
     if len(axes) != 25:
         raise RuntimeError("25 axes required")
+    if len(guide_map) != 6 or not set(guide_map).issubset(route_map):
+        raise RuntimeError("six power route-guide identities must map to physical corridors")
     grouped: dict[str, list[dict[str, str]]] = defaultdict(list)
     axis_rows: list[dict[str, object]] = []
     drop_rows: list[dict[str, object]] = []
@@ -239,13 +244,19 @@ def build_rows(specs: dict[str, dict[str, object]]) -> tuple[list[dict[str, obje
         new_fill = (float(spec["max_od_mm"]) / float(route["corridor_diameter_mm"])) ** 2
         bend_reserved = float(route["minimum_bend_radius_mm"])
         bend_required = float(spec["bend_radius_max_od_mm"])
+        guide = guide_map[corridor]
+        guide_radius = float(guide["exact_guide_radius_mm"])
+        if guide["trunk_part"] != trunk or int(guide["axis_count"]) != count:
+            raise RuntimeError(f"route-guide allocation drift: {corridor}")
         corridor_rows.append(common({
             "corridor": corridor, "axis_count": count, "protected_core_count": count*2, "old_individual_861802_bundle_fill_ratio": f"{old_fill:.6f}",
             "old_bundle_geometric_result": "FAIL" if not old_packing else "PASS LOWER-BOUND SCREEN ONLY", "old_bundle_packing_basis": packing_basis, "successor_trunk": trunk, "trunk_core_count": spec["cores"],
             "spare_cores": int(spec["cores"]) - count*2, "corridor_diameter_mm": route["corridor_diameter_mm"], "trunk_max_od_mm": f"{float(spec['max_od_mm']):.4f}",
             "trunk_area_fill_ratio": f"{new_fill:.6f}", "diameter_screen": "PASS GEOMETRIC AREA" if float(spec["max_od_mm"]) < float(route["corridor_diameter_mm"]) else "FAIL",
-            "reserved_bend_radius_mm": f"{bend_reserved:.4f}", "candidate_required_bend_radius_mm": f"{bend_required:.4f}",
-            "bend_screen": "PASS" if bend_reserved >= bend_required else "FAIL - ROUTE TURN/GUIDE GEOMETRY MUST CHANGE",
+            "legacy_straight_reservation_radius_mm": f"{bend_reserved:.4f}", "candidate_required_bend_radius_mm": f"{bend_required:.4f}",
+            "integrated_route_guide_radius_mm": f"{guide_radius:.4f}", "integrated_route_geometry": guide["turn_geometry"],
+            "route_guide_id": guide["route_id"], "route_guide_centerline_length_mm": guide["candidate_centerline_length_mm"],
+            "bend_screen": "PASS ROUTE-GUIDE GEOMETRY" if guide_radius >= bend_required else "FAIL - ROUTE TURN/GUIDE GEOMETRY MUST CHANGE",
             "installation_clearance": "OPEN - AREA/DIAMETER SCREEN IS NOT A PULL, CLAMP, CHAFE OR TOLERANCE RELEASE",
         }))
         node_rows.append(common({
@@ -273,7 +284,7 @@ def hold_rows() -> list[dict[str, object]]:
         ("DPH-H01", "six distributed protection nodes lack selected eFuse/fuse components and PCB schematics", "select devices from measured fault, inrush, regeneration and clearing evidence; create connected ECAD"),
         ("DPH-H02", "upstream feed conductors/connectors to each distributed node are not sized", "fault-current, simultaneous-duty, voltage-drop, connector and thermal tests"),
         ("DPH-H03", "arm trunk 861812 has only 0.6528 mm diametral corridor clearance at maximum published OD", "tolerance stack, pull/assembly method, chafe liner, clamp and full-motion physical fit test"),
-        ("DPH-H04", "five of six fixed corridors do not meet the cable-family 8xd bend radius using maximum published OD", "revise route turn/guide geometry and verify exact 3D sweeps; straight corridor lengths alone are insufficient"),
+        ("DPH-H04", "all six route-guide radius screens pass, but guard, snag and full-pose collision clearance remain unexecuted", "complete exact guarded-route CAD and neutral/crouch/weight-transfer/step/fall-restraint collision sweeps before any fabrication release"),
         ("DPH-H05", "local 861802 branch loops and joint crossings have no accepted 3D sweep or cut length", "joint-by-joint routed CAD, full-limit sweep, clamp locations and flex-cycle test"),
         ("DPH-H06", "861812 12-core intermediate breakouts are not schematic- or PCB-defined", "keyed cavity map, breakout PCB, creepage/clearance, copper, protection boundary, mounting and service access"),
         ("DPH-H07", "published conductor DCR values are nominal, not maximum, and bundle temperature is unvalidated", "received-lot four-wire resistance plus representative bundle temperature-rise test at measured duty and fault clearing"),
@@ -328,7 +339,8 @@ def main() -> None:
         "identifier": IDENTIFIER, "date": DATE, "warning": WARNING, "axis_count": len(axis), "distribution_node_count": len(nodes),
         "corridor_count": len(corridors), "old_individual_cable_corridor_failures": sum(r["old_bundle_geometric_result"] == "FAIL" for r in corridors),
         "successor_diameter_screens_pass": sum(r["diameter_screen"] == "PASS GEOMETRIC AREA" for r in corridors),
-        "successor_bend_screens_pass": sum(r["bend_screen"] == "PASS" for r in corridors),
+        "successor_bend_screens_pass": sum(r["bend_screen"] == "PASS ROUTE-GUIDE GEOMETRY" for r in corridors),
+        "route_guide_geometry_integrated": True,
         "exact_cable_order_codes_bound": True, "exact_18awg_microfit_terminal_order_codes_bound": True,
         "protection_components_selected": False, "breakout_ecad_complete": False, "route_sweeps_complete": False, "thermal_validated": False,
         "fabrication_authority": False, "connection_authority": False, "powered_test_authority": False, "motion_authority": False, "energization_authority": False,

@@ -191,7 +191,7 @@ The 25-axis candidate population is not one electrical protocol. The nineteen se
 
 ## Physical implementation boundary
 
-Current primary manufacturer documentation closes the actuator-side pin order and listed connector piece parts: RS-485 pin 1 GND, 2 VDD, 3 DATA+, 4 DATA-; TTL pin 1 GND, 2 VDD, 3 DATA. It also closes the STM32H743ZIT6 LQFP144 UART package pins, five ISOW1432DFMR isolated RS-485 device pinouts, three SN74LVC1T45DCKR 3.3/5 V translator pinouts, and eight exact JST GH data-only field connector candidates. The field connectors intentionally contain reference and data only, with no actuator-VDD contact. PCB layout/passives, assembled cables, actuator power-injection breakout, termination, bias, protection, shield/return treatment, grounding, application conductor sizing, routing, actuator IDs, bus timing, EMC and failure behavior remain **SELECTION REQUIRED**.
+Current primary manufacturer documentation closes the actuator-side pin order and listed connector piece parts: RS-485 pin 1 GND, 2 VDD, 3 DATA+, 4 DATA-; TTL pin 1 GND, 2 VDD, 3 DATA. It also closes the STM32H743ZIT6 LQFP144 UART package pins, five ISOW1432DFMR isolated RS-485 device pinouts, three SN74LVC1T45DCKR 3.3/5 V translator pinouts, and eight JST PA data-only field connector candidates sized for the planning conductors. The field connectors intentionally contain reference and data only, with no actuator-VDD contact. Assembled cables, received conductor insulation O.D., crimp tooling, actuator power-injection breakout, termination, bias, protection, shield/return treatment, grounding, routing, actuator IDs, bus timing, EMC and failure behavior remain **SELECTION REQUIRED**.
 
 The P0.1 candidate now allocates one separately protected power feed per actuator. Axes listed on one bus share only reference and data; they do not share VDD. Standard ROBOTIS X3P/X4P cables include VDD and therefore require a custom/de-pinned data-only construction or breakout. Exact protection values, connector/breakout design and physical no-backfeed verification remain required before connection.
 
@@ -229,7 +229,7 @@ The protocol classification is taken from current official ROBOTIS e-Manual page
     holds = [row for row in holds if row["hold_id"] != "HR30-P01-H11"]
     holds.append({
         "hold_id": "HR30-P01-H11",
-        "unresolved_item": "The native 19-sheet HR-30 KiCad project now binds all 25 axes, eight STM32 UART pin groups, five ISOW1432DFMR plus three SN74LVC1T45DCKR interfaces, and exact JST GH data-only connector candidates. Carrier PCB passives/layout, assembled cable and power-injection breakout hardware, protection, conductor sizing, termination/bias, EMC, timing/latency, grounding and physical fault tests remain open.",
+        "unresolved_item": "The native HR-30 KiCad project now binds all 25 axes, eight STM32 UART pin groups, five ISOW1432DFMR plus three SN74LVC1T45DCKR interfaces, and JST PA data-only connector candidates whose published contact ranges include the planning conductors. Received insulation O.D., crimp tooling, assembled cable and power-injection breakout hardware, protection, termination/bias, EMC, timing/latency, grounding and physical fault tests remain open.",
         "state": "OPEN",
         "release_effect": "BLOCKS CONNECTION, POWERED TEST, MOTION AND ENERGIZATION",
     })

@@ -270,10 +270,10 @@ def integrate_root() -> None:
 
     readme_path = WHOLE / "README.md"
     readme = readme_path.read_text(encoding="utf-8")
-    rs, re = "<!-- HR30-HIP4-P01-README-START -->", "<!-- HR30-HIP4-P01-README-END -->"
-    if rs in readme and re in readme:
-        readme = readme.split(rs, 1)[0] + readme.split(re, 1)[1]
-    text = f'''{rs}\n## Bilateral 4:1 compound hip transmissions\n\nThe [hip-transmission package](hip-transmission-p0.1/index.html) installs physical two-stage 16:32 EV5GT drives on all four hip pitch/roll axes in a derived complete-body STEP/GLB. Each module includes two belts, four pulleys, a supported intermediate shaft, two carrier plates with explicit motor-tension slots, the exact actuator/horn boundary, output retention and a removable guard. Capacity and motion validation remain open.\n{re}\n'''
+    rs, rend = "<!-- HR30-HIP4-P01-README-START -->", "<!-- HR30-HIP4-P01-README-END -->"
+    if rs in readme and rend in readme:
+        readme = readme.split(rs, 1)[0] + readme.split(rend, 1)[1]
+    text = f'''{rs}\n## Bilateral 4:1 compound hip transmissions\n\nThe [hip-transmission package](hip-transmission-p0.1/index.html) installs physical two-stage 16:32 EV5GT drives on all four hip pitch/roll axes in a derived complete-body STEP/GLB. Each module includes two belts, four pulleys, a supported intermediate shaft, two carrier plates with explicit motor-tension slots, the exact actuator/horn boundary, output retention and a removable guard. Capacity and motion validation remain open.\n{rend}\n'''
     marker = "<!-- HR30-INSTALLED-LEG-DRIVES-P01-README-START -->"
     readme = readme.replace(marker, text + marker) if marker in readme else readme.rstrip() + "\n\n" + text
     readme = re.sub(r"\n{3,}", "\n\n", readme)

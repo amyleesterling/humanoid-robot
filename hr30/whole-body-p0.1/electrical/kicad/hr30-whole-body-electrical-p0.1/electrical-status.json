@@ -19,6 +19,16 @@
   "direct_14v8_actuator_source_absent": true,
   "individual_actuator_power_feed_count": 25,
   "regulated_ttl_branch_count": 3,
+  "three_rail_auxiliary_architecture_encoded": true,
+  "auxiliary_converter_candidate": "2x RECOM REC30E-2405SZ + 1x TRACO POWER TEN 40-1211E",
+  "auxiliary_positive_rails": [
+    "COMPUTE_5V1",
+    "HMI_5V0",
+    "AUX_5V_SAFE"
+  ],
+  "auxiliary_return_star": "AUX_0V_STAR",
+  "auxiliary_hmi_peak_headroom_w": 10,
+  "auxiliary_hmi_zero_peak_headroom_blocker": false,
   "reset_can_command_motion": false,
   "physical_pin_mapping_reconciled": false,
   "interface_devices_selected": false,

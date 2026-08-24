@@ -1,0 +1,11 @@
+{
+  "identifier": "HR30-TETHER-LIGHT4-P0.1",
+  "warning": "PRELIMINARY - MASS-BOUND WHOLE-BODY LIGHT4 ENGINEERING CANDIDATE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION",
+  "executed_utc": "2026-08-19T14:30:47.594171+00:00",
+  "python": "3.12.13 (main, Aug  7 2026, 02:26:41) [MSC v.1944 64 bit (AMD64)]",
+  "mujoco": "3.10.0",
+  "numpy": "2.4.6",
+  "controller": "inverse feedforward plus frozen endpoint-scaled kp=8.0, kd=0.8",
+  "integration_timestep_s": 0.002,
+  "scope": "ideal six-axis pelvis fixture; mass-bound LIGHT4 planning model"
+}

@@ -1,7 +1,7 @@
 {
   "identifier": "HR30-MANUFACTURING-FILES-P0.1",
   "source_generator": "tools/generate_hr30_fabrication_architecture_p01.py",
-  "source_generator_sha256": "a17b48aeb1b7b1ebcf53b75170140dc8e1d24f852b7ff3bd292e5bd270ede4ba",
+  "source_generator_sha256": "68ee8771c42fa5b3633d59e07c42d2bae0742ca05bf1acc777be3cae906b7065",
   "manufacturing_file_generator": "tools/generate_hr30_manufacturing_files_p01.py",
   "manufacturing_file_generator_sha256": "f4a3dc7e1a663b978ab448ac02bb47618acce274cd2d4bd6e351ccc8f5e66ece",
   "physical_source_part_count": 98,

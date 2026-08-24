@@ -7,7 +7,7 @@
   "harness_assembly_count": 14,
   "installed_equipment_binding_count": 64,
   "service_loop_obligation_count": 25,
-  "logical_terminal_binding_count": 667,
+  "logical_terminal_binding_count": 681,
   "actuator_side_pinout_families_verified": 4,
   "candidate_12v_stall_endpoint_sum_a": 71.88,
   "u2d2_final_controller_role": "REJECT",

@@ -20,14 +20,20 @@ The [interactive duty-current envelope](duty-current-envelope-p0.1/index.html) c
 The [interactive duty/thermal screen](duty-thermal-screen-p0.1/index.html) binds the two frozen whole-body sequence traces to all 25 routed actuator power pairs, eight electrical buses and every reserved power corridor. It supplies bounded torque-current drop/loss and bundle test cases, while keeping total normal current, CF130 resistance, hot ampacity, faults, protection and all powered work open.
 <!-- HR30-DUTY-THERMAL-P01-END -->
 
+<!-- HR30-ARTICULATED-POWER-HARNESS-P01-START -->
+## Articulated power harness
+
+The [articulated power-harness candidate](articulated-power-harness-p0.1/index.html) rejects both a rigid whole-limb cable guard and the conflicting intermediate tap-board cascade. The controlled construction candidate keeps 25 individually protected two-wire branches, represents all 76 upstream joint crossings, reuses the 25 fixed Micro-Fit transition candidates, and separates rigid-link from flexible-joint guard solids. Full-pose collision, bend/torsion life, termination, derating and physical validation remain open.
+<!-- HR30-ARTICULATED-POWER-HARNESS-P01-END -->
+
 <!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-START -->
 ## Distributed actuator-power successor
 
-The [interactive distributed-power guide](distributed-power-harness-successor-p0.1/index.html) rejects the physically impossible one-jacketed-cable-per-axis bundle. Six local protected nodes feed exact Alpha Wire 12-, 4-, and 2-core candidate trunks with an explicit protected pair for every one of the 25 axes. All six trunk diameter screens fit; five existing bend reservations require route-guide redesign. Protection devices, breakout ECAD, routed joint sweeps, thermal validation and every powered-work authority remain open.
+The [interactive distributed-power guide](distributed-power-harness-successor-p0.1/index.html) rejects the physically impossible one-jacketed-cable-per-axis bundle. Six local protected nodes feed exact Alpha Wire 12-, 4-, and 2-core candidate trunks with an explicit protected pair for every one of the 25 axes. All six trunk diameter screens fit, and all six now bind to the dimensioned tangent guides in the whole-body route CAD. Protection devices, breakout ECAD, guard and collision sweeps, thermal validation and every powered-work authority remain open.
 <!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-END -->
 
 <!-- HR30-POWER-ROUTE-GUIDES-P01-START -->
-## Whole-body power route guides
+## Neutral whole-body power-route envelopes
 
-The [interactive power-route guide](power-route-guides-p0.1/index.html) replaces all six straight actuator-power corridor placeholders with editable tangent 3D centerlines. Twelve exact circular turns satisfy the selected trunks' 8x maximum-OD planning rule. The routes are external guarded-spine candidates; guard CAD, clamps, cut lengths, pose/fall/walking collision sweeps, thermal/flex tests and every powered-work authority remain open.
+The [neutral power-route guide](power-route-guides-p0.1/index.html) retains six editable tangent 3D centerlines as fixed-pose planning evidence. The continuous whole-limb cable/rigid-guard topology is rejected; use the articulated-power-harness successor for moving joints.
 <!-- HR30-POWER-ROUTE-GUIDES-P01-END -->

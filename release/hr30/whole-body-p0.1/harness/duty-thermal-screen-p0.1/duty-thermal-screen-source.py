@@ -80,6 +80,23 @@ def replace_marker(path: Path, start: str, end: str, content: str) -> None:
     path.write_text(text, encoding="utf-8", newline="\n")
 
 
+def refresh_manifest_rows(manifest_path: Path, base: Path, paths: list[Path], warning: str) -> None:
+    """Refresh controlled rows after integrating generated sections into a parent package."""
+    existing = read_csv(manifest_path)
+    by_path = {row["path"]: row for row in existing}
+    for path in paths:
+        relative = path.relative_to(base).as_posix()
+        if relative not in by_path:
+            raise RuntimeError(f"parent manifest does not control {relative}")
+        by_path[relative] = {
+            "path": relative,
+            "bytes": path.stat().st_size,
+            "sha256": sha(path),
+            "warning": warning,
+        }
+    write_csv(manifest_path, [by_path[row["path"]] for row in existing])
+
+
 def pooled_stats(values: list[float]) -> tuple[float, float, float, float]:
     if not values:
         raise RuntimeError("empty sample set")
@@ -365,16 +382,62 @@ The [interactive duty/thermal screen](duty-thermal-screen-p0.1/index.html) binds
 
 The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1/index.html) connects both frozen walking traces to all 25 physical power-pair lengths, eight buses and six reserved power corridors. The derived loss cases define physical test obligations; they do not release conductors, contacts, protection or energization."""
     body_index = """<section id='harness-duty-thermal'><h2>The whole-body duty now reaches the physical harness</h2><div class='grid'><article class='card pass'><div class='metric'>25</div><p>axis route-specific loss cases</p></article><article class='card pass'><div class='metric'>6</div><p>bundle test obligations</p></article><article class='card hold'><div class='metric'>0</div><p>thermal or powered-work approvals</p></article></div><p><a href='harness/duty-thermal-screen-p0.1/index.html'>Open the harness duty/thermal guide.</a></p></section>"""
-    physical_readme = """## Duty/thermal successor
-
-The [route-specific duty/thermal successor](../duty-thermal-screen-p0.1/index.html) now fills the bounded torque-producing RMS and peak component for every entry in this package's derating register and groups the 25 pairs by physical power corridor. Total normal RMS, fault current, ambient, hot derating and physical tests remain open."""
-    physical_index = """<section id='physical-duty-thermal'><h2>The routed harness now has bounded electrical loss cases</h2><div class='grid'><article class='card pass'><div class='metric'>25</div><p>power pairs with bounded peak/RMS inputs.</p></article><article class='card'><div class='metric'>6</div><p>corridor bundle groups.</p></article><article class='card hold'><h3>No hot rating</h3><p>CF130 DCR, ambient, faults and physical temperature-rise tests remain open.</p></article></div><p><a href='../duty-thermal-screen-p0.1/index.html'>Open the duty/thermal successor.</a></p></section>"""
     replace_marker(HARNESS / "README.md", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", readme)
     replace_marker(HARNESS / "index.html", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", index)
+    replace_marker(HARNESS / "physical-p0.1" / "README.md", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", readme)
+    replace_marker(HARNESS / "physical-p0.1" / "index.html", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", index)
     replace_marker(BODY / "README.md", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", body_readme)
     replace_marker(BODY / "index.html", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", body_index)
-    replace_marker(PHYSICAL / "README.md", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", physical_readme)
-    replace_marker(PHYSICAL / "index.html", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", physical_index)
+    physical_files = [PHYSICAL / "README.md", PHYSICAL / "index.html"]
+    physical_manifest = PHYSICAL / "file-manifest.csv"
+    refresh_manifest_rows(
+        physical_manifest,
+        PHYSICAL,
+        physical_files,
+        "PRELIMINARY - PHYSICAL HARNESS ARCHITECTURE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+    )
+    physical_release = ROOT / "release" / "hr30" / "whole-body-p0.1" / "harness" / "physical-p0.1"
+    physical_release.mkdir(parents=True, exist_ok=True)
+    for path in [*physical_files, physical_manifest]:
+        shutil.copy2(path, physical_release / path.name)
+
+    # The guide is also embedded in the harness and whole-body parent pages.
+    # Keep those parent manifests and release mirrors synchronized here so a
+    # standalone regeneration cannot leave otherwise unrelated packages with
+    # source/release drift.
+    harness_files = [HARNESS / "README.md", HARNESS / "index.html"]
+    harness_manifest = HARNESS / "file-manifest.csv"
+    refresh_manifest_rows(
+        harness_manifest,
+        HARNESS,
+        harness_files,
+        "PRELIMINARY - NOT APPROVED FOR CONNECTION, FABRICATION, MOTION OR ENERGIZATION",
+    )
+    harness_release = ROOT / "release" / "hr30" / "whole-body-p0.1" / "harness"
+    harness_release.mkdir(parents=True, exist_ok=True)
+    for path in [*harness_files, harness_manifest]:
+        shutil.copy2(path, harness_release / path.name)
+
+    body_files = [
+        BODY / "README.md",
+        BODY / "index.html",
+        *harness_files,
+        harness_manifest,
+        *physical_files,
+        physical_manifest,
+        *sorted(path for path in OUT.iterdir() if path.is_file()),
+    ]
+    body_manifest = BODY / "file-manifest.csv"
+    refresh_manifest_rows(
+        body_manifest,
+        BODY,
+        body_files,
+        "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION",
+    )
+    body_release = ROOT / "release" / "hr30" / "whole-body-p0.1"
+    body_release.mkdir(parents=True, exist_ok=True)
+    for path in [BODY / "README.md", BODY / "index.html", body_manifest]:
+        shutil.copy2(path, body_release / path.name)
     print(json.dumps(status, indent=2))
     return 0
 

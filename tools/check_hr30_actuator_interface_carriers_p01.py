@@ -63,6 +63,9 @@ def main() -> None:
     require(sum(row["manufacturer_part_number"] == "SN74LVC1T45DCKR" for row in components) == 3, "three TTL translators required")
     require(sum(row["manufacturer_part_number"] == "SM712-02HTG" for row in components) == 5, "five RS-485 TVS candidates required")
     require(sum(row["manufacturer_part_number"] == "MPZ1005S331ETD25" for row in components) == 10, "two ferrites per isolated channel required")
+    require(sum(row["manufacturer_part_number"] == "B03B-PASK-1" for row in components) == 5, "five JST PA RS field headers required")
+    require(sum(row["manufacturer_part_number"] == "B02B-PASK-1" for row in components) == 3, "three JST PA TTL field headers required")
+    require(all(row["footprint"].startswith("HR30_PA:JST_PA_") for row in components if row["reference"] in ({f"J{number}" for number in range(101, 106)} | {f"J20{number}" for number in range(1, 4)})), "field connectors must use controlled JST PA footprints")
     require(sum(row["fitted_p0_1"] == "NO / DNP" for row in components) == 8, "five termination jumpers and three TTL idle pull-ups must be DNP")
     require(all(row["warning"] == WARNING for row in components), "component warning drift")
 
@@ -75,7 +78,7 @@ def main() -> None:
         require(not any("VDD" in row["net"] or row["net"] == "CTRL_5V" for row in field), f"{reference} must remain data-only")
 
     sources = rows(OUT / "primary-source-register.csv")
-    require({row["source_id"] for row in sources} == {"TI-ISOW1432", "TI-ISOW-EVM", "TI-LVC1T45", "TI-TPD1E10B06", "TDK-MPZ1005", "LITTELFUSE-SM712", "JST-GH", "JLC-6L-CAPABILITY", "JLC-STACKUP-3313"}, "primary source set drift")
+    require({row["source_id"] for row in sources} == {"TI-ISOW1432", "TI-ISOW-EVM", "TI-LVC1T45", "TI-TPD1E10B06", "TDK-MPZ1005", "LITTELFUSE-SM712", "JST-GH", "JST-PA", "JLC-6L-CAPABILITY", "JLC-STACKUP-3313"}, "primary source set drift")
     require(all(row["url"].startswith("https://") for row in sources), "primary source URL missing")
 
     stackup = rows(OUT / "stackup-register.csv")
@@ -84,7 +87,7 @@ def main() -> None:
     moats = rows(OUT / "isolation-moat-register.csv")
     require(len(moats) == 5 and sum(row["board"] == "A" for row in moats) == 4 and sum(row["board"] == "B" for row in moats) == 1, "isolation moat register drift")
 
-    board_expectations = {"a": (49, 43, 2700, 207, 4), "b": (37, 25, 2248, 132, 1)}
+    board_expectations = {"a": (49, 43, 2814, 201, 4), "b": (37, 25, 2296, 125, 1)}
     for board_id, (part_count, net_count, track_count, via_count, moat_count) in board_expectations.items():
         path = OUT / f"carrier-{board_id}" / f"hr30-carrier-{board_id}-p0.1.kicad_pcb"
         board = pcbnew.LoadBoard(str(path))
@@ -151,7 +154,7 @@ def main() -> None:
     require(root_page.count("<!-- HR30-CARRIERS-P01-START -->") == 1 and root_page.count("<!-- HR30-CARRIERS-P01-END -->") == 1, "root web carrier section marker drift")
     holds = rows(PACKAGE / "open-holds.csv")
     h11 = [row for row in holds if row["hold_id"] == "HR30-P01-H11"]
-    require(len(h11) == 1 and "KiCad DRC 0/0 and zero unconnected pads" in h11[0]["unresolved_item"] and "not released for ordering" in h11[0]["unresolved_item"], "H11 carrier evidence/hold missing")
+    require(len(h11) == 1 and "JST PA data-only connector candidates" in h11[0]["unresolved_item"] and "Received insulation O.D." in h11[0]["unresolved_item"], "H11 carrier evidence/hold missing")
     require(all(not root_status[key] for key in ("procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "whole-body authority boundary changed")
     print("PASS: 86 sourced parts; ERC 0/0; both routed six-layer carriers DRC 0/0 with zero unconnected pads; machine candidates not released and all authority held open")
 

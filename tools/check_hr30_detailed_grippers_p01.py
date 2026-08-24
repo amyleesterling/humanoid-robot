@@ -115,15 +115,24 @@ def main() -> int:
         require(not shape.isNull() and shape.isValid() and len(shape.Solids()) >= 18, f"STEP reimport/solid count failed: {step.name}")
 
     manifest = rows("file-manifest.csv")
-    actual = sorted(path for path in OUT.rglob("*") if path.is_file() and path.name != "file-manifest.csv")
+    actual = sorted(
+        path for path in OUT.rglob("*")
+        if path.is_file() and path.name != "file-manifest.csv" and "__pycache__" not in path.parts
+    )
     require(len(manifest) == len(actual), "manifest file count drift")
     manifest_by_path = {row["path"]: row for row in manifest}
     for path in actual:
         rel = path.relative_to(OUT).as_posix()
         require(rel in manifest_by_path and int(manifest_by_path[rel]["bytes"]) == path.stat().st_size and manifest_by_path[rel]["sha256"] == sha256(path), f"manifest mismatch: {rel}")
 
-    source_files = sorted(path.relative_to(OUT).as_posix() for path in OUT.rglob("*") if path.is_file())
-    release_files = sorted(path.relative_to(RELEASE).as_posix() for path in RELEASE.rglob("*") if path.is_file())
+    source_files = sorted(
+        path.relative_to(OUT).as_posix() for path in OUT.rglob("*")
+        if path.is_file() and "__pycache__" not in path.parts
+    )
+    release_files = sorted(
+        path.relative_to(RELEASE).as_posix() for path in RELEASE.rglob("*")
+        if path.is_file() and "__pycache__" not in path.parts
+    )
     require(source_files == release_files, "source/release file-set mismatch")
     require(all(sha256(OUT / rel) == sha256(RELEASE / rel) for rel in source_files), "source/release hash mismatch")
 

@@ -255,7 +255,7 @@
               (uuid "28a3d847-349d-5d1c-8cfd-5be9969ebc87"))
 (wire (pts (xy 146.05 297.18) (xy 135.89 297.18))
               (stroke (width 0) (type default)) (uuid "8584fb02-039c-572c-b8b3-6289629e334c"))
-(global_label "AUX_0V" (shape bidirectional) (at 135.89 297.18 180)
+(global_label "AUX_0V_STAR" (shape bidirectional) (at 135.89 297.18 180)
               (fields_autoplaced yes) (effects (font (size 1.50 1.50)) (justify right))
               (uuid "71da68d6-8061-5fd7-91cc-d2c837f7057a")
               (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 135.89 299.72 0)

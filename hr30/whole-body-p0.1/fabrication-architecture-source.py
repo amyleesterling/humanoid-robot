@@ -25,6 +25,17 @@ OUT = ROOT / "hr30" / "whole-body-p0.1"
 IDENTIFIER = "HR-30-FABRICATION-ARCH-P0.1"
 WARNING = body.WARNING
 
+# P0.1 lightweight structure candidate.  These values preserve every external
+# module envelope and joint datum while removing material from the paired limb
+# load paths.  They are geometry inputs, not minimum qualified thicknesses;
+# gait, fall, fatigue, buckling, joint-bearing and fastener proof remain open.
+TORSO_RAIL_WALL_MM = 1.5
+SHOULDER_BRIDGE_WALL_MM = 2.0
+LEG_PLATE_THICKNESS_MM = 2.5
+LEG_TIE_THICKNESS_MM = 2.5
+FOOT_PLATE_THICKNESS_MM = 2.5
+ARM_LINK_THICKNESS_MM = 3.5
+
 
 @dataclass(frozen=True)
 class Part:
@@ -133,10 +144,10 @@ def build() -> tuple[list[Part], list[dict], list[dict]]:
     # Central load path: two torso rails, shoulder tube, pelvis front/rear
     # plates, waist bridge, hollow neck tube, and a visible restraint bridge.
     for x in (-66.0, 66.0):
-        add(f"T01_TORSO_RAIL_{'L' if x > 0 else 'R'}", "T01", "primary frame rail", hollow_rail(18, 18, 146, (x, 6, 507), 2.0), "6061-T6/T651 HOLLOW EXTRUSION CANDIDATE", 2700, "cut/drill fixture; exact section and temper selection required", aluminum, "FIXED FRAME")
+        add(f"T01_TORSO_RAIL_{'L' if x > 0 else 'R'}", "T01", "primary frame rail", hollow_rail(18, 18, 146, (x, 6, 507), TORSO_RAIL_WALL_MM), "6061-T6/T651 1.5 MM WALL HOLLOW EXTRUSION CANDIDATE", 2700, "cut/drill fixture; local inserts, buckling, joint-load and exact section proof required", aluminum, "FIXED FRAME")
     shoulder_outer = body.rounded_box(174, 28, 24, (0, 0, 578), 3)
-    shoulder_inner = body.rounded_box(169, 23, 19, (0, 0, 578), 2.5)
-    add("T01_SHOULDER_CROSS_TUBE", "T01", "shoulder load bridge", shoulder_outer.cut(shoulder_inner), "6061-T6/T651 2.5 MM WALL MACHINED OR EXTRUDED CANDIDATE", 2700, "3-axis machining/extrusion finish; local shoulder inserts and joint load proof required", aluminum, "FIXED FRAME")
+    shoulder_inner = body.rounded_box(174 - 2 * SHOULDER_BRIDGE_WALL_MM, 28 - 2 * SHOULDER_BRIDGE_WALL_MM, 24 - 2 * SHOULDER_BRIDGE_WALL_MM, (0, 0, 578), 2.5)
+    add("T01_SHOULDER_CROSS_TUBE", "T01", "shoulder load bridge", shoulder_outer.cut(shoulder_inner), "6061-T6/T651 2.0 MM WALL MACHINED OR EXTRUDED CANDIDATE", 2700, "3-axis machining/extrusion finish; local shoulder inserts, buckling and bilateral joint-load proof required", aluminum, "FIXED FRAME")
     for y, suffix in ((-31.0, "FRONT"), (31.0, "REAR")):
         add(f"P01_PELVIS_PLATE_{suffix}", "P01", "pelvis frame plate", windowed_xz_plate(136, 5, 62, (0, y, 386), 14, 14, 2), "6061-T651 WINDOWED PLATE CANDIDATE", 2700, "2.5D CNC candidate; MTR/tolerance/fixture review required", aluminum, "FIXED FRAME")
     add("P01_WAIST_BRIDGE", "P01", "waist load bridge", windowed_xy_plate(112, 62, 6, (0, 0, 414), 16, 3), "6061-T651 6 MM WINDOWED PLATE CANDIDATE", 2700, "2.5D CNC candidate; local boss thickness and waist load proof required", aluminum, "FIXED FRAME")
@@ -150,23 +161,23 @@ def build() -> tuple[list[Part], list[dict], list[dict]]:
     for side, sign in (("L", 1.0), ("R", -1.0)):
         x = sign * body.HIP_HALF_WIDTH
         for y, suffix in ((-20.0, "FRONT"), (20.0, "REAR")):
-            add(f"L0{1 if side == 'L' else 2}_SHIN_SIDE_{suffix}", f"L0{1 if side == 'L' else 2}", "shin side plate", windowed_xz_plate(50, 3, 136, (x, y, 127.5), 11, 18), "6061-T651 3 MM WINDOWED PLATE CANDIDATE", 2700, "2.5D CNC/waterjet candidate; edge finish, stiffness and flatness open", aluminum, "FIXED FRAME")
-            add(f"L0{1 if side == 'L' else 2}_THIGH_SIDE_{suffix}", f"L0{1 if side == 'L' else 2}", "thigh side plate", windowed_xz_plate(56, 3, 142, (x, y, 295), 12, 18), "6061-T651 3 MM WINDOWED PLATE CANDIDATE", 2700, "2.5D CNC/waterjet candidate; edge finish, stiffness and flatness open", aluminum, "FIXED FRAME")
+            add(f"L0{1 if side == 'L' else 2}_SHIN_SIDE_{suffix}", f"L0{1 if side == 'L' else 2}", "shin side plate", windowed_xz_plate(50, LEG_PLATE_THICKNESS_MM, 136, (x, y, 127.5), 11, 18), "6061-T651 2.5 MM WINDOWED PLATE CANDIDATE", 2700, "2.5D CNC/waterjet candidate; gait/fall stress, edge finish, stiffness and flatness open", aluminum, "FIXED FRAME")
+            add(f"L0{1 if side == 'L' else 2}_THIGH_SIDE_{suffix}", f"L0{1 if side == 'L' else 2}", "thigh side plate", windowed_xz_plate(56, LEG_PLATE_THICKNESS_MM, 142, (x, y, 295), 12, 18), "6061-T651 2.5 MM WINDOWED PLATE CANDIDATE", 2700, "2.5D CNC/waterjet candidate; gait/fall stress, edge finish, stiffness and flatness open", aluminum, "FIXED FRAME")
         for z in (72.0, 135.0, 183.0):
-            add(f"L0{1 if side == 'L' else 2}_SHIN_TIE_Z{int(z)}", f"L0{1 if side == 'L' else 2}", "shin cross tie", windowed_xy_plate(42, 40, 3, (x, 0, z), 8), "6061-T651 3 MM WINDOWED PLATE CANDIDATE", 2700, "2.5D CNC candidate; stiffness proof open", aluminum, "FIXED FRAME")
+            add(f"L0{1 if side == 'L' else 2}_SHIN_TIE_Z{int(z)}", f"L0{1 if side == 'L' else 2}", "shin cross tie", windowed_xy_plate(42, 40, LEG_TIE_THICKNESS_MM, (x, 0, z), 8), "6061-T651 2.5 MM WINDOWED PLATE CANDIDATE", 2700, "2.5D CNC candidate; torsion, fastener and stiffness proof open", aluminum, "FIXED FRAME")
         for z in (235.0, 300.0, 355.0):
-            add(f"L0{1 if side == 'L' else 2}_THIGH_TIE_Z{int(z)}", f"L0{1 if side == 'L' else 2}", "thigh cross tie", windowed_xy_plate(46, 40, 3, (x, 0, z), 8), "6061-T651 3 MM WINDOWED PLATE CANDIDATE", 2700, "2.5D CNC candidate; stiffness proof open", aluminum, "FIXED FRAME")
+            add(f"L0{1 if side == 'L' else 2}_THIGH_TIE_Z{int(z)}", f"L0{1 if side == 'L' else 2}", "thigh cross tie", windowed_xy_plate(46, 40, LEG_TIE_THICKNESS_MM, (x, 0, z), 8), "6061-T651 2.5 MM WINDOWED PLATE CANDIDATE", 2700, "2.5D CNC candidate; torsion, fastener and stiffness proof open", aluminum, "FIXED FRAME")
         foot_module = f"F0{1 if side == 'L' else 2}"
-        add(f"{foot_module}_SOLE_CARRIER", foot_module, "foot sole carrier", windowed_xy_plate(86, 138, 3, (x, 25, 4.0), 14), "6061-T651 3 MM WINDOWED PLATE CANDIDATE", 2700, "2.5D CNC candidate; local ankle/sole bosses and stiffness proof open", aluminum, "FIXED FRAME")
-        add(f"{foot_module}_TOP_BRIDGE", foot_module, "foot top bridge", windowed_xy_plate(68, 86, 3, (x, 6, 30.5), 12), "6061-T651 3 MM WINDOWED PLATE CANDIDATE", 2700, "2.5D CNC candidate; stiffness proof open", aluminum, "FIXED FRAME")
+        add(f"{foot_module}_SOLE_CARRIER", foot_module, "foot sole carrier", windowed_xy_plate(86, 138, FOOT_PLATE_THICKNESS_MM, (x, 25, 4.0), 14), "6061-T651 2.5 MM WINDOWED PLATE CANDIDATE", 2700, "2.5D CNC candidate; local ankle/sole bosses, pressure distribution and stiffness proof open", aluminum, "FIXED FRAME")
+        add(f"{foot_module}_TOP_BRIDGE", foot_module, "foot top bridge", windowed_xy_plate(68, 86, FOOT_PLATE_THICKNESS_MM, (x, 6, 30.5), 12), "6061-T651 2.5 MM WINDOWED PLATE CANDIDATE", 2700, "2.5D CNC candidate; ankle load and stiffness proof open", aluminum, "FIXED FRAME")
 
         shoulder = (sign * body.SHOULDER_AXIS_X, 0.0, body.SHOULDER_Z)
         elbow = (sign * body.ELBOW_X, 0.0, body.ELBOW_Z)
         wrist = (sign * body.WRIST_X, 0.0, body.WRIST_Z)
         arm_module = f"A0{1 if side == 'L' else 2}"
         for y, suffix in ((-14.0, "FRONT"), (14.0, "REAR")):
-            add(f"{arm_module}_UPPER_ARM_LINK_{suffix}", arm_module, "upper-arm link plate", slotted_beam((shoulder[0], y, shoulder[2]), (elbow[0], y, elbow[2]), 28, 4, 7, 18), "6061-T651 4 MM SLOTTED PLATE CANDIDATE", 2700, "2.5D CNC candidate", aluminum, "FIXED FRAME")
-            add(f"{arm_module}_FOREARM_LINK_{suffix}", arm_module, "forearm link plate", slotted_beam((elbow[0], y, elbow[2]), (wrist[0], y, wrist[2]), 26, 4, 7, 18), "6061-T651 4 MM SLOTTED PLATE CANDIDATE", 2700, "2.5D CNC candidate", aluminum, "FIXED FRAME")
+            add(f"{arm_module}_UPPER_ARM_LINK_{suffix}", arm_module, "upper-arm link plate", slotted_beam((shoulder[0], y, shoulder[2]), (elbow[0], y, elbow[2]), 28, ARM_LINK_THICKNESS_MM, 7, 18), "6061-T651 3.5 MM SLOTTED PLATE CANDIDATE", 2700, "2.5D CNC candidate; payload, impact, fatigue and joint-interface proof open", aluminum, "FIXED FRAME")
+            add(f"{arm_module}_FOREARM_LINK_{suffix}", arm_module, "forearm link plate", slotted_beam((elbow[0], y, elbow[2]), (wrist[0], y, wrist[2]), 26, ARM_LINK_THICKNESS_MM, 7, 18), "6061-T651 3.5 MM SLOTTED PLATE CANDIDATE", 2700, "2.5D CNC candidate; payload, impact, fatigue and joint-interface proof open", aluminum, "FIXED FRAME")
 
         # Flat tool-removable limb panels around the paired frames.
         leg_module = f"L0{1 if side == 'L' else 2}"
@@ -256,7 +267,7 @@ def update_bom_and_docs(frame_mass: float, cover_mass: float) -> None:
     rows = list(csv.DictReader(bom_path.open(encoding="utf-8")))
     for row in rows:
         if row["item_id"] == "HR30-BOM-021":
-            row["candidate"] = f"P0.1 windowed 3 mm leg plates/ties, hollow torso rails, 2.5 mm-wall shoulder bridge, 6 mm windowed waist bridge and 3 mm foot carriers; CAD density screen {frame_mass:.3f} kg; structural proof/drawings/material release open"
+            row["candidate"] = f"P0.1 2.5 mm windowed leg plates/ties and foot carriers, 3.5 mm slotted arm links, 18 x 18 x 1.5 mm hollow torso rails, 2.0 mm-wall shoulder bridge and 6 mm windowed waist bridge; CAD density screen {frame_mass:.3f} kg; structural proof/drawings/material release open"
         elif row["item_id"] == "HR30-BOM-022":
             row["candidate"] = f"P0.1 0.8 mm thermoformed/SLS body and limb panels plus detailed hand parts; CAD density screen {cover_mass:.3f} kg; material/process/rib/retention open"
         elif row["item_id"] == "HR30-BOM-030":
@@ -268,7 +279,7 @@ def update_bom_and_docs(frame_mass: float, cover_mass: float) -> None:
     heading = "## Modular fabrication architecture"
     section = f"""{heading}
 
-P0.1 now includes an editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable body panels, both seventeen-part custom gripper mechanisms, and twelve segregated harness corridors. Separate neck data and actuator-power branches prevent the head actuators from borrowing the data-only corridor. The current product-envelope correction uses a 2.5 mm nominal shoulder-bridge wall, a 6 mm windowed waist bridge, 3 mm leg side plates/ties and foot carriers, and 0.8 mm thermoformed-polycarbonate or PA12 body/limb panels while retaining every joint datum and outer module interface. Local bosses, ribs, buckling, gait loads, forming/SLS qualification and impact stiffness remain open. The CAD density screen is {frame_mass:.3f} kg for fixed/mechanism parts and {cover_mass:.3f} kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; they do not establish as-built whole-robot mass or strength. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
+P0.1 now includes an editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable body panels, both seventeen-part custom gripper mechanisms, and twelve segregated harness corridors. Separate neck data and actuator-power branches prevent the head actuators from borrowing the data-only corridor. The current mass-margin correction preserves every joint datum and outer module interface while using 2.5 mm windowed leg plates/ties and foot carriers, 3.5 mm slotted arm links, 18 x 18 x 1.5 mm hollow torso rails, a 2.0 mm nominal shoulder-bridge wall, a 6 mm windowed waist bridge, and 0.8 mm thermoformed-polycarbonate or PA12 body/limb panels. Local inserts and bosses, buckling, bilateral shoulder loading, gait/fall loads, foot pressure distribution, payload, fatigue, forming/SLS qualification and impact stiffness remain open. The CAD density screen is {frame_mass:.3f} kg for fixed/mechanism parts and {cover_mass:.3f} kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; they do not establish as-built whole-robot mass or strength. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
 """
     if heading in text:
         prefix, remainder = text.split(heading, 1)
@@ -291,7 +302,7 @@ P0.1 now includes an editable CAD assembly that converts the visual body envelop
     holds = list(csv.DictReader(holds_path.open(encoding="utf-8")))
     for row in holds:
         if row["hold_id"] == "HR30-P01-H06":
-            row["unresolved_item"] = "The fabrication assembly now defines 3 mm leg plates/ties and foot carriers, a 2.5 mm-wall shoulder bridge, 6 mm windowed waist bridge and lightweight 0.8 mm body/limb panels, but local bosses, load cases, buckling, material/process, rib/stiffness, retention, vents, access clearance, tolerance and pinch-edge proof remain open."
+            row["unresolved_item"] = "The fabrication assembly now defines 2.5 mm leg plates/ties and foot carriers, 3.5 mm arm links, 1.5 mm-wall torso rails, a 2.0 mm-wall shoulder bridge, 6 mm windowed waist bridge and lightweight 0.8 mm body/limb panels, but local inserts/bosses, gait/fall/payload load cases, buckling, fatigue, material/process, rib/stiffness, retention, vents, access clearance, tolerance and pinch-edge proof remain open."
         elif row["hold_id"] == "HR30-P01-H07":
             row["unresolved_item"] = "Twelve segregated power/data corridors now have diameters and bend-radius requirements, but exact cables, fill, flex life, service loops, connectors, strain relief, shielding, current, EMC and thermal evidence remain open."
     write_csv(holds_path, holds)

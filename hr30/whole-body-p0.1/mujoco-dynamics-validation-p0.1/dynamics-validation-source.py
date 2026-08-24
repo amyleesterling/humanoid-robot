@@ -13,6 +13,7 @@ import html
 import json
 import math
 import shutil
+import time
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
@@ -112,10 +113,22 @@ def trajectory_data() -> tuple[dict[str, list[dict]], dict[str, dict[str, list[d
     return dict(base), {sequence: dict(axes) for sequence, axes in joints.items()}
 
 
-def interpolate(rows: list[dict], field: str, time_s: float) -> float:
+def numeric_series(rows: list[dict], field: str) -> tuple[np.ndarray, np.ndarray]:
+    """Parse one controlled trajectory column once for the full simulation.
+
+    The previous implementation rebuilt both arrays on every 2 ms controller
+    step. With 25 joints and two requested fields, that repeated hundreds of
+    millions of Python-to-float conversions during an otherwise small model
+    integration. Keeping immutable arrays preserves the same linear
+    interpolation while making execution time proportional to the MuJoCo work.
+    """
     times = np.fromiter((float(row["time_s"]) for row in rows), dtype=float)
     values = np.fromiter((float(row[field]) for row in rows), dtype=float)
-    return float(np.interp(time_s, times, values))
+    return times, values
+
+
+def interpolate(series: tuple[np.ndarray, np.ndarray], time_s: float) -> float:
+    return float(np.interp(time_s, series[0], series[1]))
 
 
 def expected_support(mode: str) -> set[str]:
@@ -187,6 +200,18 @@ def simulate(model: mujoco.MjModel, caps: dict[str, float]) -> tuple[list[dict],
     for sequence_id in sorted(base_by_sequence):
         base_rows = base_by_sequence[sequence_id]
         joint_rows = joints_by_sequence[sequence_id]
+        root_series = {
+            field: numeric_series(base_rows, field)
+            for field in ("root_x_m", "root_y_m", "root_z_m")
+        }
+        joint_position_series = {
+            axis: numeric_series(rows, "position_si")
+            for axis, rows in joint_rows.items()
+        }
+        joint_velocity_series = {
+            axis: numeric_series(rows, "velocity_si_s")
+            for axis, rows in joint_rows.items()
+        }
         duration = float(base_rows[-1]["time_s"])
         data = mujoco.MjData(model)
         first_root = np.array([float(base_rows[0][field]) for field in ("root_x_m", "root_y_m", "root_z_m")])
@@ -201,9 +226,9 @@ def simulate(model: mujoco.MjModel, caps: dict[str, float]) -> tuple[list[dict],
 
         def desired(time_s: float) -> tuple[dict[str, float], dict[str, float], np.ndarray, dict]:
             nearest = min(int(round(time_s / 0.02)), len(base_rows) - 1)
-            root = np.array([interpolate(base_rows, field, time_s) for field in ("root_x_m", "root_y_m", "root_z_m")])
-            position = {axis: interpolate(joint_rows[axis], "position_si", time_s) for axis in axes}
-            velocity = {axis: interpolate(joint_rows[axis], "velocity_si_s", time_s) for axis in axes}
+            root = np.array([interpolate(root_series[field], time_s) for field in ("root_x_m", "root_y_m", "root_z_m")])
+            position = {axis: interpolate(joint_position_series[axis], time_s) for axis in axes}
+            velocity = {axis: interpolate(joint_velocity_series[axis], time_s) for axis in axes}
             return position, velocity, root, base_rows[nearest]
 
         initial_position, initial_velocity, _, _ = desired(0.0)
@@ -332,7 +357,7 @@ def render_page(summary_rows: list[dict], status: dict) -> None:
         f'<article class="card"><h3>{html.escape(row["sequence_id"])}</h3><div class="metric">{float(row["maximum_rotary_tracking_error_deg"]):.2f}°</div><p>Maximum rotary tracking error; saturation {100*float(row["maximum_rotary_saturation_fraction"]):.1f}%; declared-support coverage {100*float(row["declared_support_coverage_fraction"]):.1f}%.</p><strong>{html.escape(row["result"])}</strong></article>'
         for row in summary_rows
     )
-    page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 MuJoCo dynamics validation</title><style>:root{{--deep:#071d36;--blue:#0b4f91;--sky:#84d8ff;--gold:#f2b91d;--paper:#eef8fe;--ink:#142a40;--line:#9acfe8}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,main{{padding:28px 20px}}header{{background:var(--deep);color:#fff}}header>div,main{{max-width:1180px;margin:auto}}h1{{font-size:clamp(38px,6vw,68px);line-height:1.04}}h2{{font-size:clamp(27px,4vw,42px)}}.warning{{background:var(--gold);color:#17243a;border:3px solid #805600;padding:15px 18px;font-weight:900}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}}.card,.panel{{background:#fff;border:2px solid var(--line);border-radius:16px;padding:18px;margin:18px 0}}.metric{{font-size:clamp(30px,5vw,48px);font-weight:900;color:var(--blue)}}label,select,input{{font:inherit}}select{{padding:10px;border:2px solid var(--blue);border-radius:8px}}input[type=range]{{width:100%}}canvas{{width:100%;height:320px;background:#f8fcff;border:2px solid var(--line);border-radius:12px}}a{{color:#075b9b;font-weight:800}}small{{font-size:14px}}@media(max-width:700px){{body{{font-size:16px}}header,main{{padding-inline:13px}}}}</style></head><body><header><div><div class="warning">{WARNING}</div><h1>The whole robot now runs in a real physics engine.</h1><p>MuJoCo compiles the 9.990 kg tether-first model and executes both 10.72 s sequences with a numerical six-degree-of-freedom trajectory fixture. This is a model-integration test—not proof of free walking.</p></div></header><main><section><h2>Bounded results</h2><div class="grid">{cards}</div></section><section class="panel"><h2>Scrub recorded physics data</h2><p><label for="sequence"><strong>Sequence:</strong></label> <select id="sequence">{''.join(f'<option>{row["sequence_id"]}</option>' for row in summary_rows)}</select></p><input id="scrub" type="range" min="0" max="1" value="0"><p id="readout">Loading simulation samples…</p><canvas id="chart" width="1000" height="320" aria-label="Tracking error and foot contact force chart"></canvas></section><section class="panel"><h2>Download the evidence</h2><p><a href="sequence-dynamics-summary.csv">sequence summary</a> · <a href="axis-dynamics-register.csv">all 25 axes</a> · <a href="simulation-samples.csv">50 Hz simulation samples</a> · <a href="simulation-preview.json">interactive preview data</a> · <a href="hr30_tether_ideal_fixture.xml">derived MuJoCo model</a> · <a href="runtime-provenance.json">runtime provenance</a> · <a href="open-holds.csv">open holds</a></p></section><section class="panel"><h2>What the ideal fixture hides</h2><p>The fixture can apply arbitrary six-axis constraint load to the pelvis path. Consequently this run cannot establish free balance, recoverability, physical tether forces, sole friction, contact compliance, real actuator tracking, current or thermal capacity, stopping behavior, or safety. Its value is narrower: the dynamics tree compiles, mass/inertia is positive, contact topology is explicit, torque-limited numerical control executes, and failures are measurable.</p></section></main><script>fetch('simulation-preview.json').then(r=>{{if(!r.ok)throw new Error(`HTTP ${{r.status}}`);return r.json()}}).then(rows=>{{const sel=document.getElementById('sequence'),range=document.getElementById('scrub'),out=document.getElementById('readout'),canvas=document.getElementById('chart'),ctx=canvas.getContext('2d');function group(){{return rows.filter(r=>r.sequence_id===sel.value)}}function draw(){{const g=group(),i=Math.min(+range.value,g.length-1),r=g[i];range.max=g.length-1;out.textContent=`${{r.time_s}} s · support ${{r.declared_support}} · contacts ${{r.active_floor_contacts}} · max error ${{Number(r.maximum_rotary_tracking_error_deg).toFixed(2)}}° · left/right normal force ${{Number(r.left_normal_force_n).toFixed(1)}} / ${{Number(r.right_normal_force_n).toFixed(1)}} N`;ctx.clearRect(0,0,1000,320);const max=Math.max(1,...g.map(x=>Math.max(+x.maximum_rotary_tracking_error_deg,+x.left_normal_force_n/20,+x.right_normal_force_n/20)));[['maximum_rotary_tracking_error_deg','#c82828',1],['left_normal_force_n','#0b4f91',20],['right_normal_force_n','#f2a900',20]].forEach(([key,color,scale])=>{{ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=3;g.forEach((x,j)=>{{const px=j/(g.length-1)*980+10,py=300-(+x[key]/scale)/max*280;(j?ctx.lineTo(px,py):ctx.moveTo(px,py))}});ctx.stroke()}});ctx.fillStyle='#142a40';ctx.font='16px system-ui';ctx.fillText('red: max joint error (deg) · blue/gold: left/right normal force ÷20',18,24);ctx.strokeStyle='#071d36';ctx.beginPath();ctx.moveTo(i/(g.length-1)*980+10,30);ctx.lineTo(i/(g.length-1)*980+10,305);ctx.stroke()}}sel.addEventListener('change',()=>{{range.value=0;draw()}});range.addEventListener('input',draw);draw()}}).catch(error=>{{document.getElementById('readout').textContent=`Preview failed to load: ${{error.message}}`;}});</script></body></html>'''
+    page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 MuJoCo dynamics validation</title><style>:root{{--deep:#071d36;--blue:#0b4f91;--sky:#84d8ff;--gold:#f2b91d;--paper:#eef8fe;--ink:#142a40;--line:#9acfe8}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,main{{padding:28px 20px}}header{{background:var(--deep);color:#fff}}header>div,main{{max-width:1180px;margin:auto}}h1{{font-size:clamp(38px,6vw,68px);line-height:1.04}}h2{{font-size:clamp(27px,4vw,42px)}}.warning{{background:var(--gold);color:#17243a;border:3px solid #805600;padding:15px 18px;font-weight:900}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}}.card,.panel{{background:#fff;border:2px solid var(--line);border-radius:16px;padding:18px;margin:18px 0}}.metric{{font-size:clamp(30px,5vw,48px);font-weight:900;color:var(--blue)}}label,select,input{{font:inherit}}select{{padding:10px;border:2px solid var(--blue);border-radius:8px}}input[type=range]{{width:100%}}canvas{{width:100%;height:320px;background:#f8fcff;border:2px solid var(--line);border-radius:12px}}a{{color:#075b9b;font-weight:800}}small{{font-size:14px}}@media(max-width:700px){{body{{font-size:16px}}header,main{{padding-inline:13px}}}}</style></head><body><header><div><div class="warning">{WARNING}</div><h1>The whole robot now runs in a real physics engine.</h1><p>MuJoCo compiles the {float(status['mass_kg']):.3f} kg tether-first model and executes both 10.72 s sequences with a numerical six-degree-of-freedom trajectory fixture. This is a model-integration test—not proof of free walking.</p></div></header><main><section><h2>Bounded results</h2><div class="grid">{cards}</div></section><section class="panel"><h2>Scrub recorded physics data</h2><p><label for="sequence"><strong>Sequence:</strong></label> <select id="sequence">{''.join(f'<option>{row["sequence_id"]}</option>' for row in summary_rows)}</select></p><input id="scrub" type="range" min="0" max="1" value="0"><p id="readout">Loading simulation samples…</p><canvas id="chart" width="1000" height="320" aria-label="Tracking error and foot contact force chart"></canvas></section><section class="panel"><h2>Download the evidence</h2><p><a href="sequence-dynamics-summary.csv">sequence summary</a> · <a href="axis-dynamics-register.csv">all 25 axes</a> · <a href="simulation-samples.csv">50 Hz simulation samples</a> · <a href="simulation-preview.json">interactive preview data</a> · <a href="hr30_tether_ideal_fixture.xml">derived MuJoCo model</a> · <a href="runtime-provenance.json">runtime provenance</a> · <a href="open-holds.csv">open holds</a></p></section><section class="panel"><h2>What the ideal fixture hides</h2><p>The fixture can apply arbitrary six-axis constraint load to the pelvis path. Consequently this run cannot establish free balance, recoverability, physical tether forces, sole friction, contact compliance, real actuator tracking, current or thermal capacity, stopping behavior, or safety. Its value is narrower: the dynamics tree compiles, mass/inertia is positive, contact topology is explicit, torque-limited numerical control executes, and failures are measurable.</p></section></main><script>fetch('simulation-preview.json').then(r=>{{if(!r.ok)throw new Error(`HTTP ${{r.status}}`);return r.json()}}).then(rows=>{{const sel=document.getElementById('sequence'),range=document.getElementById('scrub'),out=document.getElementById('readout'),canvas=document.getElementById('chart'),ctx=canvas.getContext('2d');function group(){{return rows.filter(r=>r.sequence_id===sel.value)}}function draw(){{const g=group(),i=Math.min(+range.value,g.length-1),r=g[i];range.max=g.length-1;out.textContent=`${{r.time_s}} s · support ${{r.declared_support}} · contacts ${{r.active_floor_contacts}} · max error ${{Number(r.maximum_rotary_tracking_error_deg).toFixed(2)}}° · left/right normal force ${{Number(r.left_normal_force_n).toFixed(1)}} / ${{Number(r.right_normal_force_n).toFixed(1)}} N`;ctx.clearRect(0,0,1000,320);const max=Math.max(1,...g.map(x=>Math.max(+x.maximum_rotary_tracking_error_deg,+x.left_normal_force_n/20,+x.right_normal_force_n/20)));[['maximum_rotary_tracking_error_deg','#c82828',1],['left_normal_force_n','#0b4f91',20],['right_normal_force_n','#f2a900',20]].forEach(([key,color,scale])=>{{ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=3;g.forEach((x,j)=>{{const px=j/(g.length-1)*980+10,py=300-(+x[key]/scale)/max*280;(j?ctx.lineTo(px,py):ctx.moveTo(px,py))}});ctx.stroke()}});ctx.fillStyle='#142a40';ctx.font='16px system-ui';ctx.fillText('red: max joint error (deg) · blue/gold: left/right normal force ÷20',18,24);ctx.strokeStyle='#071d36';ctx.beginPath();ctx.moveTo(i/(g.length-1)*980+10,30);ctx.lineTo(i/(g.length-1)*980+10,305);ctx.stroke()}}sel.addEventListener('change',()=>{{range.value=0;draw()}});range.addEventListener('input',draw);draw()}}).catch(error=>{{document.getElementById('readout').textContent=`Preview failed to load: ${{error.message}}`;}});</script></body></html>'''
     (OUT / "index.html").write_text(page, encoding="utf-8", newline="\n")
 
 
@@ -357,7 +382,9 @@ def main() -> int:
     physical_body_ids = np.flatnonzero((np.arange(model.nbody) > 0) & (model.body_mocapid < 0))
     if abs(float(model.body_subtreemass[1]) - expected_mass_kg) > 5e-6 or np.min(model.body_mass[physical_body_ids]) <= 0 or np.min(model.body_inertia[physical_body_ids]) <= 0:
         raise RuntimeError("compiled model mass/inertia is not positive and reconciled")
+    simulation_started = time.perf_counter()
     sample_rows, axis_rows, summary_rows, execution = simulate(model, caps)
+    simulation_wall_time_s = time.perf_counter() - simulation_started
     write_csv(OUT / "simulation-samples.csv", sample_rows)
     preview_fields = ("sequence_id", "time_s", "declared_support", "active_floor_contacts", "maximum_rotary_tracking_error_deg", "left_normal_force_n", "right_normal_force_n")
     preview_rows = [{key: row[key] for key in preview_fields} for row in sample_rows]
@@ -392,6 +419,7 @@ def main() -> int:
         "python": __import__("sys").version, "mujoco_version": mujoco.__version__, "numpy_version": np.__version__,
         "official_runtime_source": "https://pypi.org/project/mujoco/3.10.0/", "official_source_accessed": "2026-08-17",
         "integration_timestep_s": DT, "settle_time_s": SETTLE_S, "integrator": "implicitfast", "solver": "Newton",
+        "simulation_wall_time_s": round(simulation_wall_time_s, 6),
         "controller": {"rotary_kp": "40 * candidate endpoint Nm per rad", "rotary_kd": "2 * candidate endpoint Nm per rad/s", "gripper_kp_n_m": 100, "gripper_kd_n_s_m": 5},
         "fixture": "ideal six-degree-of-freedom mocap body welded numerically to base_link; not physical hardware",
     }
@@ -412,7 +440,7 @@ def main() -> int:
 
 **{WARNING}**
 
-MuJoCo {mujoco.__version__} compiles the corrected 9.990 kg active tether-first model with 32 generalized positions, 31 velocities, 25 torque/force inputs, 35 named interface exclusions, 12 walking keyframes and one numerical six-degree-of-freedom trajectory fixture. Both 10.72 s sequences are integrated at 2 ms with torque-limited numerical tracking control.
+MuJoCo {mujoco.__version__} compiles the corrected {float(status['mass_kg']):.3f} kg active tether-first model with 32 generalized positions, 31 velocities, 25 torque/force inputs, 35 named interface exclusions, 12 walking keyframes and one numerical six-degree-of-freedom trajectory fixture. Both 10.72 s sequences are integrated at 2 ms with torque-limited numerical tracking control.
 
 The ideal fixture is deliberately conspicuous: it can apply arbitrary load to keep the pelvis on its prescribed path. This package therefore validates model integration, positive mass/inertia, declared foot/floor contact topology, bounded numerical tracking and explicit failure metrics. It does **not** validate free balance, a physical tether, continuous actuator capacity, electrical current, thermal behavior, firmware, stopping, recovery, safety or walking.
 """
@@ -427,7 +455,7 @@ The ideal fixture is deliberately conspicuous: it can apply arbitrary load to ke
     block = f"""{start}
 ## Executed MuJoCo dynamics checkpoint
 
-The [MuJoCo dynamics guide](mujoco-dynamics-validation-p0.1/index.html) records two complete ideal-fixture simulations of the bilateral 40 mm sequences. The corrected 9.990 kg model now compiles with positive inertia on every moving body and explicit foot/floor contacts. The fixture is numerical test equipment, not evidence of free balance, a physical fall restraint or walking authority.
+The [MuJoCo dynamics guide](mujoco-dynamics-validation-p0.1/index.html) records two complete ideal-fixture simulations of the bilateral 40 mm sequences. The corrected {float(status['mass_kg']):.3f} kg model now compiles with positive inertia on every moving body and explicit foot/floor contacts. The fixture is numerical test equipment, not evidence of free balance, a physical fall restraint or walking authority.
 {end}"""
     if start in body_readme and end in body_readme:
         body_readme = body_readme[:body_readme.index(start)] + block + body_readme[body_readme.index(end) + len(end):]

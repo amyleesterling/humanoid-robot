@@ -4,7 +4,7 @@
   "physical_part_count": 98,
   "stl_count": 98,
   "module_count": 12,
-  "triangle_count": 402398,
+  "triangle_count": 387574,
   "mesh_linear_tolerance_mm": 0.15,
   "mesh_angular_tolerance_rad": 0.15,
   "bed_normalized_stl_count": 98,
