@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "baseline_id": "HR30-TETHER-LIGHT4-P0.1",
+  "review_date": "2026-09-25",
+  "source_commit": "174691255409336a7e25ba1505217859c98c3f80",
+  "state": "RECONCILIATION_CANDIDATE_NOT_BUILD_RELEASE",
+  "scope": "762 mm complete humanoid; 25 active axes; two functional hands; face/audio/vision; local deterministic motion boundary; eventual untethered walking retained",
+  "height_mm": 762,
+  "mass_ceiling_kg": 10.0,
+  "expected_mass_kg": 9.879813509,
+  "expected_links": 26,
+  "hip_ratio": 4.0,
+  "power_configuration": "EXTERNAL_TETHER; onboard battery/runtime not qualified",
+  "control_evidence": "IDEAL_6DOF_FIXTURE_ONLY; not unsupported standing or walking",
+  "small_inputs": {
+    "status": {"path": "hr30/whole-body-p0.1/active-light4-p0.1/active-light4-status.json", "sha256": "321a7712a6fa864fb888495e8636565adf239dce8152cae762d6904b07619346"},
+    "demand": {"path": "hr30/whole-body-p0.1/active-light4-p0.1/whole-body-axis-demand.csv", "sha256": "7591ddf7019df576f7daac00c8d246dcee8a749cced34bd357c312b6d42121f8"},
+    "allocation": {"path": "hr30/whole-body-p0.1/leg-drivetrain-p0.1/axis-drivetrain-allocation.csv", "sha256": "3ef2c42086f1ce9881ced121b178a72f3fa69bd4af2de9519beff952421d7ac7"}
+  },
+  "assets": {
+    "whole_body_step": {"path": "hr30/whole-body-p0.1/lightweight-hip-successor-p0.1/HR-30_light4_whole_body_candidate.step", "sha256": "5a1108e46458df2d6db2c9d505aae24b274f0dc2ef7ec3a48427a99c9c6d5015"},
+    "whole_body_glb": {"path": "hr30/whole-body-p0.1/lightweight-hip-successor-p0.1/HR-30_light4_whole_body_candidate.glb", "sha256": "56c8690f90c1422ad6ca500c373598f32d36cb8ea7b6f1de708283be01655a21"},
+    "active_urdf": {"path": "hr30/whole-body-p0.1/active-light4-p0.1/hr30_tether_light4_active.urdf", "sha256": "b237955149d66642e6ac030ca058015b1d2276de6fca00648e454195ba576bfb"},
+    "active_mjcf": {"path": "hr30/whole-body-p0.1/active-light4-p0.1/hr30_tether_light4_active.xml", "sha256": "636213ed60470f1d894e6583f35d7e240b1a54cad6ebbc32a5819ae9df4e648c"},
+    "fixture_mjcf": {"path": "hr30/whole-body-p0.1/active-light4-p0.1/hr30_tether_light4_ideal_fixture.xml", "sha256": "06fd734d9727a99ff8bbaa504157cbe4ecd2af5ef6df100d63dcd2d2a68f8d96"},
+    "inverse_dynamics_trace": {"path": "hr30/whole-body-p0.1/active-light4-p0.1/inverse-dynamics-samples.csv", "sha256": "9982d69d6a69c8af3471ca77699e4b77941f8b318a9ca1fff95ca7ba7c537f04"},
+    "joint_trajectory": {"path": "hr30/whole-body-p0.1/walking-sequence-p0.1/joint-trajectory.csv", "sha256": "22abf40f8368c5110c4380200ecc5388c975697419b7bd11bac842895b05cf9c"},
+    "current_register": {"path": "hr30/whole-body-p0.1/current-constrained-actuation-p0.1/axis-current-torque-register.csv", "sha256": "40bf30c040472137887948a9167cdf4ba7c64412a0aef530d3bba918e234e355"},
+    "ankle_drive_step": {"path": "hr30/whole-body-p0.1/leg-drivetrain-p0.1/LD-25/LD-25_candidate.step", "sha256": "34cd75bd00a5a4b92894e513aaf1468690075fecfb0f32f6a997d37b1b2e5780"}
+  },
+  "asset_hash_provenance": "Existing active-light4 source-binding/file-manifest and leg-drivetrain file-manifest at source_commit; default checker does not read large assets",
+  "configuration_dispositions": {
+    "old_9_928kg_tether": "Pre-LIGHT4 base ledger; not the selected dynamics mass",
+    "old_hip_pitch_1_5_and_roll_2": "Superseded only on four hip pitch/roll axes by LIGHT4 4:1; do not bulk-import old allocation as active",
+    "old_control_successor": "Historical fixture result; selected numerical evidence is active-light4",
+    "hr_v0_r312": "Archived unresolved arm-only evidence; not whole-robot completion scope"
+  },
+  "critical_joint": {
+    "axis_id": "R_ANKLE_PITCH",
+    "selection_rule": "Highest peak/current-endpoint ratio among the 12 leg axes in the pinned ideal-fixture demand table; not a global hardware risk ranking",
+    "actuator": "ROBOTIS XM430-W350-R",
+    "sku": "902-0118-000",
+    "drive_id": "LD-25",
+    "ratio": 2.5,
+    "efficiency_assumption": 0.85,
+    "motor_pulley": "GPA16GT5090-A-P8",
+    "output_pulley": "GPA40GT5090-A-P12",
+    "belt": "GBN250EV5GT-090",
+    "adapter": "MA-HN12-P8",
+    "manufacturer_estimated_continuous_motor_nm": 0.82,
+    "estimate_basis": "Manufacturer's 20-percent-of-stall heuristic, not measured continuous rating or acceptance limit",
+    "manufacturer_source": "https://robotis.us/products/dynamixel-xm430-w350-r"
+  },
+  "permissions": {"purchasing": false, "fabrication": false, "energization": false, "motion": false}
+}

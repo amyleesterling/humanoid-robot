@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "currency": "USD",
+  "review_date": "2026-09-25",
+  "state": "PLANNING_ONLY_NOT_A_QUOTE_OR_SPENDING_APPROVAL",
+  "catalog_items": [
+    {"item": "One XM430-W350-R", "sku": "902-0118-000", "quantity": 1, "unit_usd": "333.39", "source": "https://robotis.us/products/dynamixel-xm430-w350-r", "hold": "Confirm RS-485 suffix: page title says -R but package table says -T; availability not confirmed"},
+    {"item": "U2D2", "sku": "902-0132-000", "quantity": 1, "unit_usd": "36.92", "source": "https://robotis.us/products/u2d2", "hold": "Confirm availability and hardware revision: page says USB-C upgrade but still lists Micro USB cable"},
+    {"item": "U2D2 Power Hub Board Set", "sku": "902-0145-001", "quantity": 1, "unit_usd": "21.85", "source": "https://robotis.us/products/u2d2-power-hub-board-set", "hold": "Confirm availability; hub is not a safety-rated stop or regenerative-energy sink"}
+  ],
+  "allowances": [
+    {"item": "Independent mechanical/electrical test review and load-profile preparation", "low_usd": "1000", "high_usd": "2500", "basis": "Internal planning allowance; supplier quote required"},
+    {"item": "Bench support, guard, and restrained loading fixture fabrication", "low_usd": "400", "high_usd": "1200", "basis": "Internal planning allowance; fixture design and quote required"},
+    {"item": "LD-25 pulleys, belt, bearings, output shaft, adapter and joint hardware", "low_usd": "200", "high_usd": "500", "basis": "Internal planning allowance; exact products/DFM and quote required"},
+    {"item": "Access to calibrated torque/angle/temperature/electrical instruments and bench source", "low_usd": "350", "high_usd": "1000", "basis": "Assumes borrowed, rented or contracted lab equipment, not purchase of a complete laboratory; quote required"},
+    {"item": "Instrumented test execution and engineering analysis", "low_usd": "800", "high_usd": "2000", "basis": "Internal planning allowance; scope-based contractor quote required"},
+    {"item": "Reviewed test wiring, branch protection, local stop and regeneration handling", "low_usd": "150", "high_usd": "400", "basis": "Internal planning allowance; exact safety/power design and quote required"},
+    {"item": "One bounded test-article rebuild allowance", "low_usd": "250", "high_usd": "600", "basis": "Internal planning reserve, not permission to buy a spare actuator automatically"}
+  ],
+  "exclusions": ["Sales tax and shipping", "Purchase of laboratory instrumentation", "Full robot or complete-leg procurement", "Onboard battery", "Production tooling and certification", "Additional redesign loops beyond the stated rebuild allowance"],
+  "inventory_assumption": "No owned equipment or hardware has been verified; credit borrowed/owned items only after confirmation",
+  "availability_boundary": "Retrieved product pages show Sold out alongside Add to cart; no stock, reservation, quotation or lead time is claimed",
+  "supplier_contacts_sent": 0,
+  "supplier_quotes_received": 0,
+  "purchasing_authority": false
+}

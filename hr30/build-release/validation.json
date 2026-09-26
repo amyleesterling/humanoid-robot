@@ -1,0 +1,57 @@
+{
+  "baseline_id": "HR30-TETHER-LIGHT4-P0.1",
+  "source_commit": "174691255409336a7e25ba1505217859c98c3f80",
+  "scope": "SOURCE_SNAPSHOT_AND_PLANNING_ARITHMETIC_ONLY",
+  "mass_kg": 9.879813509,
+  "mass_margin_kg": 0.12018649100000012,
+  "rotary_axes_checked": 23,
+  "leg_axes_compared": 12,
+  "selected_joint": {
+    "axis_id": "R_ANKLE_PITCH",
+    "peak_nm": 6.433361747,
+    "rms_nm": 5.64489165,
+    "endpoint_ratio": 0.8497318861626705
+  },
+  "estimated_continuous_output_nm": 1.7424999999999997,
+  "rms_to_manufacturer_heuristic_ratio": 3.239536097560976,
+  "heuristic_is_acceptance_limit": false,
+  "legacy_hip_allocations_explicitly_superseded": [
+    {
+      "axis_id": "L_HIP_PITCH",
+      "historical_ratio": "1.500:1",
+      "active_ratio": 4.0
+    },
+    {
+      "axis_id": "L_HIP_ROLL",
+      "historical_ratio": "2.000:1",
+      "active_ratio": 4.0
+    },
+    {
+      "axis_id": "R_HIP_PITCH",
+      "historical_ratio": "1.500:1",
+      "active_ratio": 4.0
+    },
+    {
+      "axis_id": "R_HIP_ROLL",
+      "historical_ratio": "2.000:1",
+      "active_ratio": 4.0
+    }
+  ],
+  "physical_tests_executed": 0,
+  "build_release": false,
+  "walking_validated": false,
+  "budget": {
+    "catalog_subtotal_usd": "392.16",
+    "planning_low_usd": "3542.16",
+    "planning_high_usd": "8592.16",
+    "tax_shipping_included": false,
+    "supplier_quote": false
+  },
+  "source_files_sha256_verified": [
+    "hr30/whole-body-p0.1/active-light4-p0.1/active-light4-status.json",
+    "hr30/whole-body-p0.1/active-light4-p0.1/whole-body-axis-demand.csv",
+    "hr30/whole-body-p0.1/leg-drivetrain-p0.1/axis-drivetrain-allocation.csv"
+  ],
+  "large_asset_hashes_checked": false,
+  "cad_or_physics_rebuilt": false
+}
